@@ -46,6 +46,9 @@
     <ClCompile Include="src\router_server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="proto\ca.pb.cc">
+      <Filter>proto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\connection.hpp">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="include\router_server.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\ca.pb.h">
+      <Filter>proto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

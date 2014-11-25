@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="proto\address.pb.cc" />
+    <ClCompile Include="proto\ca.pb.cc" />
     <ClCompile Include="proto\im.pb.cc" />
     <ClCompile Include="proto\message.pb.cc" />
     <ClCompile Include="proto\user.pb.cc" />
@@ -43,6 +44,7 @@
     <ClInclude Include="include\http_server.hpp" />
     <ClInclude Include="include\utf8.hpp" />
     <ClInclude Include="proto\address.pb.h" />
+    <ClInclude Include="proto\ca.pb.h" />
     <ClInclude Include="proto\im.pb.h" />
     <ClInclude Include="proto\message.pb.h" />
     <ClInclude Include="proto\user.pb.h" />
@@ -99,7 +101,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_WIN32_WINNT=0x0501;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;LOGGER_DBG_VIEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_WIN32_WINNT=0x0600;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;LOGGER_DBG_VIEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>.\include;.\third_party\protobuf\src;.\third_party;.\proto;.\third_party\soci\src\core;.\third_party\soci\src\backends;.\third_party\soci\src\backends\postgresql;.\third_party\libpq\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -119,7 +121,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;_WIN32_WINNT=0x0501;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;_WIN32_WINNT=0x0600;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalOptions> /Qvec-report:2</AdditionalOptions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
