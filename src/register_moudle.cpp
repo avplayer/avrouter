@@ -213,8 +213,10 @@ namespace av_router {
 		user_name = request_parameter["username"];
 
 
-		m_database.availability_check(user_name, [conn](int result){
-			// TODO 返回 json 数据
+		m_database.availability_check(user_name,
+		[conn](int result)
+		{
+			// TODO 返回 json 数据.
 			auto body = boost::str(boost::format("{\"code\" : \"%d\"}") % result);
 			conn->write_response(body);
 		});
