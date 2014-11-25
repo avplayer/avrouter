@@ -32,7 +32,7 @@ namespace av_router {
 		void user_register(google::protobuf::Message*, connection_ptr, connection_manager&);
 
 	protected:
-		void proto_write_user_register_response(int result_code, boost::optional<std::string> cert, connection_ptr);
+		void proto_write_user_register_response(int, boost::optional<std::string>, connection_ptr, bool);
 
 	private:
 		av_router::io_service_pool& m_io_service_pool;

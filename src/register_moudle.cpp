@@ -16,51 +16,74 @@ namespace av_router {
 	namespace detail {
 
 		template<class AsyncStream>
-		static google::protobuf::Message* async_read_protobuf_message(AsyncStream &s, boost::asio::yield_context yield_context)
+		static google::protobuf::Message* async_read_protobuf_message(AsyncStream& stream, boost::asio::yield_context yield_context)
 		{
-			using namespace boost::asio;
+			boost::system::error_code ec;
+
 			std::string buf;
 			buf.resize(4);
-			async_read(s, buffer(&buf[0], 4), yield_context);
+			boost::asio::async_read(stream, boost::asio::buffer(&buf[0], 4), yield_context[ec]);
+			if (ec)
+			{
+				LOG_ERR << "async read ca.avplayer.org packet header, error: " << ec.message();
+				return nullptr;
+			}
 
 			uint32_t pktlen = ntohl(*(uint32_t*)(buf.data()));
-			if( pktlen >= 10000)
+			if (pktlen >= 10000)
 				return nullptr;
-			buf.resize(pktlen + 4);
 
-			async_read(s, buffer(&buf[4], pktlen), yield_context);
+			buf.resize(pktlen + 4);
+			boost::asio::async_read(stream, boost::asio::buffer(&buf[4], pktlen), yield_context[ec]);
+			if (ec)
+			{
+				LOG_ERR << "async read ca.avplayer.org packet body, error: " << ec.message();
+				return nullptr;
+			}
 
 			return decode(buf);
 		}
 
 		// NOTE: 看上去很复杂, 不过这个是暂时的, 因为稍后会用大兽模式, 与 CA 建立长连接来处理
-		// 而不是像现在这样使用短连接+轮询
+		// 而不是像现在这样使用短连接+轮询.
 		template<class Handler>
 		static void async_send_csr_coro(boost::asio::io_service& io, std::string csr, std::string rsa_fingerprint, Handler handler, boost::asio::yield_context yield_context)
 		{
-			// 链接到 ca.avplayer.org:8086
-			using namespace boost::asio;
+			boost::system::error_code ec;
+			tcp::socket sock(io);
 
-			ip::tcp::socket socket(io);
+			// 解析ca.avplayer.org
+			tcp::resolver resolver(io);
+			auto endpoint_it = resolver.async_resolve(tcp::resolver::query("ca.avplayer.org", "8086"), yield_context[ec]);
+			if (ec)
+			{
+				LOG_ERR << "resolver ca.avplayer.org failed, error: " << ec.message();
+				return;
+			}
 
-			ip::tcp::resolver resolver(io);
-
-			auto endpoint_it = resolver.async_resolve(ip::tcp::resolver::query("ca.avplayer.org", "8086"), yield_context);
-
-			async_connect(socket, endpoint_it, yield_context);
-
-			// 发送 push_csr 请求
+			// 连接到ca.avplayer.org:8086
+			boost::asio::async_connect(sock, endpoint_it, yield_context[ec]);
+			if (ec)
+			{
+				LOG_ERR << "async connect to ca.avplayer.org failed, error: " << ec.message();
+				return;
+			}
 
 			proto::ca::csr_push csr_push;
 			csr_push.set_csr(csr);
 
-			async_write(socket, buffer(encode(csr_push)), yield_context);
+			// 发送push_csr请求.
+			boost::asio::async_write(sock, boost::asio::buffer(encode(csr_push)), yield_context[ec]);
+			if (ec)
+			{
+				LOG_ERR << "async write push_csr to ca.avplayer.org failed, error: " << ec.message();
+				return;
+			}
 
 			bool push_ready = false;
 			// 等待 push_ok
-			do{
-				std::shared_ptr<google::protobuf::Message> msg(async_read_protobuf_message(socket, yield_context));
-
+			do {
+				std::shared_ptr<google::protobuf::Message> msg(async_read_protobuf_message(sock, yield_context));
 				if (msg && msg->GetTypeName() == "proto.ca.push_ok")
 				{
 					for (const std::string& fingerprint : dynamic_cast<proto::ca::push_ok*>(msg.get())->fingerprints())
@@ -69,48 +92,59 @@ namespace av_router {
 							push_ready = true;
 					}
 				}
-			}while(false);
+			} while (false);
 
-			if(!push_ready)
+			if (!push_ready)
 			{
 				io.post(std::bind(handler, -1, std::string()));
 				return;
 			}
 
-			deadline_timer timer(io);
+			boost::asio::deadline_timer timer(io);
+			std::atomic<bool> can_read(false);
 
-			std::atomic<bool> can_read;
-			can_read = false;
+			boost::asio::async_read(sock, boost::asio::null_buffers(),
+				[&can_read](boost::system::error_code ec, std::size_t)
+				{
+					can_read = !ec;
+				});
 
-			async_read(socket, null_buffers(), [&can_read](boost::system::error_code ec, std::size_t){
-				can_read = !ec;
-			});
-
-			// 十秒后取消读取
+			// 十秒后取消读取.
 			timer.expires_from_now(boost::posix_time::seconds(10));
-			timer.async_wait([&socket](boost::system::error_code ec){
-				if(!ec)
-					socket.cancel();
-			});
+			timer.async_wait(yield_context[ec]);
+			if (ec)
+			{
+				LOG_ERR << "async timer wait error: " << ec.message();
+				return;
+			}
 
 			// 每秒轮询一次 pull_cert
-			// 只轮询 10 次, 这样要求 10s 内给出结果
-			for (int i=0; i < 10 && !can_read; i++)
+			// 只轮询 10 次, 这样要求 10s 内给出结果.
+			for (int i = 0; i < 10 && !can_read; i++)
 			{
 				proto::ca::cert_pull cert_pull;
 				cert_pull.set_fingerprint(rsa_fingerprint);
-				async_write(socket, buffer(encode(csr_push)), yield_context);
-				deadline_timer timer(io);
+				boost::asio::async_write(sock, boost::asio::buffer(encode(csr_push)), yield_context[ec]);
+				if (ec)
+				{
+					LOG_ERR << "async write csr_push to ca.avplayer.org failed, error: " << ec.message();
+					return;
+				}
+				boost::asio::deadline_timer timer(io);
 				timer.expires_from_now(boost::posix_time::seconds(1));
-				timer.async_wait(yield_context);
+				timer.async_wait(yield_context[ec]);
+				if (ec)
+				{
+					LOG_ERR << "async timer wait error: " << ec.message();
+					return;
+				}
 			}
-
-			timer.cancel();
+			timer.cancel(ec);
 
 			if (can_read)
 			{
-				// 返回 cert
-				std::shared_ptr<google::protobuf::Message> msg(async_read_protobuf_message(socket, yield_context));
+				// 返回 cert.
+				std::shared_ptr<google::protobuf::Message> msg(async_read_protobuf_message(sock, yield_context));
 
 				if (msg && msg->GetTypeName() == "proto.ca.cert_push" && dynamic_cast<proto::ca::cert_push*>(msg.get())->fingerprint() == rsa_fingerprint)
 				{
@@ -195,20 +229,17 @@ namespace av_router {
 
 		// TODO 检查 CSR 证书是否有伪造
 		auto in = (const unsigned char *)register_msg->csr().data();
-
 		std::string rsa_pubkey = register_msg->rsa_pubkey();
-
 		std::shared_ptr<X509_REQ> csr(d2i_X509_REQ(NULL, &in, static_cast<long>(register_msg->csr().length())), X509_REQ_free);
-
 		in = (const unsigned char *)rsa_pubkey.data();
 		std::shared_ptr<RSA> user_rsa_pubkey(d2i_RSA_PUBKEY(NULL, &in, static_cast<long>(rsa_pubkey.length())), RSA_free);
 		std::shared_ptr<EVP_PKEY> user_EVP_PKEY_pubkey(EVP_PKEY_new(), EVP_PKEY_free);
 		EVP_PKEY_set1_RSA(user_EVP_PKEY_pubkey.get(), user_rsa_pubkey.get());
 
+		// 失败了.
 		if (X509_REQ_verify(csr.get(), user_EVP_PKEY_pubkey.get()) <= 0)
 		{
-			// 失败了.
-			return proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CSR_VERIFY_FAILURE, boost::optional<std::string>(), connection);
+			return proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CSR_VERIFY_FAILURE, boost::optional<std::string>(), connection, false);
 		}
 
 		LOG_INFO << "csr fine, start registering";
@@ -247,45 +278,41 @@ namespace av_router {
 
 						if (result == 0)
 						{
-							// 将 CERT 存入数据库.
-							m_database.update_user_cert(user_name, cert, std::bind(&register_moudle::proto_write_user_register_response, this,
-								// 向用户返回可以马上登录!
-								proto::user_register_result::REGISTER_SUCCEED, boost::optional<std::string>(cert), connection));
-
+							// 将 CERT 存入数据库, 向用户返回可以马上登录!
+							m_database.update_user_cert(user_name, cert, boost::bind(&register_moudle::proto_write_user_register_response, this,
+								proto::user_register_result::REGISTER_SUCCEED, boost::optional<std::string>(cert), connection, _1));
 						}
 						else if (result == 1)
 						{
 							// 注册成功, CERT 等待.
-							proto_write_user_register_response(proto::user_register_result::REGISTER_SUCCEED_PENDDING_CERT, boost::optional<std::string>(), connection);
+							proto_write_user_register_response(proto::user_register_result::REGISTER_SUCCEED_PENDDING_CERT, boost::optional<std::string>(), connection, true);
 						}
 						else
 						{
 							//  回滚数据库.
-							m_database.delete_user(user_name,
-								std::bind(&register_moudle::proto_write_user_register_response, this,
-									proto::user_register_result::REGISTER_FAILED_CA_DOWN, boost::optional<std::string>(), connection));
+							m_database.delete_user(user_name, boost::bind(&register_moudle::proto_write_user_register_response, this,
+								proto::user_register_result::REGISTER_FAILED_CA_DOWN, boost::optional<std::string>(), connection, _1));
 						}
 					});
 				}
 				else
 				{
 					LOG_INFO << "db op failed, register stoped";
-
-					proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_NAME_TAKEN, boost::optional<std::string>(), connection);
+					proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_NAME_TAKEN, boost::optional<std::string>(), connection, false);
 				}
 			}
 		);
 	}
 
-	void register_moudle::proto_write_user_register_response(int result_code, boost::optional<std::string> cert, connection_ptr connection)
+	void register_moudle::proto_write_user_register_response(int result_code, boost::optional<std::string> cert, connection_ptr connection, bool result)
 	{
-		proto::user_register_result result;
-		result.set_result((proto::user_register_result::user_register_result_code)result_code);
+		proto::user_register_result register_result;
+		register_result.set_result(static_cast<proto::user_register_result::user_register_result_code>(result_code));
 		if (cert.is_initialized())
 		{
-			result.set_cert(cert.value());
+			register_result.set_cert(cert.value());
 		}
-		connection->write_msg(encode(result));
+		connection->write_msg(encode(register_result));
 	}
 
 }

@@ -173,7 +173,7 @@ namespace av_router {
 				{
 					std::string cert_escapted = pg_escape_bytea(ses, cert);
 					// 检查名字没占用, 然后插入个新的, 必须是个原子操作
-					ses << "update avim_user set cert=:cert WHERE user_id = :name", soci::use(cert_escapted), soci::use(user_id);
+					ses << "UPDATE avim_user SET cert = :cert WHERE user_id = :name", soci::use(cert_escapted), soci::use(user_id);
 					m_io_service.post(boost::bind(handler, true));
 					return;
 				}
