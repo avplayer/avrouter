@@ -239,7 +239,8 @@ namespace av_router {
 		// 失败了.
 		if (X509_REQ_verify(csr.get(), user_EVP_PKEY_pubkey.get()) <= 0)
 		{
-			return proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CSR_VERIFY_FAILURE, boost::optional<std::string>(), connection, false);
+			proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CSR_VERIFY_FAILURE, boost::optional<std::string>(), connection, false);
+			return;
 		}
 
 		LOG_INFO << "csr fine, start registering";
