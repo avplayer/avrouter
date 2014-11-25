@@ -154,15 +154,16 @@ namespace av_router {
 
 			io.post(std::bind(handler, 1, std::string()));
 		}
-	} // namespace detail
 
-	// 暂时的嘛, 等 CA 签名服务器写好了, 这个就可以删了.
-	template<class Handler>
-	static void async_send_csr(boost::asio::io_service& io, std::string csr, std::string rsa_figureprint, Handler handler)
-	{
-		// 开协程, 否则编程太麻烦了, 不是么?
-		boost::asio::spawn(io, boost::bind(detail::async_send_csr_coro<Handler>, boost::ref(io), csr, rsa_figureprint, handler, _1));
-	}
+		// 暂时的嘛, 等 CA 签名服务器写好了, 这个就可以删了.
+		template<class Handler>
+		static void async_send_csr(boost::asio::io_service& io, std::string csr, std::string rsa_figureprint, Handler handler)
+		{
+			// 开协程, 否则编程太麻烦了, 不是么?
+			boost::asio::spawn(io, boost::bind(detail::async_send_csr_coro<Handler>, boost::ref(io), csr, rsa_figureprint, handler, _1));
+		}
+
+	} // namespace detail
 
 
 	register_moudle::register_moudle(io_service_pool& io_pool, database& db)
@@ -172,8 +173,6 @@ namespace av_router {
 
 	register_moudle::~register_moudle()
 	{}
-
-
 
 	void register_moudle::availability_check(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
 	{
@@ -272,7 +271,7 @@ namespace av_router {
 
 					LOG_DBG << pem_csr;
 
-					async_send_csr(m_io_service_pool.get_io_service(), pem_csr, rsa_figureprint,
+					detail::async_send_csr(m_io_service_pool.get_io_service(), pem_csr, rsa_figureprint,
 					[=](int result, std::string cert)
 					{
 						LOG_INFO << "csr sended";
