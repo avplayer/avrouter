@@ -206,12 +206,10 @@ namespace av_router {
 		std::string user_name;
 		// TODO 添加实现.
 		LOG_DBG << "register_moudle::availability_check_httpd called";
-
 		LOG_DBG << req.body;
 
 		http_form request_parameter(req.body, req["content-type"]);
 		user_name = request_parameter["username"];
-
 
 		m_database.availability_check(user_name,
 		[conn](int result)
@@ -228,7 +226,7 @@ namespace av_router {
 		if (!register_msg || register_msg->user_name().empty())
 			return;
 
-		// TODO 检查 CSR 证书是否有伪造
+		// TODO 检查 CSR 证书是否有伪造.
 		auto in = (const unsigned char *)register_msg->csr().data();
 		std::string rsa_pubkey = register_msg->rsa_pubkey();
 		std::shared_ptr<X509_REQ> csr(d2i_X509_REQ(NULL, &in, static_cast<long>(register_msg->csr().length())), X509_REQ_free);
