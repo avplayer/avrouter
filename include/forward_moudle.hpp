@@ -13,6 +13,11 @@
 struct dh_st;
 typedef struct dh_st DH;
 
+namespace proto {
+	class agmp;
+	class av_address;
+}
+
 namespace av_router {
 
 	class forward_moudle
@@ -24,7 +29,8 @@ namespace av_router {
 	public:
 		void connection_notify(int type, connection_ptr, connection_manager&);
 		void process_packet(google::protobuf::Message*, connection_ptr, connection_manager&);
-
+	private:
+		void write_agmp_message(connection_ptr, const proto::agmp&, const proto::av_address&);
 	private:
 		av_router::io_service_pool& m_io_service_poll;
 		std::string m_thisdomain;
