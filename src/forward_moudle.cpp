@@ -67,7 +67,19 @@ namespace av_router {
 		}
 		else
 		{
+			proto::agmp agmp;
+			agmp.mutable_noroutetohost()->mutable_host()->CopyFrom(pkt->dest());
+
+			proto::avpacket returnpkt;
+			returnpkt.mutable_dest()->CopyFrom(pkt->src());
+			returnpkt.mutable_src()->set_domain("avplayer.org");
+			returnpkt.mutable_src()->set_username("router");
+			returnpkt.mutable_upperlayerpotocol()->assign("agmp");
+
+			returnpkt.mutable_payload()->assign(agmp.SerializeAsString());
+
 			// 没找到，回一个 aGMP 消息报告 no route to host.
+			conn->write_msg(encode(returnpkt));
 		}
 		// TODO 根据目的地址转发消息.
 	}
