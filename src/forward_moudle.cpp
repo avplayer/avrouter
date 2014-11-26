@@ -50,8 +50,8 @@ namespace av_router {
 
 		// 根据用户名找到连接.
 		auto forward_target = m_routing_table.find(pkt->dest().username());
-		connection_ptr conn = forward_target->second.lock();
-		if (forward_target != m_routing_table.end() && conn)
+		connection_ptr conn ;
+		if (forward_target != m_routing_table.end() && (conn = forward_target->second.lock()))
 		{
 			// 找到, 转发过去.
 			// TTL 减1.
