@@ -24,6 +24,7 @@ namespace av_router {
 		returnpkt.mutable_src()->set_domain("avplayer.org");
 		returnpkt.mutable_src()->set_username("router");
 		returnpkt.mutable_upperlayerpotocol()->assign("agmp");
+		returnpkt.set_time_to_live(1);
 
 		returnpkt.mutable_payload()->assign(agmp.SerializeAsString());
 
