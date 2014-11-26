@@ -79,7 +79,7 @@ namespace av_router {
 			returnpkt.mutable_payload()->assign(agmp.SerializeAsString());
 
 			// 没找到，回一个 aGMP 消息报告 no route to host.
-			conn->write_msg(encode(returnpkt));
+			connection->write_msg(encode(returnpkt));
 		}
 		// TODO 根据目的地址转发消息.
 	}
