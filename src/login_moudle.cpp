@@ -74,12 +74,12 @@ namespace av_router {
 	login_moudle::~login_moudle()
 	{}
 
-	void login_moudle::process_login_message(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
+	bool login_moudle::process_login_message(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
 	{
 		proto::login* login = dynamic_cast<proto::login*>(msg);
 		std::map<ptrdiff_t, login_state>::iterator iter = m_log_state.find(reinterpret_cast<ptrdiff_t>(connection.get()));
 		if (iter == m_log_state.end())
-			return;
+			return false;
 
 		std::string login_check_key = boost::any_cast<std::string>(connection->retrive_module_private("login_check_key"));
 
@@ -132,9 +132,10 @@ namespace av_router {
 
 		std::string response = encode(result);
 		connection->write_msg(response);
+		return true;
 	}
 
-	void login_moudle::process_hello_message(google::protobuf::Message* hellomsg, connection_ptr connection, connection_manager&)
+	bool login_moudle::process_hello_message(google::protobuf::Message* hellomsg, connection_ptr connection, connection_manager&)
 	{
 		proto::client_hello* client_hello = dynamic_cast<proto::client_hello*>(hellomsg);
 		login_state& state = m_log_state[reinterpret_cast<ptrdiff_t>(connection.get())];
@@ -180,6 +181,7 @@ namespace av_router {
 
 		// 发回消息.
 		connection->write_msg(response);
+		return true;
 	}
 
 	void login_moudle::on_tick(const boost::system::error_code& error)

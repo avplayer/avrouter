@@ -27,8 +27,8 @@ namespace av_router {
 	public:
 		void quit();
 
-		void process_login_message(google::protobuf::Message*, connection_ptr, connection_manager&);
-		void process_hello_message(google::protobuf::Message*, connection_ptr, connection_manager&);
+		bool process_login_message(google::protobuf::Message*, connection_ptr, connection_manager&);
+		bool process_hello_message(google::protobuf::Message*, connection_ptr, connection_manager&);
 
 	private:
 		void on_tick(const boost::system::error_code& error);

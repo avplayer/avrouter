@@ -174,11 +174,11 @@ namespace av_router {
 	register_moudle::~register_moudle()
 	{}
 
-	void register_moudle::availability_check(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
+	bool register_moudle::availability_check(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
 	{
 		proto::username_availability_check* availabile = dynamic_cast<proto::username_availability_check*>(msg);
 		if (!availabile || availabile->user_name().empty())
-			return;
+			return false;
 		m_database.availability_check(availabile->user_name(),
 			[this, connection](bool result)
 			{
@@ -198,6 +198,7 @@ namespace av_router {
 				connection->write_msg(response);
 			}
 		);
+		return true;
 	}
 
 	// HTTP 版本, 大同小异, 只是返回的不是 protobuf 消息, 而是 json 格式的消息
@@ -220,11 +221,11 @@ namespace av_router {
 		});
 	}
 
-	void register_moudle::user_register(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
+	bool register_moudle::user_register(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
 	{
 		proto::user_register* register_msg = dynamic_cast<proto::user_register*>(msg);
 		if (!register_msg || register_msg->user_name().empty())
-			return;
+			return false;
 
 		// TODO 检查 CSR 证书是否有伪造.
 		auto in = (const unsigned char *)register_msg->csr().data();
@@ -239,7 +240,7 @@ namespace av_router {
 		if (X509_REQ_verify(csr.get(), user_EVP_PKEY_pubkey.get()) <= 0)
 		{
 			proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CSR_VERIFY_FAILURE, boost::optional<std::string>(), connection, false);
-			return;
+			return false;
 		}
 
 		LOG_INFO << "csr fine, start registering";
@@ -302,6 +303,8 @@ namespace av_router {
 				}
 			}
 		);
+
+		return true;
 	}
 
 	void register_moudle::proto_write_user_register_response(int result_code, boost::optional<std::string> cert, connection_ptr connection, bool result)

@@ -47,12 +47,13 @@ namespace av_router {
 		}
 	}
 
-	void forward_moudle::process_packet(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
+	bool forward_moudle::process_packet(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
 	{
 		proto::avpacket* pkt = dynamic_cast<proto::avpacket*>(msg);
 		if (pkt->dest().domain() != m_thisdomain)
 		{
 			// TODO 暂时不实现非本域的转发.
+			return false;
 		}
 
 		// 根据发送人更新 routing_table
@@ -91,5 +92,6 @@ namespace av_router {
 
 		}
 		// TODO 根据目的地址转发消息.
+		return true;
 	}
 }

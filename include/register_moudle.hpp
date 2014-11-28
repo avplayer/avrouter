@@ -28,8 +28,8 @@ namespace av_router {
 		void availability_check_httpd(const request&, http_connection_ptr, http_connection_manager&);
 
 	public:
-		void availability_check(google::protobuf::Message*, connection_ptr, connection_manager&);
-		void user_register(google::protobuf::Message*, connection_ptr, connection_manager&);
+		bool availability_check(google::protobuf::Message*, connection_ptr, connection_manager&);
+		bool user_register(google::protobuf::Message*, connection_ptr, connection_manager&);
 
 	protected:
 		void proto_write_user_register_response(int, boost::optional<std::string>, connection_ptr, bool);

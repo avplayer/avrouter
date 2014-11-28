@@ -125,7 +125,8 @@ namespace av_router {
 		LOG_DBG << this << " recv: " << msg->GetTypeName();
 
 		// 处理这个消息.
-		m_server.do_message(msg, shared_from_this());
+		if (!m_server.do_message(msg, shared_from_this()))
+			return;
 
 		// 继续下一个消息头读取.
 		boost::asio::async_read(m_socket, m_response, boost::asio::transfer_exactly(4),

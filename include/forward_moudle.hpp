@@ -28,7 +28,8 @@ namespace av_router {
 
 	public:
 		void connection_notify(int type, connection_ptr, connection_manager&);
-		void process_packet(google::protobuf::Message*, connection_ptr, connection_manager&);
+		bool process_packet(google::protobuf::Message*, connection_ptr, connection_manager&);
+
 	private:
 		void write_agmp_message(connection_ptr, const proto::agmp&, const proto::av_address&);
 	private:

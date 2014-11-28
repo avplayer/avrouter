@@ -91,14 +91,14 @@ namespace av_router {
 		continue_timer();
 	}
 
-	void router_server::do_message(google::protobuf::Message* msg, connection_ptr conn)
+	bool router_server::do_message(google::protobuf::Message* msg, connection_ptr conn)
 	{
 		const std::string name = msg->GetTypeName();
 		boost::shared_lock<boost::shared_mutex> l(m_message_callback_mtx);
 		message_callback_table::iterator iter = m_message_callbacks.find(name);
 		if (iter == m_message_callbacks.end())
-			return;
-		iter->second(msg, conn, boost::ref(m_connection_manager)); // 或者直接: m_message_callback[name](msg, conn, boost::ref(m_connection_manager));
+			return false;
+		return iter->second(msg, conn, boost::ref(m_connection_manager)); // 或者直接: return m_message_callback[name](msg, conn, boost::ref(m_connection_manager));
 	}
 
 	void router_server::do_connection_notify(int type, connection_ptr conn)
