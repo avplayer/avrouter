@@ -283,7 +283,7 @@ void text_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 text_message::text_message(text_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -689,7 +689,7 @@ void img_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 img_message::img_message(img_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1036,7 +1036,7 @@ void emoji_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 emoji_message::emoji_message(emoji_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1422,7 +1422,7 @@ void symmetry_encryption_key_distribution::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 symmetry_encryption_key_distribution::symmetry_encryption_key_distribution(symmetry_encryption_key_distribution&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1715,7 +1715,7 @@ void avim_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 avim_message::avim_message(avim_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -2086,7 +2086,7 @@ void avim_message_packet::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 avim_message_packet::avim_message_packet(avim_message_packet&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
