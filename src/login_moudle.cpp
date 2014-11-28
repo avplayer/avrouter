@@ -154,7 +154,8 @@ namespace av_router {
 		proto::server_hello server_hello;
 		server_hello.set_servername("avrouter");
 		server_hello.set_version(001);
-		server_hello.set_random_pub_key((const void*)bin_key, BN_bn2bin(dh->pub_key, bin_key));
+		int size = BN_bn2bin(dh->pub_key, bin_key);
+		server_hello.set_random_pub_key(static_cast<const void*>(bin_key), size);
 		server_hello.set_server_av_address("router@avplayer.org");
 
 		shared_key.resize(DH_size(dh));
