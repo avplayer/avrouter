@@ -26,18 +26,18 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* avpacket_ack_control_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   avpacket_ack_control_reflection_ = NULL;
-const ::google::protobuf::Descriptor* aGMP_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* agmp_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  aGMP_reflection_ = NULL;
-const ::google::protobuf::Descriptor* aGMP_PKREPLY_descriptor_ = NULL;
+  agmp_reflection_ = NULL;
+const ::google::protobuf::Descriptor* agmp_PKREPLY_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  aGMP_PKREPLY_reflection_ = NULL;
-const ::google::protobuf::Descriptor* aGMP_NOROUTTOHOST_descriptor_ = NULL;
+  agmp_PKREPLY_reflection_ = NULL;
+const ::google::protobuf::Descriptor* agmp_NOROUTTOHOST_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  aGMP_NOROUTTOHOST_reflection_ = NULL;
-const ::google::protobuf::Descriptor* aGMP_TTLOUT_descriptor_ = NULL;
+  agmp_NOROUTTOHOST_reflection_ = NULL;
+const ::google::protobuf::Descriptor* agmp_TTLOUT_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  aGMP_TTLOUT_reflection_ = NULL;
+  agmp_TTLOUT_reflection_ = NULL;
 
 }  // namespace
 
@@ -87,68 +87,68 @@ void protobuf_AssignDesc_message_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(avpacket_ack_control));
-  aGMP_descriptor_ = file->message_type(1);
-  static const int aGMP_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP, pkreply_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP, noroutetohost_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP, ttlout_),
+  agmp_descriptor_ = file->message_type(1);
+  static const int agmp_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp, pkreply_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp, noroutetohost_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp, ttlout_),
   };
-  aGMP_reflection_ =
+  agmp_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      aGMP_descriptor_,
-      aGMP::default_instance_,
-      aGMP_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP, _unknown_fields_),
+      agmp_descriptor_,
+      agmp::default_instance_,
+      agmp_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(aGMP));
-  aGMP_PKREPLY_descriptor_ = aGMP_descriptor_->nested_type(0);
-  static const int aGMP_PKREPLY_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_PKREPLY, x509_cert_),
+      sizeof(agmp));
+  agmp_PKREPLY_descriptor_ = agmp_descriptor_->nested_type(0);
+  static const int agmp_PKREPLY_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_PKREPLY, x509_cert_),
   };
-  aGMP_PKREPLY_reflection_ =
+  agmp_PKREPLY_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      aGMP_PKREPLY_descriptor_,
-      aGMP_PKREPLY::default_instance_,
-      aGMP_PKREPLY_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_PKREPLY, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_PKREPLY, _unknown_fields_),
+      agmp_PKREPLY_descriptor_,
+      agmp_PKREPLY::default_instance_,
+      agmp_PKREPLY_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_PKREPLY, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_PKREPLY, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(aGMP_PKREPLY));
-  aGMP_NOROUTTOHOST_descriptor_ = aGMP_descriptor_->nested_type(1);
-  static const int aGMP_NOROUTTOHOST_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_NOROUTTOHOST, host_),
+      sizeof(agmp_PKREPLY));
+  agmp_NOROUTTOHOST_descriptor_ = agmp_descriptor_->nested_type(1);
+  static const int agmp_NOROUTTOHOST_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_NOROUTTOHOST, host_),
   };
-  aGMP_NOROUTTOHOST_reflection_ =
+  agmp_NOROUTTOHOST_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      aGMP_NOROUTTOHOST_descriptor_,
-      aGMP_NOROUTTOHOST::default_instance_,
-      aGMP_NOROUTTOHOST_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_NOROUTTOHOST, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_NOROUTTOHOST, _unknown_fields_),
+      agmp_NOROUTTOHOST_descriptor_,
+      agmp_NOROUTTOHOST::default_instance_,
+      agmp_NOROUTTOHOST_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_NOROUTTOHOST, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_NOROUTTOHOST, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(aGMP_NOROUTTOHOST));
-  aGMP_TTLOUT_descriptor_ = aGMP_descriptor_->nested_type(2);
-  static const int aGMP_TTLOUT_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_TTLOUT, host_),
+      sizeof(agmp_NOROUTTOHOST));
+  agmp_TTLOUT_descriptor_ = agmp_descriptor_->nested_type(2);
+  static const int agmp_TTLOUT_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_TTLOUT, host_),
   };
-  aGMP_TTLOUT_reflection_ =
+  agmp_TTLOUT_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      aGMP_TTLOUT_descriptor_,
-      aGMP_TTLOUT::default_instance_,
-      aGMP_TTLOUT_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_TTLOUT, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(aGMP_TTLOUT, _unknown_fields_),
+      agmp_TTLOUT_descriptor_,
+      agmp_TTLOUT::default_instance_,
+      agmp_TTLOUT_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_TTLOUT, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(agmp_TTLOUT, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(aGMP_TTLOUT));
+      sizeof(agmp_TTLOUT));
 }
 
 namespace {
@@ -166,13 +166,13 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     avpacket_ack_control_descriptor_, &avpacket_ack_control::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    aGMP_descriptor_, &aGMP::default_instance());
+    agmp_descriptor_, &agmp::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    aGMP_PKREPLY_descriptor_, &aGMP_PKREPLY::default_instance());
+    agmp_PKREPLY_descriptor_, &agmp_PKREPLY::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    aGMP_NOROUTTOHOST_descriptor_, &aGMP_NOROUTTOHOST::default_instance());
+    agmp_NOROUTTOHOST_descriptor_, &agmp_NOROUTTOHOST::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    aGMP_TTLOUT_descriptor_, &aGMP_TTLOUT::default_instance());
+    agmp_TTLOUT_descriptor_, &agmp_TTLOUT::default_instance());
 }
 
 }  // namespace
@@ -183,14 +183,14 @@ void protobuf_ShutdownFile_message_2eproto() {
   delete avpacket::_default_upperlayerpotocol_;
   delete avpacket_ack_control::default_instance_;
   delete avpacket_ack_control_reflection_;
-  delete aGMP::default_instance_;
-  delete aGMP_reflection_;
-  delete aGMP_PKREPLY::default_instance_;
-  delete aGMP_PKREPLY_reflection_;
-  delete aGMP_NOROUTTOHOST::default_instance_;
-  delete aGMP_NOROUTTOHOST_reflection_;
-  delete aGMP_TTLOUT::default_instance_;
-  delete aGMP_TTLOUT_reflection_;
+  delete agmp::default_instance_;
+  delete agmp_reflection_;
+  delete agmp_PKREPLY::default_instance_;
+  delete agmp_PKREPLY_reflection_;
+  delete agmp_NOROUTTOHOST::default_instance_;
+  delete agmp_NOROUTTOHOST_reflection_;
+  delete agmp_TTLOUT::default_instance_;
+  delete agmp_TTLOUT_reflection_;
 }
 
 void protobuf_AddDesc_message_2eproto() {
@@ -210,10 +210,10 @@ void protobuf_AddDesc_message_2eproto() {
     " \001(\010\022\021\n\ttimestamp\030\n \001(\004\022-\n\010need_seq\030\013 \001("
     "\0132\033.proto.avpacket.ack_control\022\017\n\007payloa"
     "d\030\010 \001(\014\032\036\n\013ack_control\022\017\n\007ack_seq\030\001 \002(\004\""
-    "\373\001\n\004aGMP\022$\n\007pkreply\030\001 \001(\0132\023.proto.aGMP.P"
-    "KREPLY\022/\n\rnoroutetohost\030\002 \001(\0132\030.proto.aG"
-    "MP.NOROUTTOHOST\022\"\n\006ttlout\030\003 \001(\0132\022.proto."
-    "aGMP.TTLOUT\032\034\n\007PKREPLY\022\021\n\tx509_cert\030\001 \002("
+    "\373\001\n\004agmp\022$\n\007pkreply\030\001 \001(\0132\023.proto.agmp.P"
+    "KREPLY\022/\n\rnoroutetohost\030\002 \001(\0132\030.proto.ag"
+    "mp.NOROUTTOHOST\022\"\n\006ttlout\030\003 \001(\0132\022.proto."
+    "agmp.TTLOUT\032\034\n\007PKREPLY\022\021\n\tx509_cert\030\001 \002("
     "\014\032/\n\014NOROUTTOHOST\022\037\n\004host\030\001 \002(\0132\021.proto."
     "av_address\032)\n\006TTLOUT\022\037\n\004host\030\001 \002(\0132\021.pro"
     "to.av_addressP\000", 615);
@@ -223,16 +223,16 @@ void protobuf_AddDesc_message_2eproto() {
       new ::std::string("avim", 4);
   avpacket::default_instance_ = new avpacket();
   avpacket_ack_control::default_instance_ = new avpacket_ack_control();
-  aGMP::default_instance_ = new aGMP();
-  aGMP_PKREPLY::default_instance_ = new aGMP_PKREPLY();
-  aGMP_NOROUTTOHOST::default_instance_ = new aGMP_NOROUTTOHOST();
-  aGMP_TTLOUT::default_instance_ = new aGMP_TTLOUT();
+  agmp::default_instance_ = new agmp();
+  agmp_PKREPLY::default_instance_ = new agmp_PKREPLY();
+  agmp_NOROUTTOHOST::default_instance_ = new agmp_NOROUTTOHOST();
+  agmp_TTLOUT::default_instance_ = new agmp_TTLOUT();
   avpacket::default_instance_->InitAsDefaultInstance();
   avpacket_ack_control::default_instance_->InitAsDefaultInstance();
-  aGMP::default_instance_->InitAsDefaultInstance();
-  aGMP_PKREPLY::default_instance_->InitAsDefaultInstance();
-  aGMP_NOROUTTOHOST::default_instance_->InitAsDefaultInstance();
-  aGMP_TTLOUT::default_instance_->InitAsDefaultInstance();
+  agmp::default_instance_->InitAsDefaultInstance();
+  agmp_PKREPLY::default_instance_->InitAsDefaultInstance();
+  agmp_NOROUTTOHOST::default_instance_->InitAsDefaultInstance();
+  agmp_TTLOUT::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_message_2eproto);
 }
 
@@ -1138,26 +1138,26 @@ void avpacket::Swap(avpacket* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int aGMP_PKREPLY::kX509CertFieldNumber;
+const int agmp_PKREPLY::kX509CertFieldNumber;
 #endif  // !_MSC_VER
 
-aGMP_PKREPLY::aGMP_PKREPLY()
+agmp_PKREPLY::agmp_PKREPLY()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(constructor:proto.agmp.PKREPLY)
 }
 
-void aGMP_PKREPLY::InitAsDefaultInstance() {
+void agmp_PKREPLY::InitAsDefaultInstance() {
 }
 
-aGMP_PKREPLY::aGMP_PKREPLY(const aGMP_PKREPLY& from)
+agmp_PKREPLY::agmp_PKREPLY(const agmp_PKREPLY& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(copy_constructor:proto.agmp.PKREPLY)
 }
 
-void aGMP_PKREPLY::SharedCtor() {
+void agmp_PKREPLY::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   x509_cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -1165,18 +1165,18 @@ void aGMP_PKREPLY::SharedCtor() {
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-aGMP_PKREPLY::aGMP_PKREPLY(aGMP_PKREPLY&& from)
+agmp_PKREPLY::agmp_PKREPLY(agmp_PKREPLY&& from)
   : ::google::protobuf::Message() {
   SharedCtor();  Swap(&from);
 }
 #endif
 
-aGMP_PKREPLY::~aGMP_PKREPLY() {
-  // @@protoc_insertion_point(destructor:proto.aGMP.PKREPLY)
+agmp_PKREPLY::~agmp_PKREPLY() {
+  // @@protoc_insertion_point(destructor:proto.agmp.PKREPLY)
   SharedDtor();
 }
 
-void aGMP_PKREPLY::SharedDtor() {
+void agmp_PKREPLY::SharedDtor() {
   if (x509_cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete x509_cert_;
   }
@@ -1184,28 +1184,28 @@ void aGMP_PKREPLY::SharedDtor() {
   }
 }
 
-void aGMP_PKREPLY::SetCachedSize(int size) const {
+void agmp_PKREPLY::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* aGMP_PKREPLY::descriptor() {
+const ::google::protobuf::Descriptor* agmp_PKREPLY::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return aGMP_PKREPLY_descriptor_;
+  return agmp_PKREPLY_descriptor_;
 }
 
-const aGMP_PKREPLY& aGMP_PKREPLY::default_instance() {
+const agmp_PKREPLY& agmp_PKREPLY::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
   return *default_instance_;
 }
 
-aGMP_PKREPLY* aGMP_PKREPLY::default_instance_ = NULL;
+agmp_PKREPLY* agmp_PKREPLY::default_instance_ = NULL;
 
-aGMP_PKREPLY* aGMP_PKREPLY::New() const {
-  return new aGMP_PKREPLY;
+agmp_PKREPLY* agmp_PKREPLY::New() const {
+  return new agmp_PKREPLY;
 }
 
-void aGMP_PKREPLY::Clear() {
+void agmp_PKREPLY::Clear() {
   if (has_x509_cert()) {
     if (x509_cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
       x509_cert_->clear();
@@ -1215,11 +1215,11 @@ void aGMP_PKREPLY::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool aGMP_PKREPLY::MergePartialFromCodedStream(
+bool agmp_PKREPLY::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(parse_start:proto.agmp.PKREPLY)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1251,17 +1251,17 @@ bool aGMP_PKREPLY::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(parse_success:proto.agmp.PKREPLY)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(parse_failure:proto.agmp.PKREPLY)
   return false;
 #undef DO_
 }
 
-void aGMP_PKREPLY::SerializeWithCachedSizes(
+void agmp_PKREPLY::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(serialize_start:proto.agmp.PKREPLY)
   // required bytes x509_cert = 1;
   if (has_x509_cert()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
@@ -1272,12 +1272,12 @@ void aGMP_PKREPLY::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(serialize_end:proto.agmp.PKREPLY)
 }
 
-::google::protobuf::uint8* aGMP_PKREPLY::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* agmp_PKREPLY::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(serialize_to_array_start:proto.agmp.PKREPLY)
   // required bytes x509_cert = 1;
   if (has_x509_cert()) {
     target =
@@ -1289,11 +1289,11 @@ void aGMP_PKREPLY::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.aGMP.PKREPLY)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.agmp.PKREPLY)
   return target;
 }
 
-int aGMP_PKREPLY::ByteSize() const {
+int agmp_PKREPLY::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -1316,10 +1316,10 @@ int aGMP_PKREPLY::ByteSize() const {
   return total_size;
 }
 
-void aGMP_PKREPLY::MergeFrom(const ::google::protobuf::Message& from) {
+void agmp_PKREPLY::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const aGMP_PKREPLY* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const aGMP_PKREPLY*>(
+  const agmp_PKREPLY* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const agmp_PKREPLY*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1328,7 +1328,7 @@ void aGMP_PKREPLY::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void aGMP_PKREPLY::MergeFrom(const aGMP_PKREPLY& from) {
+void agmp_PKREPLY::MergeFrom(const agmp_PKREPLY& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_x509_cert()) {
@@ -1338,25 +1338,25 @@ void aGMP_PKREPLY::MergeFrom(const aGMP_PKREPLY& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void aGMP_PKREPLY::CopyFrom(const ::google::protobuf::Message& from) {
+void agmp_PKREPLY::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void aGMP_PKREPLY::CopyFrom(const aGMP_PKREPLY& from) {
+void agmp_PKREPLY::CopyFrom(const agmp_PKREPLY& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool aGMP_PKREPLY::IsInitialized() const {
+bool agmp_PKREPLY::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
 
-void aGMP_PKREPLY::Swap(aGMP_PKREPLY* other) {
+void agmp_PKREPLY::Swap(agmp_PKREPLY* other) {
   if (other != this) {
     std::swap(x509_cert_, other->x509_cert_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -1365,11 +1365,11 @@ void aGMP_PKREPLY::Swap(aGMP_PKREPLY* other) {
   }
 }
 
-::google::protobuf::Metadata aGMP_PKREPLY::GetMetadata() const {
+::google::protobuf::Metadata agmp_PKREPLY::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = aGMP_PKREPLY_descriptor_;
-  metadata.reflection = aGMP_PKREPLY_reflection_;
+  metadata.descriptor = agmp_PKREPLY_descriptor_;
+  metadata.reflection = agmp_PKREPLY_reflection_;
   return metadata;
 }
 
@@ -1377,72 +1377,72 @@ void aGMP_PKREPLY::Swap(aGMP_PKREPLY* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int aGMP_NOROUTTOHOST::kHostFieldNumber;
+const int agmp_NOROUTTOHOST::kHostFieldNumber;
 #endif  // !_MSC_VER
 
-aGMP_NOROUTTOHOST::aGMP_NOROUTTOHOST()
+agmp_NOROUTTOHOST::agmp_NOROUTTOHOST()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(constructor:proto.agmp.NOROUTTOHOST)
 }
 
-void aGMP_NOROUTTOHOST::InitAsDefaultInstance() {
+void agmp_NOROUTTOHOST::InitAsDefaultInstance() {
   host_ = const_cast< ::proto::av_address*>(&::proto::av_address::default_instance());
 }
 
-aGMP_NOROUTTOHOST::aGMP_NOROUTTOHOST(const aGMP_NOROUTTOHOST& from)
+agmp_NOROUTTOHOST::agmp_NOROUTTOHOST(const agmp_NOROUTTOHOST& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(copy_constructor:proto.agmp.NOROUTTOHOST)
 }
 
-void aGMP_NOROUTTOHOST::SharedCtor() {
+void agmp_NOROUTTOHOST::SharedCtor() {
   _cached_size_ = 0;
   host_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-aGMP_NOROUTTOHOST::aGMP_NOROUTTOHOST(aGMP_NOROUTTOHOST&& from)
+agmp_NOROUTTOHOST::agmp_NOROUTTOHOST(agmp_NOROUTTOHOST&& from)
   : ::google::protobuf::Message() {
   SharedCtor();  Swap(&from);
 }
 #endif
 
-aGMP_NOROUTTOHOST::~aGMP_NOROUTTOHOST() {
-  // @@protoc_insertion_point(destructor:proto.aGMP.NOROUTTOHOST)
+agmp_NOROUTTOHOST::~agmp_NOROUTTOHOST() {
+  // @@protoc_insertion_point(destructor:proto.agmp.NOROUTTOHOST)
   SharedDtor();
 }
 
-void aGMP_NOROUTTOHOST::SharedDtor() {
+void agmp_NOROUTTOHOST::SharedDtor() {
   if (this != default_instance_) {
     delete host_;
   }
 }
 
-void aGMP_NOROUTTOHOST::SetCachedSize(int size) const {
+void agmp_NOROUTTOHOST::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* aGMP_NOROUTTOHOST::descriptor() {
+const ::google::protobuf::Descriptor* agmp_NOROUTTOHOST::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return aGMP_NOROUTTOHOST_descriptor_;
+  return agmp_NOROUTTOHOST_descriptor_;
 }
 
-const aGMP_NOROUTTOHOST& aGMP_NOROUTTOHOST::default_instance() {
+const agmp_NOROUTTOHOST& agmp_NOROUTTOHOST::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
   return *default_instance_;
 }
 
-aGMP_NOROUTTOHOST* aGMP_NOROUTTOHOST::default_instance_ = NULL;
+agmp_NOROUTTOHOST* agmp_NOROUTTOHOST::default_instance_ = NULL;
 
-aGMP_NOROUTTOHOST* aGMP_NOROUTTOHOST::New() const {
-  return new aGMP_NOROUTTOHOST;
+agmp_NOROUTTOHOST* agmp_NOROUTTOHOST::New() const {
+  return new agmp_NOROUTTOHOST;
 }
 
-void aGMP_NOROUTTOHOST::Clear() {
+void agmp_NOROUTTOHOST::Clear() {
   if (has_host()) {
     if (host_ != NULL) host_->::proto::av_address::Clear();
   }
@@ -1450,11 +1450,11 @@ void aGMP_NOROUTTOHOST::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool aGMP_NOROUTTOHOST::MergePartialFromCodedStream(
+bool agmp_NOROUTTOHOST::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(parse_start:proto.agmp.NOROUTTOHOST)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1486,17 +1486,17 @@ bool aGMP_NOROUTTOHOST::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(parse_success:proto.agmp.NOROUTTOHOST)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(parse_failure:proto.agmp.NOROUTTOHOST)
   return false;
 #undef DO_
 }
 
-void aGMP_NOROUTTOHOST::SerializeWithCachedSizes(
+void agmp_NOROUTTOHOST::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(serialize_start:proto.agmp.NOROUTTOHOST)
   // required .proto.av_address host = 1;
   if (has_host()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -1507,12 +1507,12 @@ void aGMP_NOROUTTOHOST::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(serialize_end:proto.agmp.NOROUTTOHOST)
 }
 
-::google::protobuf::uint8* aGMP_NOROUTTOHOST::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* agmp_NOROUTTOHOST::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(serialize_to_array_start:proto.agmp.NOROUTTOHOST)
   // required .proto.av_address host = 1;
   if (has_host()) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -1524,11 +1524,11 @@ void aGMP_NOROUTTOHOST::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.aGMP.NOROUTTOHOST)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.agmp.NOROUTTOHOST)
   return target;
 }
 
-int aGMP_NOROUTTOHOST::ByteSize() const {
+int agmp_NOROUTTOHOST::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -1551,10 +1551,10 @@ int aGMP_NOROUTTOHOST::ByteSize() const {
   return total_size;
 }
 
-void aGMP_NOROUTTOHOST::MergeFrom(const ::google::protobuf::Message& from) {
+void agmp_NOROUTTOHOST::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const aGMP_NOROUTTOHOST* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const aGMP_NOROUTTOHOST*>(
+  const agmp_NOROUTTOHOST* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const agmp_NOROUTTOHOST*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1563,7 +1563,7 @@ void aGMP_NOROUTTOHOST::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void aGMP_NOROUTTOHOST::MergeFrom(const aGMP_NOROUTTOHOST& from) {
+void agmp_NOROUTTOHOST::MergeFrom(const agmp_NOROUTTOHOST& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_host()) {
@@ -1573,19 +1573,19 @@ void aGMP_NOROUTTOHOST::MergeFrom(const aGMP_NOROUTTOHOST& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void aGMP_NOROUTTOHOST::CopyFrom(const ::google::protobuf::Message& from) {
+void agmp_NOROUTTOHOST::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void aGMP_NOROUTTOHOST::CopyFrom(const aGMP_NOROUTTOHOST& from) {
+void agmp_NOROUTTOHOST::CopyFrom(const agmp_NOROUTTOHOST& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool aGMP_NOROUTTOHOST::IsInitialized() const {
+bool agmp_NOROUTTOHOST::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   if (has_host()) {
@@ -1594,7 +1594,7 @@ bool aGMP_NOROUTTOHOST::IsInitialized() const {
   return true;
 }
 
-void aGMP_NOROUTTOHOST::Swap(aGMP_NOROUTTOHOST* other) {
+void agmp_NOROUTTOHOST::Swap(agmp_NOROUTTOHOST* other) {
   if (other != this) {
     std::swap(host_, other->host_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -1603,11 +1603,11 @@ void aGMP_NOROUTTOHOST::Swap(aGMP_NOROUTTOHOST* other) {
   }
 }
 
-::google::protobuf::Metadata aGMP_NOROUTTOHOST::GetMetadata() const {
+::google::protobuf::Metadata agmp_NOROUTTOHOST::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = aGMP_NOROUTTOHOST_descriptor_;
-  metadata.reflection = aGMP_NOROUTTOHOST_reflection_;
+  metadata.descriptor = agmp_NOROUTTOHOST_descriptor_;
+  metadata.reflection = agmp_NOROUTTOHOST_reflection_;
   return metadata;
 }
 
@@ -1615,72 +1615,72 @@ void aGMP_NOROUTTOHOST::Swap(aGMP_NOROUTTOHOST* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int aGMP_TTLOUT::kHostFieldNumber;
+const int agmp_TTLOUT::kHostFieldNumber;
 #endif  // !_MSC_VER
 
-aGMP_TTLOUT::aGMP_TTLOUT()
+agmp_TTLOUT::agmp_TTLOUT()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(constructor:proto.agmp.TTLOUT)
 }
 
-void aGMP_TTLOUT::InitAsDefaultInstance() {
+void agmp_TTLOUT::InitAsDefaultInstance() {
   host_ = const_cast< ::proto::av_address*>(&::proto::av_address::default_instance());
 }
 
-aGMP_TTLOUT::aGMP_TTLOUT(const aGMP_TTLOUT& from)
+agmp_TTLOUT::agmp_TTLOUT(const agmp_TTLOUT& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(copy_constructor:proto.agmp.TTLOUT)
 }
 
-void aGMP_TTLOUT::SharedCtor() {
+void agmp_TTLOUT::SharedCtor() {
   _cached_size_ = 0;
   host_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-aGMP_TTLOUT::aGMP_TTLOUT(aGMP_TTLOUT&& from)
+agmp_TTLOUT::agmp_TTLOUT(agmp_TTLOUT&& from)
   : ::google::protobuf::Message() {
   SharedCtor();  Swap(&from);
 }
 #endif
 
-aGMP_TTLOUT::~aGMP_TTLOUT() {
-  // @@protoc_insertion_point(destructor:proto.aGMP.TTLOUT)
+agmp_TTLOUT::~agmp_TTLOUT() {
+  // @@protoc_insertion_point(destructor:proto.agmp.TTLOUT)
   SharedDtor();
 }
 
-void aGMP_TTLOUT::SharedDtor() {
+void agmp_TTLOUT::SharedDtor() {
   if (this != default_instance_) {
     delete host_;
   }
 }
 
-void aGMP_TTLOUT::SetCachedSize(int size) const {
+void agmp_TTLOUT::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* aGMP_TTLOUT::descriptor() {
+const ::google::protobuf::Descriptor* agmp_TTLOUT::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return aGMP_TTLOUT_descriptor_;
+  return agmp_TTLOUT_descriptor_;
 }
 
-const aGMP_TTLOUT& aGMP_TTLOUT::default_instance() {
+const agmp_TTLOUT& agmp_TTLOUT::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
   return *default_instance_;
 }
 
-aGMP_TTLOUT* aGMP_TTLOUT::default_instance_ = NULL;
+agmp_TTLOUT* agmp_TTLOUT::default_instance_ = NULL;
 
-aGMP_TTLOUT* aGMP_TTLOUT::New() const {
-  return new aGMP_TTLOUT;
+agmp_TTLOUT* agmp_TTLOUT::New() const {
+  return new agmp_TTLOUT;
 }
 
-void aGMP_TTLOUT::Clear() {
+void agmp_TTLOUT::Clear() {
   if (has_host()) {
     if (host_ != NULL) host_->::proto::av_address::Clear();
   }
@@ -1688,11 +1688,11 @@ void aGMP_TTLOUT::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool aGMP_TTLOUT::MergePartialFromCodedStream(
+bool agmp_TTLOUT::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(parse_start:proto.agmp.TTLOUT)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -1724,17 +1724,17 @@ bool aGMP_TTLOUT::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(parse_success:proto.agmp.TTLOUT)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(parse_failure:proto.agmp.TTLOUT)
   return false;
 #undef DO_
 }
 
-void aGMP_TTLOUT::SerializeWithCachedSizes(
+void agmp_TTLOUT::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(serialize_start:proto.agmp.TTLOUT)
   // required .proto.av_address host = 1;
   if (has_host()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -1745,12 +1745,12 @@ void aGMP_TTLOUT::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(serialize_end:proto.agmp.TTLOUT)
 }
 
-::google::protobuf::uint8* aGMP_TTLOUT::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* agmp_TTLOUT::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(serialize_to_array_start:proto.agmp.TTLOUT)
   // required .proto.av_address host = 1;
   if (has_host()) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -1762,11 +1762,11 @@ void aGMP_TTLOUT::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.aGMP.TTLOUT)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.agmp.TTLOUT)
   return target;
 }
 
-int aGMP_TTLOUT::ByteSize() const {
+int agmp_TTLOUT::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -1789,10 +1789,10 @@ int aGMP_TTLOUT::ByteSize() const {
   return total_size;
 }
 
-void aGMP_TTLOUT::MergeFrom(const ::google::protobuf::Message& from) {
+void agmp_TTLOUT::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const aGMP_TTLOUT* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const aGMP_TTLOUT*>(
+  const agmp_TTLOUT* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const agmp_TTLOUT*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1801,7 +1801,7 @@ void aGMP_TTLOUT::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void aGMP_TTLOUT::MergeFrom(const aGMP_TTLOUT& from) {
+void agmp_TTLOUT::MergeFrom(const agmp_TTLOUT& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_host()) {
@@ -1811,19 +1811,19 @@ void aGMP_TTLOUT::MergeFrom(const aGMP_TTLOUT& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void aGMP_TTLOUT::CopyFrom(const ::google::protobuf::Message& from) {
+void agmp_TTLOUT::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void aGMP_TTLOUT::CopyFrom(const aGMP_TTLOUT& from) {
+void agmp_TTLOUT::CopyFrom(const agmp_TTLOUT& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool aGMP_TTLOUT::IsInitialized() const {
+bool agmp_TTLOUT::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   if (has_host()) {
@@ -1832,7 +1832,7 @@ bool aGMP_TTLOUT::IsInitialized() const {
   return true;
 }
 
-void aGMP_TTLOUT::Swap(aGMP_TTLOUT* other) {
+void agmp_TTLOUT::Swap(agmp_TTLOUT* other) {
   if (other != this) {
     std::swap(host_, other->host_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -1841,11 +1841,11 @@ void aGMP_TTLOUT::Swap(aGMP_TTLOUT* other) {
   }
 }
 
-::google::protobuf::Metadata aGMP_TTLOUT::GetMetadata() const {
+::google::protobuf::Metadata agmp_TTLOUT::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = aGMP_TTLOUT_descriptor_;
-  metadata.reflection = aGMP_TTLOUT_reflection_;
+  metadata.descriptor = agmp_TTLOUT_descriptor_;
+  metadata.reflection = agmp_TTLOUT_reflection_;
   return metadata;
 }
 
@@ -1853,31 +1853,31 @@ void aGMP_TTLOUT::Swap(aGMP_TTLOUT* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int aGMP::kPkreplyFieldNumber;
-const int aGMP::kNoroutetohostFieldNumber;
-const int aGMP::kTtloutFieldNumber;
+const int agmp::kPkreplyFieldNumber;
+const int agmp::kNoroutetohostFieldNumber;
+const int agmp::kTtloutFieldNumber;
 #endif  // !_MSC_VER
 
-aGMP::aGMP()
+agmp::agmp()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.aGMP)
+  // @@protoc_insertion_point(constructor:proto.agmp)
 }
 
-void aGMP::InitAsDefaultInstance() {
-  pkreply_ = const_cast< ::proto::aGMP_PKREPLY*>(&::proto::aGMP_PKREPLY::default_instance());
-  noroutetohost_ = const_cast< ::proto::aGMP_NOROUTTOHOST*>(&::proto::aGMP_NOROUTTOHOST::default_instance());
-  ttlout_ = const_cast< ::proto::aGMP_TTLOUT*>(&::proto::aGMP_TTLOUT::default_instance());
+void agmp::InitAsDefaultInstance() {
+  pkreply_ = const_cast< ::proto::agmp_PKREPLY*>(&::proto::agmp_PKREPLY::default_instance());
+  noroutetohost_ = const_cast< ::proto::agmp_NOROUTTOHOST*>(&::proto::agmp_NOROUTTOHOST::default_instance());
+  ttlout_ = const_cast< ::proto::agmp_TTLOUT*>(&::proto::agmp_TTLOUT::default_instance());
 }
 
-aGMP::aGMP(const aGMP& from)
+agmp::agmp(const agmp& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.aGMP)
+  // @@protoc_insertion_point(copy_constructor:proto.agmp)
 }
 
-void aGMP::SharedCtor() {
+void agmp::SharedCtor() {
   _cached_size_ = 0;
   pkreply_ = NULL;
   noroutetohost_ = NULL;
@@ -1886,18 +1886,18 @@ void aGMP::SharedCtor() {
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-aGMP::aGMP(aGMP&& from)
+agmp::agmp(agmp&& from)
   : ::google::protobuf::Message() {
   SharedCtor();  Swap(&from);
 }
 #endif
 
-aGMP::~aGMP() {
-  // @@protoc_insertion_point(destructor:proto.aGMP)
+agmp::~agmp() {
+  // @@protoc_insertion_point(destructor:proto.agmp)
   SharedDtor();
 }
 
-void aGMP::SharedDtor() {
+void agmp::SharedDtor() {
   if (this != default_instance_) {
     delete pkreply_;
     delete noroutetohost_;
@@ -1905,54 +1905,54 @@ void aGMP::SharedDtor() {
   }
 }
 
-void aGMP::SetCachedSize(int size) const {
+void agmp::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* aGMP::descriptor() {
+const ::google::protobuf::Descriptor* agmp::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return aGMP_descriptor_;
+  return agmp_descriptor_;
 }
 
-const aGMP& aGMP::default_instance() {
+const agmp& agmp::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_message_2eproto();
   return *default_instance_;
 }
 
-aGMP* aGMP::default_instance_ = NULL;
+agmp* agmp::default_instance_ = NULL;
 
-aGMP* aGMP::New() const {
-  return new aGMP;
+agmp* agmp::New() const {
+  return new agmp;
 }
 
-void aGMP::Clear() {
+void agmp::Clear() {
   if (_has_bits_[0 / 32] & 7) {
     if (has_pkreply()) {
-      if (pkreply_ != NULL) pkreply_->::proto::aGMP_PKREPLY::Clear();
+      if (pkreply_ != NULL) pkreply_->::proto::agmp_PKREPLY::Clear();
     }
     if (has_noroutetohost()) {
-      if (noroutetohost_ != NULL) noroutetohost_->::proto::aGMP_NOROUTTOHOST::Clear();
+      if (noroutetohost_ != NULL) noroutetohost_->::proto::agmp_NOROUTTOHOST::Clear();
     }
     if (has_ttlout()) {
-      if (ttlout_ != NULL) ttlout_->::proto::aGMP_TTLOUT::Clear();
+      if (ttlout_ != NULL) ttlout_->::proto::agmp_TTLOUT::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool aGMP::MergePartialFromCodedStream(
+bool agmp::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.aGMP)
+  // @@protoc_insertion_point(parse_start:proto.agmp)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .proto.aGMP.PKREPLY pkreply = 1;
+      // optional .proto.agmp.PKREPLY pkreply = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
@@ -1964,7 +1964,7 @@ bool aGMP::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .proto.aGMP.NOROUTTOHOST noroutetohost = 2;
+      // optional .proto.agmp.NOROUTTOHOST noroutetohost = 2;
       case 2: {
         if (tag == 18) {
          parse_noroutetohost:
@@ -1977,7 +1977,7 @@ bool aGMP::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .proto.aGMP.TTLOUT ttlout = 3;
+      // optional .proto.agmp.TTLOUT ttlout = 3;
       case 3: {
         if (tag == 26) {
          parse_ttlout:
@@ -2004,30 +2004,30 @@ bool aGMP::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.aGMP)
+  // @@protoc_insertion_point(parse_success:proto.agmp)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.aGMP)
+  // @@protoc_insertion_point(parse_failure:proto.agmp)
   return false;
 #undef DO_
 }
 
-void aGMP::SerializeWithCachedSizes(
+void agmp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.aGMP)
-  // optional .proto.aGMP.PKREPLY pkreply = 1;
+  // @@protoc_insertion_point(serialize_start:proto.agmp)
+  // optional .proto.agmp.PKREPLY pkreply = 1;
   if (has_pkreply()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->pkreply(), output);
   }
 
-  // optional .proto.aGMP.NOROUTTOHOST noroutetohost = 2;
+  // optional .proto.agmp.NOROUTTOHOST noroutetohost = 2;
   if (has_noroutetohost()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->noroutetohost(), output);
   }
 
-  // optional .proto.aGMP.TTLOUT ttlout = 3;
+  // optional .proto.agmp.TTLOUT ttlout = 3;
   if (has_ttlout()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->ttlout(), output);
@@ -2037,27 +2037,27 @@ void aGMP::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.aGMP)
+  // @@protoc_insertion_point(serialize_end:proto.agmp)
 }
 
-::google::protobuf::uint8* aGMP::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* agmp::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.aGMP)
-  // optional .proto.aGMP.PKREPLY pkreply = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:proto.agmp)
+  // optional .proto.agmp.PKREPLY pkreply = 1;
   if (has_pkreply()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->pkreply(), target);
   }
 
-  // optional .proto.aGMP.NOROUTTOHOST noroutetohost = 2;
+  // optional .proto.agmp.NOROUTTOHOST noroutetohost = 2;
   if (has_noroutetohost()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->noroutetohost(), target);
   }
 
-  // optional .proto.aGMP.TTLOUT ttlout = 3;
+  // optional .proto.agmp.TTLOUT ttlout = 3;
   if (has_ttlout()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2068,29 +2068,29 @@ void aGMP::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.aGMP)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.agmp)
   return target;
 }
 
-int aGMP::ByteSize() const {
+int agmp::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .proto.aGMP.PKREPLY pkreply = 1;
+    // optional .proto.agmp.PKREPLY pkreply = 1;
     if (has_pkreply()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->pkreply());
     }
 
-    // optional .proto.aGMP.NOROUTTOHOST noroutetohost = 2;
+    // optional .proto.agmp.NOROUTTOHOST noroutetohost = 2;
     if (has_noroutetohost()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->noroutetohost());
     }
 
-    // optional .proto.aGMP.TTLOUT ttlout = 3;
+    // optional .proto.agmp.TTLOUT ttlout = 3;
     if (has_ttlout()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2109,10 +2109,10 @@ int aGMP::ByteSize() const {
   return total_size;
 }
 
-void aGMP::MergeFrom(const ::google::protobuf::Message& from) {
+void agmp::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const aGMP* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const aGMP*>(
+  const agmp* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const agmp*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -2121,35 +2121,35 @@ void aGMP::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void aGMP::MergeFrom(const aGMP& from) {
+void agmp::MergeFrom(const agmp& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_pkreply()) {
-      mutable_pkreply()->::proto::aGMP_PKREPLY::MergeFrom(from.pkreply());
+      mutable_pkreply()->::proto::agmp_PKREPLY::MergeFrom(from.pkreply());
     }
     if (from.has_noroutetohost()) {
-      mutable_noroutetohost()->::proto::aGMP_NOROUTTOHOST::MergeFrom(from.noroutetohost());
+      mutable_noroutetohost()->::proto::agmp_NOROUTTOHOST::MergeFrom(from.noroutetohost());
     }
     if (from.has_ttlout()) {
-      mutable_ttlout()->::proto::aGMP_TTLOUT::MergeFrom(from.ttlout());
+      mutable_ttlout()->::proto::agmp_TTLOUT::MergeFrom(from.ttlout());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void aGMP::CopyFrom(const ::google::protobuf::Message& from) {
+void agmp::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void aGMP::CopyFrom(const aGMP& from) {
+void agmp::CopyFrom(const agmp& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool aGMP::IsInitialized() const {
+bool agmp::IsInitialized() const {
 
   if (has_pkreply()) {
     if (!this->pkreply().IsInitialized()) return false;
@@ -2163,7 +2163,7 @@ bool aGMP::IsInitialized() const {
   return true;
 }
 
-void aGMP::Swap(aGMP* other) {
+void agmp::Swap(agmp* other) {
   if (other != this) {
     std::swap(pkreply_, other->pkreply_);
     std::swap(noroutetohost_, other->noroutetohost_);
@@ -2174,11 +2174,11 @@ void aGMP::Swap(aGMP* other) {
   }
 }
 
-::google::protobuf::Metadata aGMP::GetMetadata() const {
+::google::protobuf::Metadata agmp::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = aGMP_descriptor_;
-  metadata.reflection = aGMP_reflection_;
+  metadata.descriptor = agmp_descriptor_;
+  metadata.reflection = agmp_reflection_;
   return metadata;
 }
 
