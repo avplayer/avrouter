@@ -36,10 +36,10 @@ void protobuf_ShutdownFile_message_2eproto();
 
 class avpacket;
 class avpacket_ack_control;
-class agmp;
-class agmp_PKREPLY;
-class agmp_NOROUTTOHOST;
-class agmp_TTLOUT;
+class aGMP;
+class aGMP_PKREPLY;
+class aGMP_NOROUTTOHOST;
+class aGMP_TTLOUT;
 
 // ===================================================================
 
@@ -339,20 +339,20 @@ class avpacket : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class agmp_PKREPLY : public ::google::protobuf::Message {
+class aGMP_PKREPLY : public ::google::protobuf::Message {
  public:
-  agmp_PKREPLY();
-  virtual ~agmp_PKREPLY();
+  aGMP_PKREPLY();
+  virtual ~aGMP_PKREPLY();
 
-  agmp_PKREPLY(const agmp_PKREPLY& from);
+  aGMP_PKREPLY(const aGMP_PKREPLY& from);
 
-  inline agmp_PKREPLY& operator=(const agmp_PKREPLY& from) {
+  inline aGMP_PKREPLY& operator=(const aGMP_PKREPLY& from) {
     CopyFrom(from);
     return *this;
   }
 
   #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline agmp_PKREPLY& operator=(agmp_PKREPLY&& from) {
+  inline aGMP_PKREPLY& operator=(aGMP_PKREPLY&& from) {
     if (&from != this) {
       Clear();
       Swap(&from);
@@ -360,7 +360,7 @@ class agmp_PKREPLY : public ::google::protobuf::Message {
     return *this;
   }
 
-  agmp_PKREPLY(agmp_PKREPLY&& from);
+  aGMP_PKREPLY(aGMP_PKREPLY&& from);
   #endif
 
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
@@ -372,17 +372,17 @@ class agmp_PKREPLY : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const agmp_PKREPLY& default_instance();
+  static const aGMP_PKREPLY& default_instance();
 
-  void Swap(agmp_PKREPLY* other);
+  void Swap(aGMP_PKREPLY* other);
 
   // implements Message ----------------------------------------------
 
-  agmp_PKREPLY* New() const;
+  aGMP_PKREPLY* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const agmp_PKREPLY& from);
-  void MergeFrom(const agmp_PKREPLY& from);
+  void CopyFrom(const aGMP_PKREPLY& from);
+  void MergeFrom(const aGMP_PKREPLY& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -416,7 +416,7 @@ class agmp_PKREPLY : public ::google::protobuf::Message {
   inline ::std::string* release_x509_cert();
   inline void set_allocated_x509_cert(::std::string* x509_cert);
 
-  // @@protoc_insertion_point(class_scope:proto.agmp.PKREPLY)
+  // @@protoc_insertion_point(class_scope:proto.aGMP.PKREPLY)
  private:
   inline void set_has_x509_cert();
   inline void clear_has_x509_cert();
@@ -431,24 +431,24 @@ class agmp_PKREPLY : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_message_2eproto();
 
   void InitAsDefaultInstance();
-  static agmp_PKREPLY* default_instance_;
+  static aGMP_PKREPLY* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class agmp_NOROUTTOHOST : public ::google::protobuf::Message {
+class aGMP_NOROUTTOHOST : public ::google::protobuf::Message {
  public:
-  agmp_NOROUTTOHOST();
-  virtual ~agmp_NOROUTTOHOST();
+  aGMP_NOROUTTOHOST();
+  virtual ~aGMP_NOROUTTOHOST();
 
-  agmp_NOROUTTOHOST(const agmp_NOROUTTOHOST& from);
+  aGMP_NOROUTTOHOST(const aGMP_NOROUTTOHOST& from);
 
-  inline agmp_NOROUTTOHOST& operator=(const agmp_NOROUTTOHOST& from) {
+  inline aGMP_NOROUTTOHOST& operator=(const aGMP_NOROUTTOHOST& from) {
     CopyFrom(from);
     return *this;
   }
 
   #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline agmp_NOROUTTOHOST& operator=(agmp_NOROUTTOHOST&& from) {
+  inline aGMP_NOROUTTOHOST& operator=(aGMP_NOROUTTOHOST&& from) {
     if (&from != this) {
       Clear();
       Swap(&from);
@@ -456,7 +456,7 @@ class agmp_NOROUTTOHOST : public ::google::protobuf::Message {
     return *this;
   }
 
-  agmp_NOROUTTOHOST(agmp_NOROUTTOHOST&& from);
+  aGMP_NOROUTTOHOST(aGMP_NOROUTTOHOST&& from);
   #endif
 
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
@@ -468,17 +468,17 @@ class agmp_NOROUTTOHOST : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const agmp_NOROUTTOHOST& default_instance();
+  static const aGMP_NOROUTTOHOST& default_instance();
 
-  void Swap(agmp_NOROUTTOHOST* other);
+  void Swap(aGMP_NOROUTTOHOST* other);
 
   // implements Message ----------------------------------------------
 
-  agmp_NOROUTTOHOST* New() const;
+  aGMP_NOROUTTOHOST* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const agmp_NOROUTTOHOST& from);
-  void MergeFrom(const agmp_NOROUTTOHOST& from);
+  void CopyFrom(const aGMP_NOROUTTOHOST& from);
+  void MergeFrom(const aGMP_NOROUTTOHOST& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -509,7 +509,7 @@ class agmp_NOROUTTOHOST : public ::google::protobuf::Message {
   inline ::proto::av_address* release_host();
   inline void set_allocated_host(::proto::av_address* host);
 
-  // @@protoc_insertion_point(class_scope:proto.agmp.NOROUTTOHOST)
+  // @@protoc_insertion_point(class_scope:proto.aGMP.NOROUTTOHOST)
  private:
   inline void set_has_host();
   inline void clear_has_host();
@@ -524,24 +524,24 @@ class agmp_NOROUTTOHOST : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_message_2eproto();
 
   void InitAsDefaultInstance();
-  static agmp_NOROUTTOHOST* default_instance_;
+  static aGMP_NOROUTTOHOST* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class agmp_TTLOUT : public ::google::protobuf::Message {
+class aGMP_TTLOUT : public ::google::protobuf::Message {
  public:
-  agmp_TTLOUT();
-  virtual ~agmp_TTLOUT();
+  aGMP_TTLOUT();
+  virtual ~aGMP_TTLOUT();
 
-  agmp_TTLOUT(const agmp_TTLOUT& from);
+  aGMP_TTLOUT(const aGMP_TTLOUT& from);
 
-  inline agmp_TTLOUT& operator=(const agmp_TTLOUT& from) {
+  inline aGMP_TTLOUT& operator=(const aGMP_TTLOUT& from) {
     CopyFrom(from);
     return *this;
   }
 
   #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline agmp_TTLOUT& operator=(agmp_TTLOUT&& from) {
+  inline aGMP_TTLOUT& operator=(aGMP_TTLOUT&& from) {
     if (&from != this) {
       Clear();
       Swap(&from);
@@ -549,7 +549,7 @@ class agmp_TTLOUT : public ::google::protobuf::Message {
     return *this;
   }
 
-  agmp_TTLOUT(agmp_TTLOUT&& from);
+  aGMP_TTLOUT(aGMP_TTLOUT&& from);
   #endif
 
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
@@ -561,17 +561,17 @@ class agmp_TTLOUT : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const agmp_TTLOUT& default_instance();
+  static const aGMP_TTLOUT& default_instance();
 
-  void Swap(agmp_TTLOUT* other);
+  void Swap(aGMP_TTLOUT* other);
 
   // implements Message ----------------------------------------------
 
-  agmp_TTLOUT* New() const;
+  aGMP_TTLOUT* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const agmp_TTLOUT& from);
-  void MergeFrom(const agmp_TTLOUT& from);
+  void CopyFrom(const aGMP_TTLOUT& from);
+  void MergeFrom(const aGMP_TTLOUT& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -602,7 +602,7 @@ class agmp_TTLOUT : public ::google::protobuf::Message {
   inline ::proto::av_address* release_host();
   inline void set_allocated_host(::proto::av_address* host);
 
-  // @@protoc_insertion_point(class_scope:proto.agmp.TTLOUT)
+  // @@protoc_insertion_point(class_scope:proto.aGMP.TTLOUT)
  private:
   inline void set_has_host();
   inline void clear_has_host();
@@ -617,24 +617,24 @@ class agmp_TTLOUT : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_message_2eproto();
 
   void InitAsDefaultInstance();
-  static agmp_TTLOUT* default_instance_;
+  static aGMP_TTLOUT* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class agmp : public ::google::protobuf::Message {
+class aGMP : public ::google::protobuf::Message {
  public:
-  agmp();
-  virtual ~agmp();
+  aGMP();
+  virtual ~aGMP();
 
-  agmp(const agmp& from);
+  aGMP(const aGMP& from);
 
-  inline agmp& operator=(const agmp& from) {
+  inline aGMP& operator=(const aGMP& from) {
     CopyFrom(from);
     return *this;
   }
 
   #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline agmp& operator=(agmp&& from) {
+  inline aGMP& operator=(aGMP&& from) {
     if (&from != this) {
       Clear();
       Swap(&from);
@@ -642,7 +642,7 @@ class agmp : public ::google::protobuf::Message {
     return *this;
   }
 
-  agmp(agmp&& from);
+  aGMP(aGMP&& from);
   #endif
 
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
@@ -654,17 +654,17 @@ class agmp : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const agmp& default_instance();
+  static const aGMP& default_instance();
 
-  void Swap(agmp* other);
+  void Swap(aGMP* other);
 
   // implements Message ----------------------------------------------
 
-  agmp* New() const;
+  aGMP* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const agmp& from);
-  void MergeFrom(const agmp& from);
+  void CopyFrom(const aGMP& from);
+  void MergeFrom(const aGMP& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -684,40 +684,40 @@ class agmp : public ::google::protobuf::Message {
 
   // nested types ----------------------------------------------------
 
-  typedef agmp_PKREPLY PKREPLY;
-  typedef agmp_NOROUTTOHOST NOROUTTOHOST;
-  typedef agmp_TTLOUT TTLOUT;
+  typedef aGMP_PKREPLY PKREPLY;
+  typedef aGMP_NOROUTTOHOST NOROUTTOHOST;
+  typedef aGMP_TTLOUT TTLOUT;
 
   // accessors -------------------------------------------------------
 
-  // optional .proto.agmp.PKREPLY pkreply = 1;
+  // optional .proto.aGMP.PKREPLY pkreply = 1;
   inline bool has_pkreply() const;
   inline void clear_pkreply();
   static const int kPkreplyFieldNumber = 1;
-  inline const ::proto::agmp_PKREPLY& pkreply() const;
-  inline ::proto::agmp_PKREPLY* mutable_pkreply();
-  inline ::proto::agmp_PKREPLY* release_pkreply();
-  inline void set_allocated_pkreply(::proto::agmp_PKREPLY* pkreply);
+  inline const ::proto::aGMP_PKREPLY& pkreply() const;
+  inline ::proto::aGMP_PKREPLY* mutable_pkreply();
+  inline ::proto::aGMP_PKREPLY* release_pkreply();
+  inline void set_allocated_pkreply(::proto::aGMP_PKREPLY* pkreply);
 
-  // optional .proto.agmp.NOROUTTOHOST noroutetohost = 2;
+  // optional .proto.aGMP.NOROUTTOHOST noroutetohost = 2;
   inline bool has_noroutetohost() const;
   inline void clear_noroutetohost();
   static const int kNoroutetohostFieldNumber = 2;
-  inline const ::proto::agmp_NOROUTTOHOST& noroutetohost() const;
-  inline ::proto::agmp_NOROUTTOHOST* mutable_noroutetohost();
-  inline ::proto::agmp_NOROUTTOHOST* release_noroutetohost();
-  inline void set_allocated_noroutetohost(::proto::agmp_NOROUTTOHOST* noroutetohost);
+  inline const ::proto::aGMP_NOROUTTOHOST& noroutetohost() const;
+  inline ::proto::aGMP_NOROUTTOHOST* mutable_noroutetohost();
+  inline ::proto::aGMP_NOROUTTOHOST* release_noroutetohost();
+  inline void set_allocated_noroutetohost(::proto::aGMP_NOROUTTOHOST* noroutetohost);
 
-  // optional .proto.agmp.TTLOUT ttlout = 3;
+  // optional .proto.aGMP.TTLOUT ttlout = 3;
   inline bool has_ttlout() const;
   inline void clear_ttlout();
   static const int kTtloutFieldNumber = 3;
-  inline const ::proto::agmp_TTLOUT& ttlout() const;
-  inline ::proto::agmp_TTLOUT* mutable_ttlout();
-  inline ::proto::agmp_TTLOUT* release_ttlout();
-  inline void set_allocated_ttlout(::proto::agmp_TTLOUT* ttlout);
+  inline const ::proto::aGMP_TTLOUT& ttlout() const;
+  inline ::proto::aGMP_TTLOUT* mutable_ttlout();
+  inline ::proto::aGMP_TTLOUT* release_ttlout();
+  inline void set_allocated_ttlout(::proto::aGMP_TTLOUT* ttlout);
 
-  // @@protoc_insertion_point(class_scope:proto.agmp)
+  // @@protoc_insertion_point(class_scope:proto.aGMP)
  private:
   inline void set_has_pkreply();
   inline void clear_has_pkreply();
@@ -730,15 +730,15 @@ class agmp : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::proto::agmp_PKREPLY* pkreply_;
-  ::proto::agmp_NOROUTTOHOST* noroutetohost_;
-  ::proto::agmp_TTLOUT* ttlout_;
+  ::proto::aGMP_PKREPLY* pkreply_;
+  ::proto::aGMP_NOROUTTOHOST* noroutetohost_;
+  ::proto::aGMP_TTLOUT* ttlout_;
   friend void  protobuf_AddDesc_message_2eproto();
   friend void protobuf_AssignDesc_message_2eproto();
   friend void protobuf_ShutdownFile_message_2eproto();
 
   void InitAsDefaultInstance();
-  static agmp* default_instance_;
+  static aGMP* default_instance_;
 };
 // ===================================================================
 
@@ -1224,61 +1224,61 @@ inline void avpacket::set_allocated_payload(::std::string* payload) {
 
 // -------------------------------------------------------------------
 
-// agmp_PKREPLY
+// aGMP_PKREPLY
 
 // required bytes x509_cert = 1;
-inline bool agmp_PKREPLY::has_x509_cert() const {
+inline bool aGMP_PKREPLY::has_x509_cert() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void agmp_PKREPLY::set_has_x509_cert() {
+inline void aGMP_PKREPLY::set_has_x509_cert() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void agmp_PKREPLY::clear_has_x509_cert() {
+inline void aGMP_PKREPLY::clear_has_x509_cert() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void agmp_PKREPLY::clear_x509_cert() {
+inline void aGMP_PKREPLY::clear_x509_cert() {
   if (x509_cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     x509_cert_->clear();
   }
   clear_has_x509_cert();
 }
-inline const ::std::string& agmp_PKREPLY::x509_cert() const {
-  // @@protoc_insertion_point(field_get:proto.agmp.PKREPLY.x509_cert)
+inline const ::std::string& aGMP_PKREPLY::x509_cert() const {
+  // @@protoc_insertion_point(field_get:proto.aGMP.PKREPLY.x509_cert)
   return *x509_cert_;
 }
-inline void agmp_PKREPLY::set_x509_cert(const ::std::string& value) {
+inline void aGMP_PKREPLY::set_x509_cert(const ::std::string& value) {
   set_has_x509_cert();
   if (x509_cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     x509_cert_ = new ::std::string;
   }
   x509_cert_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.agmp.PKREPLY.x509_cert)
+  // @@protoc_insertion_point(field_set:proto.aGMP.PKREPLY.x509_cert)
 }
-inline void agmp_PKREPLY::set_x509_cert(const char* value) {
+inline void aGMP_PKREPLY::set_x509_cert(const char* value) {
   set_has_x509_cert();
   if (x509_cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     x509_cert_ = new ::std::string;
   }
   x509_cert_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.agmp.PKREPLY.x509_cert)
+  // @@protoc_insertion_point(field_set_char:proto.aGMP.PKREPLY.x509_cert)
 }
-inline void agmp_PKREPLY::set_x509_cert(const void* value, size_t size) {
+inline void aGMP_PKREPLY::set_x509_cert(const void* value, size_t size) {
   set_has_x509_cert();
   if (x509_cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     x509_cert_ = new ::std::string;
   }
   x509_cert_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.agmp.PKREPLY.x509_cert)
+  // @@protoc_insertion_point(field_set_pointer:proto.aGMP.PKREPLY.x509_cert)
 }
-inline ::std::string* agmp_PKREPLY::mutable_x509_cert() {
+inline ::std::string* aGMP_PKREPLY::mutable_x509_cert() {
   set_has_x509_cert();
   if (x509_cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     x509_cert_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.agmp.PKREPLY.x509_cert)
+  // @@protoc_insertion_point(field_mutable:proto.aGMP.PKREPLY.x509_cert)
   return x509_cert_;
 }
-inline ::std::string* agmp_PKREPLY::release_x509_cert() {
+inline ::std::string* aGMP_PKREPLY::release_x509_cert() {
   clear_has_x509_cert();
   if (x509_cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
@@ -1288,7 +1288,7 @@ inline ::std::string* agmp_PKREPLY::release_x509_cert() {
     return temp;
   }
 }
-inline void agmp_PKREPLY::set_allocated_x509_cert(::std::string* x509_cert) {
+inline void aGMP_PKREPLY::set_allocated_x509_cert(::std::string* x509_cert) {
   if (x509_cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete x509_cert_;
   }
@@ -1299,44 +1299,44 @@ inline void agmp_PKREPLY::set_allocated_x509_cert(::std::string* x509_cert) {
     clear_has_x509_cert();
     x509_cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.agmp.PKREPLY.x509_cert)
+  // @@protoc_insertion_point(field_set_allocated:proto.aGMP.PKREPLY.x509_cert)
 }
 
 // -------------------------------------------------------------------
 
-// agmp_NOROUTTOHOST
+// aGMP_NOROUTTOHOST
 
 // required .proto.av_address host = 1;
-inline bool agmp_NOROUTTOHOST::has_host() const {
+inline bool aGMP_NOROUTTOHOST::has_host() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void agmp_NOROUTTOHOST::set_has_host() {
+inline void aGMP_NOROUTTOHOST::set_has_host() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void agmp_NOROUTTOHOST::clear_has_host() {
+inline void aGMP_NOROUTTOHOST::clear_has_host() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void agmp_NOROUTTOHOST::clear_host() {
+inline void aGMP_NOROUTTOHOST::clear_host() {
   if (host_ != NULL) host_->::proto::av_address::Clear();
   clear_has_host();
 }
-inline const ::proto::av_address& agmp_NOROUTTOHOST::host() const {
-  // @@protoc_insertion_point(field_get:proto.agmp.NOROUTTOHOST.host)
+inline const ::proto::av_address& aGMP_NOROUTTOHOST::host() const {
+  // @@protoc_insertion_point(field_get:proto.aGMP.NOROUTTOHOST.host)
   return host_ != NULL ? *host_ : *default_instance_->host_;
 }
-inline ::proto::av_address* agmp_NOROUTTOHOST::mutable_host() {
+inline ::proto::av_address* aGMP_NOROUTTOHOST::mutable_host() {
   set_has_host();
   if (host_ == NULL) host_ = new ::proto::av_address;
-  // @@protoc_insertion_point(field_mutable:proto.agmp.NOROUTTOHOST.host)
+  // @@protoc_insertion_point(field_mutable:proto.aGMP.NOROUTTOHOST.host)
   return host_;
 }
-inline ::proto::av_address* agmp_NOROUTTOHOST::release_host() {
+inline ::proto::av_address* aGMP_NOROUTTOHOST::release_host() {
   clear_has_host();
   ::proto::av_address* temp = host_;
   host_ = NULL;
   return temp;
 }
-inline void agmp_NOROUTTOHOST::set_allocated_host(::proto::av_address* host) {
+inline void aGMP_NOROUTTOHOST::set_allocated_host(::proto::av_address* host) {
   delete host_;
   host_ = host;
   if (host) {
@@ -1344,44 +1344,44 @@ inline void agmp_NOROUTTOHOST::set_allocated_host(::proto::av_address* host) {
   } else {
     clear_has_host();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.agmp.NOROUTTOHOST.host)
+  // @@protoc_insertion_point(field_set_allocated:proto.aGMP.NOROUTTOHOST.host)
 }
 
 // -------------------------------------------------------------------
 
-// agmp_TTLOUT
+// aGMP_TTLOUT
 
 // required .proto.av_address host = 1;
-inline bool agmp_TTLOUT::has_host() const {
+inline bool aGMP_TTLOUT::has_host() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void agmp_TTLOUT::set_has_host() {
+inline void aGMP_TTLOUT::set_has_host() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void agmp_TTLOUT::clear_has_host() {
+inline void aGMP_TTLOUT::clear_has_host() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void agmp_TTLOUT::clear_host() {
+inline void aGMP_TTLOUT::clear_host() {
   if (host_ != NULL) host_->::proto::av_address::Clear();
   clear_has_host();
 }
-inline const ::proto::av_address& agmp_TTLOUT::host() const {
-  // @@protoc_insertion_point(field_get:proto.agmp.TTLOUT.host)
+inline const ::proto::av_address& aGMP_TTLOUT::host() const {
+  // @@protoc_insertion_point(field_get:proto.aGMP.TTLOUT.host)
   return host_ != NULL ? *host_ : *default_instance_->host_;
 }
-inline ::proto::av_address* agmp_TTLOUT::mutable_host() {
+inline ::proto::av_address* aGMP_TTLOUT::mutable_host() {
   set_has_host();
   if (host_ == NULL) host_ = new ::proto::av_address;
-  // @@protoc_insertion_point(field_mutable:proto.agmp.TTLOUT.host)
+  // @@protoc_insertion_point(field_mutable:proto.aGMP.TTLOUT.host)
   return host_;
 }
-inline ::proto::av_address* agmp_TTLOUT::release_host() {
+inline ::proto::av_address* aGMP_TTLOUT::release_host() {
   clear_has_host();
   ::proto::av_address* temp = host_;
   host_ = NULL;
   return temp;
 }
-inline void agmp_TTLOUT::set_allocated_host(::proto::av_address* host) {
+inline void aGMP_TTLOUT::set_allocated_host(::proto::av_address* host) {
   delete host_;
   host_ = host;
   if (host) {
@@ -1389,44 +1389,44 @@ inline void agmp_TTLOUT::set_allocated_host(::proto::av_address* host) {
   } else {
     clear_has_host();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.agmp.TTLOUT.host)
+  // @@protoc_insertion_point(field_set_allocated:proto.aGMP.TTLOUT.host)
 }
 
 // -------------------------------------------------------------------
 
-// agmp
+// aGMP
 
-// optional .proto.agmp.PKREPLY pkreply = 1;
-inline bool agmp::has_pkreply() const {
+// optional .proto.aGMP.PKREPLY pkreply = 1;
+inline bool aGMP::has_pkreply() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void agmp::set_has_pkreply() {
+inline void aGMP::set_has_pkreply() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void agmp::clear_has_pkreply() {
+inline void aGMP::clear_has_pkreply() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void agmp::clear_pkreply() {
-  if (pkreply_ != NULL) pkreply_->::proto::agmp_PKREPLY::Clear();
+inline void aGMP::clear_pkreply() {
+  if (pkreply_ != NULL) pkreply_->::proto::aGMP_PKREPLY::Clear();
   clear_has_pkreply();
 }
-inline const ::proto::agmp_PKREPLY& agmp::pkreply() const {
-  // @@protoc_insertion_point(field_get:proto.agmp.pkreply)
+inline const ::proto::aGMP_PKREPLY& aGMP::pkreply() const {
+  // @@protoc_insertion_point(field_get:proto.aGMP.pkreply)
   return pkreply_ != NULL ? *pkreply_ : *default_instance_->pkreply_;
 }
-inline ::proto::agmp_PKREPLY* agmp::mutable_pkreply() {
+inline ::proto::aGMP_PKREPLY* aGMP::mutable_pkreply() {
   set_has_pkreply();
-  if (pkreply_ == NULL) pkreply_ = new ::proto::agmp_PKREPLY;
-  // @@protoc_insertion_point(field_mutable:proto.agmp.pkreply)
+  if (pkreply_ == NULL) pkreply_ = new ::proto::aGMP_PKREPLY;
+  // @@protoc_insertion_point(field_mutable:proto.aGMP.pkreply)
   return pkreply_;
 }
-inline ::proto::agmp_PKREPLY* agmp::release_pkreply() {
+inline ::proto::aGMP_PKREPLY* aGMP::release_pkreply() {
   clear_has_pkreply();
-  ::proto::agmp_PKREPLY* temp = pkreply_;
+  ::proto::aGMP_PKREPLY* temp = pkreply_;
   pkreply_ = NULL;
   return temp;
 }
-inline void agmp::set_allocated_pkreply(::proto::agmp_PKREPLY* pkreply) {
+inline void aGMP::set_allocated_pkreply(::proto::aGMP_PKREPLY* pkreply) {
   delete pkreply_;
   pkreply_ = pkreply;
   if (pkreply) {
@@ -1434,40 +1434,40 @@ inline void agmp::set_allocated_pkreply(::proto::agmp_PKREPLY* pkreply) {
   } else {
     clear_has_pkreply();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.agmp.pkreply)
+  // @@protoc_insertion_point(field_set_allocated:proto.aGMP.pkreply)
 }
 
-// optional .proto.agmp.NOROUTTOHOST noroutetohost = 2;
-inline bool agmp::has_noroutetohost() const {
+// optional .proto.aGMP.NOROUTTOHOST noroutetohost = 2;
+inline bool aGMP::has_noroutetohost() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void agmp::set_has_noroutetohost() {
+inline void aGMP::set_has_noroutetohost() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void agmp::clear_has_noroutetohost() {
+inline void aGMP::clear_has_noroutetohost() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void agmp::clear_noroutetohost() {
-  if (noroutetohost_ != NULL) noroutetohost_->::proto::agmp_NOROUTTOHOST::Clear();
+inline void aGMP::clear_noroutetohost() {
+  if (noroutetohost_ != NULL) noroutetohost_->::proto::aGMP_NOROUTTOHOST::Clear();
   clear_has_noroutetohost();
 }
-inline const ::proto::agmp_NOROUTTOHOST& agmp::noroutetohost() const {
-  // @@protoc_insertion_point(field_get:proto.agmp.noroutetohost)
+inline const ::proto::aGMP_NOROUTTOHOST& aGMP::noroutetohost() const {
+  // @@protoc_insertion_point(field_get:proto.aGMP.noroutetohost)
   return noroutetohost_ != NULL ? *noroutetohost_ : *default_instance_->noroutetohost_;
 }
-inline ::proto::agmp_NOROUTTOHOST* agmp::mutable_noroutetohost() {
+inline ::proto::aGMP_NOROUTTOHOST* aGMP::mutable_noroutetohost() {
   set_has_noroutetohost();
-  if (noroutetohost_ == NULL) noroutetohost_ = new ::proto::agmp_NOROUTTOHOST;
-  // @@protoc_insertion_point(field_mutable:proto.agmp.noroutetohost)
+  if (noroutetohost_ == NULL) noroutetohost_ = new ::proto::aGMP_NOROUTTOHOST;
+  // @@protoc_insertion_point(field_mutable:proto.aGMP.noroutetohost)
   return noroutetohost_;
 }
-inline ::proto::agmp_NOROUTTOHOST* agmp::release_noroutetohost() {
+inline ::proto::aGMP_NOROUTTOHOST* aGMP::release_noroutetohost() {
   clear_has_noroutetohost();
-  ::proto::agmp_NOROUTTOHOST* temp = noroutetohost_;
+  ::proto::aGMP_NOROUTTOHOST* temp = noroutetohost_;
   noroutetohost_ = NULL;
   return temp;
 }
-inline void agmp::set_allocated_noroutetohost(::proto::agmp_NOROUTTOHOST* noroutetohost) {
+inline void aGMP::set_allocated_noroutetohost(::proto::aGMP_NOROUTTOHOST* noroutetohost) {
   delete noroutetohost_;
   noroutetohost_ = noroutetohost;
   if (noroutetohost) {
@@ -1475,40 +1475,40 @@ inline void agmp::set_allocated_noroutetohost(::proto::agmp_NOROUTTOHOST* norout
   } else {
     clear_has_noroutetohost();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.agmp.noroutetohost)
+  // @@protoc_insertion_point(field_set_allocated:proto.aGMP.noroutetohost)
 }
 
-// optional .proto.agmp.TTLOUT ttlout = 3;
-inline bool agmp::has_ttlout() const {
+// optional .proto.aGMP.TTLOUT ttlout = 3;
+inline bool aGMP::has_ttlout() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void agmp::set_has_ttlout() {
+inline void aGMP::set_has_ttlout() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void agmp::clear_has_ttlout() {
+inline void aGMP::clear_has_ttlout() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void agmp::clear_ttlout() {
-  if (ttlout_ != NULL) ttlout_->::proto::agmp_TTLOUT::Clear();
+inline void aGMP::clear_ttlout() {
+  if (ttlout_ != NULL) ttlout_->::proto::aGMP_TTLOUT::Clear();
   clear_has_ttlout();
 }
-inline const ::proto::agmp_TTLOUT& agmp::ttlout() const {
-  // @@protoc_insertion_point(field_get:proto.agmp.ttlout)
+inline const ::proto::aGMP_TTLOUT& aGMP::ttlout() const {
+  // @@protoc_insertion_point(field_get:proto.aGMP.ttlout)
   return ttlout_ != NULL ? *ttlout_ : *default_instance_->ttlout_;
 }
-inline ::proto::agmp_TTLOUT* agmp::mutable_ttlout() {
+inline ::proto::aGMP_TTLOUT* aGMP::mutable_ttlout() {
   set_has_ttlout();
-  if (ttlout_ == NULL) ttlout_ = new ::proto::agmp_TTLOUT;
-  // @@protoc_insertion_point(field_mutable:proto.agmp.ttlout)
+  if (ttlout_ == NULL) ttlout_ = new ::proto::aGMP_TTLOUT;
+  // @@protoc_insertion_point(field_mutable:proto.aGMP.ttlout)
   return ttlout_;
 }
-inline ::proto::agmp_TTLOUT* agmp::release_ttlout() {
+inline ::proto::aGMP_TTLOUT* aGMP::release_ttlout() {
   clear_has_ttlout();
-  ::proto::agmp_TTLOUT* temp = ttlout_;
+  ::proto::aGMP_TTLOUT* temp = ttlout_;
   ttlout_ = NULL;
   return temp;
 }
-inline void agmp::set_allocated_ttlout(::proto::agmp_TTLOUT* ttlout) {
+inline void aGMP::set_allocated_ttlout(::proto::aGMP_TTLOUT* ttlout) {
   delete ttlout_;
   ttlout_ = ttlout;
   if (ttlout) {
@@ -1516,7 +1516,7 @@ inline void agmp::set_allocated_ttlout(::proto::agmp_TTLOUT* ttlout) {
   } else {
     clear_has_ttlout();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.agmp.ttlout)
+  // @@protoc_insertion_point(field_set_allocated:proto.aGMP.ttlout)
 }
 
 
