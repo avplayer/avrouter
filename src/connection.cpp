@@ -142,7 +142,9 @@ namespace av_router {
 	void connection::handle_write(const boost::system::error_code& error)
 	{
 		// 通知writr完成.
-		m_write_queue.front().handler(error);
+		auto handler = m_write_queue.front().handler;
+		if (handler)
+			handler(error);
 
 		if (!error)
 		{
