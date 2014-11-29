@@ -141,14 +141,17 @@ namespace av_router {
 
 	void connection::handle_write(const boost::system::error_code& error)
 	{
+		// 通知writr完成.
+		m_write_queue.front().handler(error);
+
 		if (!error)
 		{
 			m_write_queue.pop_front();
 			if (!m_write_queue.empty())
 			{
 				boost::asio::async_write(m_socket,
-					boost::asio::buffer(m_write_queue.front().data(),
-					m_write_queue.front().length()),
+					boost::asio::buffer(m_write_queue.front().msg.data(),
+					m_write_queue.front().msg.length()),
 					boost::bind(&connection::handle_write,
 					shared_from_this(),
 					boost::asio::placeholders::error
@@ -162,26 +165,28 @@ namespace av_router {
 		}
 	}
 
-	void connection::write_msg(const std::string& msg)
+	void connection::write_msg(const std::string& msg, const msg_handler& handler)
 	{
-		m_io_service.post(boost::bind(&connection::do_write, shared_from_this(), msg));
+		m_io_service.post(boost::bind(&connection::do_write, shared_from_this(), msg,handler));
 	}
 
-	void connection::do_write(std::string msg)
+	void connection::do_write(std::string msg, msg_handler handler)
 	{
 		bool write_in_progress = !m_write_queue.empty();
-		m_write_queue.push_back(msg);
+		msg_pack_t pack = { msg, handler };
+		m_write_queue.push_back(pack);
 		if (!write_in_progress)
 		{
 			boost::asio::async_write(m_socket,
-				boost::asio::buffer(m_write_queue.front().data(),
-				m_write_queue.front().length()),
+				boost::asio::buffer(m_write_queue.front().msg.data(),
+				m_write_queue.front().msg.length()),
 				boost::bind(&connection::handle_write,
 				shared_from_this(),
 				boost::asio::placeholders::error
 				)
 			);
 		}
+
 	}
 
 	boost::any connection::retrive_module_private(const std::string& module_name)

@@ -24,6 +24,7 @@
 using boost::asio::ip::tcp;
 #include <boost/date_time.hpp>
 using namespace boost::posix_time;
+#include <boost/function.hpp>
 
 #include "logging.hpp"
 
@@ -44,7 +45,8 @@ namespace av_router {
 		void stop();
 
 		tcp::socket& socket();
-		void write_msg(const std::string& msg);
+		typedef boost::function<void(const boost::system::error_code&)> msg_handler;
+		void write_msg(const std::string& msg,const msg_handler& handler = msg_handler());
 
 		boost::any retrive_module_private(const std::string& module_name);
 		void store_module_private(const std::string& module_name, const boost::any& ptr);
@@ -55,7 +57,7 @@ namespace av_router {
 		void handle_read_body(const boost::system::error_code& error, std::size_t bytes_transferred);
 		void handle_write(const boost::system::error_code& error);
 
-		void do_write(std::string msg);
+		void do_write(std::string msg,msg_handler handler);
 
 	private:
 		boost::asio::io_service& m_io_service;
@@ -64,7 +66,12 @@ namespace av_router {
 		connection_manager* m_connection_manager;
 		boost::asio::streambuf m_request;
 		boost::asio::streambuf m_response;
-		typedef std::deque<std::string> write_queue;
+		struct msg_pack_t
+		{
+			std::string msg;
+			msg_handler handler;
+		};
+		typedef std::deque<msg_pack_t> write_queue;
 		write_queue m_write_queue;
 		bool m_abort;
 		std::map<std::string, boost::any> m_module_private_info_ptrs;
