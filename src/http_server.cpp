@@ -100,7 +100,7 @@ namespace av_router {
 
 	bool http_server::handle_request(const request& req, http_connection_ptr conn)
 	{
-		// 根据 URI 调用不同的处理
+		// 根据 URI 调用不同的处理.
 		const std::string& uri = req.uri;
 		boost::shared_lock<boost::shared_mutex> l(m_request_callback_mtx);
 		auto iter = m_http_request_callbacks.find(uri);
