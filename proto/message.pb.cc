@@ -274,7 +274,7 @@ void avpacket_ack_control::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 avpacket_ack_control::avpacket_ack_control(avpacket_ack_control&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -527,7 +527,7 @@ void avpacket::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 avpacket::avpacket(avpacket&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -1167,7 +1167,7 @@ void agmp_PKREPLY::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 agmp_PKREPLY::agmp_PKREPLY(agmp_PKREPLY&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -1406,7 +1406,7 @@ void agmp_NOROUTTOHOST::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 agmp_NOROUTTOHOST::agmp_NOROUTTOHOST(agmp_NOROUTTOHOST&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -1644,7 +1644,7 @@ void agmp_TTLOUT::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 agmp_TTLOUT::agmp_TTLOUT(agmp_TTLOUT&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -1888,7 +1888,7 @@ void agmp::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 agmp::agmp(agmp&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 

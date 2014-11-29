@@ -25,9 +25,10 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "address.pb.h"  // IWYU pragma: export
 // @@protoc_insertion_point(includes)
 
-namespace proto {
+namespace message {
 
 // Internal implementation detail -- do not call these.
 void  protobuf_AddDesc_im_2eproto();
@@ -39,7 +40,10 @@ class img_message;
 class emoji_message;
 class symmetry_encryption_key_distribution;
 class avim_message;
-class avim_message_packet;
+class message_packet;
+class group_security_key;
+class control_message;
+class control_message_buddy_state_notify;
 
 enum symmetry_encryption_key_distribution_EncryptionType {
   symmetry_encryption_key_distribution_EncryptionType_AES = 0,
@@ -63,6 +67,26 @@ inline bool symmetry_encryption_key_distribution_EncryptionType_Parse(
     const ::std::string& name, symmetry_encryption_key_distribution_EncryptionType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<symmetry_encryption_key_distribution_EncryptionType>(
     symmetry_encryption_key_distribution_EncryptionType_descriptor(), name, value);
+}
+enum control_message_buddy_state {
+  control_message_buddy_state_ONLINE = 0,
+  control_message_buddy_state_OFFLINE = 1,
+  control_message_buddy_state_HIDDING = 2
+};
+bool control_message_buddy_state_IsValid(int value);
+const control_message_buddy_state control_message_buddy_state_buddy_state_MIN = control_message_buddy_state_ONLINE;
+const control_message_buddy_state control_message_buddy_state_buddy_state_MAX = control_message_buddy_state_HIDDING;
+const int control_message_buddy_state_buddy_state_ARRAYSIZE = control_message_buddy_state_buddy_state_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* control_message_buddy_state_descriptor();
+inline const ::std::string& control_message_buddy_state_Name(control_message_buddy_state value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    control_message_buddy_state_descriptor(), value);
+}
+inline bool control_message_buddy_state_Parse(
+    const ::std::string& name, control_message_buddy_state* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<control_message_buddy_state>(
+    control_message_buddy_state_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -174,7 +198,7 @@ class text_message : public ::google::protobuf::Message {
   inline ::std::string* release_hlink();
   inline void set_allocated_hlink(::std::string* hlink);
 
-  // @@protoc_insertion_point(class_scope:proto.text_message)
+  // @@protoc_insertion_point(class_scope:message.text_message)
  private:
   inline void set_has_text();
   inline void clear_has_text();
@@ -303,7 +327,7 @@ class img_message : public ::google::protobuf::Message {
   inline ::std::string* release_hlink();
   inline void set_allocated_hlink(::std::string* hlink);
 
-  // @@protoc_insertion_point(class_scope:proto.img_message)
+  // @@protoc_insertion_point(class_scope:message.img_message)
  private:
   inline void set_has_image();
   inline void clear_has_image();
@@ -429,7 +453,7 @@ class emoji_message : public ::google::protobuf::Message {
   inline ::std::string* release_custom_image();
   inline void set_allocated_custom_image(::std::string* custom_image);
 
-  // @@protoc_insertion_point(class_scope:proto.emoji_message)
+  // @@protoc_insertion_point(class_scope:message.emoji_message)
  private:
   inline void set_has_emoji();
   inline void clear_has_emoji();
@@ -547,12 +571,12 @@ class symmetry_encryption_key_distribution : public ::google::protobuf::Message 
 
   // accessors -------------------------------------------------------
 
-  // required .proto.symmetry_encryption_key_distribution.EncryptionType keytype = 1;
+  // required .message.symmetry_encryption_key_distribution.EncryptionType keytype = 1;
   inline bool has_keytype() const;
   inline void clear_keytype();
   static const int kKeytypeFieldNumber = 1;
-  inline ::proto::symmetry_encryption_key_distribution_EncryptionType keytype() const;
-  inline void set_keytype(::proto::symmetry_encryption_key_distribution_EncryptionType value);
+  inline ::message::symmetry_encryption_key_distribution_EncryptionType keytype() const;
+  inline void set_keytype(::message::symmetry_encryption_key_distribution_EncryptionType value);
 
   // required bytes key = 2;
   inline bool has_key() const;
@@ -566,7 +590,7 @@ class symmetry_encryption_key_distribution : public ::google::protobuf::Message 
   inline ::std::string* release_key();
   inline void set_allocated_key(::std::string* key);
 
-  // @@protoc_insertion_point(class_scope:proto.symmetry_encryption_key_distribution)
+  // @@protoc_insertion_point(class_scope:message.symmetry_encryption_key_distribution)
  private:
   inline void set_has_keytype();
   inline void clear_has_keytype();
@@ -653,43 +677,43 @@ class avim_message : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional .proto.text_message item_text = 1;
+  // optional .message.text_message item_text = 1;
   inline bool has_item_text() const;
   inline void clear_item_text();
   static const int kItemTextFieldNumber = 1;
-  inline const ::proto::text_message& item_text() const;
-  inline ::proto::text_message* mutable_item_text();
-  inline ::proto::text_message* release_item_text();
-  inline void set_allocated_item_text(::proto::text_message* item_text);
+  inline const ::message::text_message& item_text() const;
+  inline ::message::text_message* mutable_item_text();
+  inline ::message::text_message* release_item_text();
+  inline void set_allocated_item_text(::message::text_message* item_text);
 
-  // optional .proto.img_message item_image = 2;
+  // optional .message.img_message item_image = 2;
   inline bool has_item_image() const;
   inline void clear_item_image();
   static const int kItemImageFieldNumber = 2;
-  inline const ::proto::img_message& item_image() const;
-  inline ::proto::img_message* mutable_item_image();
-  inline ::proto::img_message* release_item_image();
-  inline void set_allocated_item_image(::proto::img_message* item_image);
+  inline const ::message::img_message& item_image() const;
+  inline ::message::img_message* mutable_item_image();
+  inline ::message::img_message* release_item_image();
+  inline void set_allocated_item_image(::message::img_message* item_image);
 
-  // optional .proto.emoji_message item_emoji = 3;
+  // optional .message.emoji_message item_emoji = 3;
   inline bool has_item_emoji() const;
   inline void clear_item_emoji();
   static const int kItemEmojiFieldNumber = 3;
-  inline const ::proto::emoji_message& item_emoji() const;
-  inline ::proto::emoji_message* mutable_item_emoji();
-  inline ::proto::emoji_message* release_item_emoji();
-  inline void set_allocated_item_emoji(::proto::emoji_message* item_emoji);
+  inline const ::message::emoji_message& item_emoji() const;
+  inline ::message::emoji_message* mutable_item_emoji();
+  inline ::message::emoji_message* release_item_emoji();
+  inline void set_allocated_item_emoji(::message::emoji_message* item_emoji);
 
-  // optional .proto.symmetry_encryption_key_distribution item_key = 20;
+  // optional .message.symmetry_encryption_key_distribution item_key = 20;
   inline bool has_item_key() const;
   inline void clear_item_key();
   static const int kItemKeyFieldNumber = 20;
-  inline const ::proto::symmetry_encryption_key_distribution& item_key() const;
-  inline ::proto::symmetry_encryption_key_distribution* mutable_item_key();
-  inline ::proto::symmetry_encryption_key_distribution* release_item_key();
-  inline void set_allocated_item_key(::proto::symmetry_encryption_key_distribution* item_key);
+  inline const ::message::symmetry_encryption_key_distribution& item_key() const;
+  inline ::message::symmetry_encryption_key_distribution* mutable_item_key();
+  inline ::message::symmetry_encryption_key_distribution* release_item_key();
+  inline void set_allocated_item_key(::message::symmetry_encryption_key_distribution* item_key);
 
-  // @@protoc_insertion_point(class_scope:proto.avim_message)
+  // @@protoc_insertion_point(class_scope:message.avim_message)
  private:
   inline void set_has_item_text();
   inline void clear_has_item_text();
@@ -704,10 +728,10 @@ class avim_message : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::proto::text_message* item_text_;
-  ::proto::img_message* item_image_;
-  ::proto::emoji_message* item_emoji_;
-  ::proto::symmetry_encryption_key_distribution* item_key_;
+  ::message::text_message* item_text_;
+  ::message::img_message* item_image_;
+  ::message::emoji_message* item_emoji_;
+  ::message::symmetry_encryption_key_distribution* item_key_;
   friend void  protobuf_AddDesc_im_2eproto();
   friend void protobuf_AssignDesc_im_2eproto();
   friend void protobuf_ShutdownFile_im_2eproto();
@@ -717,20 +741,20 @@ class avim_message : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class avim_message_packet : public ::google::protobuf::Message {
+class message_packet : public ::google::protobuf::Message {
  public:
-  avim_message_packet();
-  virtual ~avim_message_packet();
+  message_packet();
+  virtual ~message_packet();
 
-  avim_message_packet(const avim_message_packet& from);
+  message_packet(const message_packet& from);
 
-  inline avim_message_packet& operator=(const avim_message_packet& from) {
+  inline message_packet& operator=(const message_packet& from) {
     CopyFrom(from);
     return *this;
   }
 
   #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline avim_message_packet& operator=(avim_message_packet&& from) {
+  inline message_packet& operator=(message_packet&& from) {
     if (&from != this) {
       Clear();
       Swap(&from);
@@ -738,7 +762,7 @@ class avim_message_packet : public ::google::protobuf::Message {
     return *this;
   }
 
-  avim_message_packet(avim_message_packet&& from);
+  message_packet(message_packet&& from);
   #endif
 
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
@@ -750,17 +774,17 @@ class avim_message_packet : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const avim_message_packet& default_instance();
+  static const message_packet& default_instance();
 
-  void Swap(avim_message_packet* other);
+  void Swap(message_packet* other);
 
   // implements Message ----------------------------------------------
 
-  avim_message_packet* New() const;
+  message_packet* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const avim_message_packet& from);
-  void MergeFrom(const avim_message_packet& from);
+  void CopyFrom(const message_packet& from);
+  void MergeFrom(const message_packet& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -782,16 +806,16 @@ class avim_message_packet : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // repeated .proto.avim_message avim = 1;
+  // repeated .message.avim_message avim = 1;
   inline int avim_size() const;
   inline void clear_avim();
   static const int kAvimFieldNumber = 1;
-  inline const ::proto::avim_message& avim(int index) const;
-  inline ::proto::avim_message* mutable_avim(int index);
-  inline ::proto::avim_message* add_avim();
-  inline const ::google::protobuf::RepeatedPtrField< ::proto::avim_message >&
+  inline const ::message::avim_message& avim(int index) const;
+  inline ::message::avim_message* mutable_avim(int index);
+  inline ::message::avim_message* add_avim();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::avim_message >&
       avim() const;
-  inline ::google::protobuf::RepeatedPtrField< ::proto::avim_message >*
+  inline ::google::protobuf::RepeatedPtrField< ::message::avim_message >*
       mutable_avim();
 
   // optional uint64 serial = 2;
@@ -801,23 +825,440 @@ class avim_message_packet : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 serial() const;
   inline void set_serial(::google::protobuf::uint64 value);
 
-  // @@protoc_insertion_point(class_scope:proto.avim_message_packet)
+  // optional .proto.av_address sender = 3;
+  inline bool has_sender() const;
+  inline void clear_sender();
+  static const int kSenderFieldNumber = 3;
+  inline const ::proto::av_address& sender() const;
+  inline ::proto::av_address* mutable_sender();
+  inline ::proto::av_address* release_sender();
+  inline void set_allocated_sender(::proto::av_address* sender);
+
+  // @@protoc_insertion_point(class_scope:message.message_packet)
  private:
   inline void set_has_serial();
   inline void clear_has_serial();
+  inline void set_has_sender();
+  inline void clear_has_sender();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::proto::avim_message > avim_;
+  ::google::protobuf::RepeatedPtrField< ::message::avim_message > avim_;
   ::google::protobuf::uint64 serial_;
+  ::proto::av_address* sender_;
   friend void  protobuf_AddDesc_im_2eproto();
   friend void protobuf_AssignDesc_im_2eproto();
   friend void protobuf_ShutdownFile_im_2eproto();
 
   void InitAsDefaultInstance();
-  static avim_message_packet* default_instance_;
+  static message_packet* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class group_security_key : public ::google::protobuf::Message {
+ public:
+  group_security_key();
+  virtual ~group_security_key();
+
+  group_security_key(const group_security_key& from);
+
+  inline group_security_key& operator=(const group_security_key& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  #if __cplusplus >= 201103L || _MSC_VER >= 1600
+  inline group_security_key& operator=(group_security_key&& from) {
+    if (&from != this) {
+      Clear();
+      Swap(&from);
+    }
+    return *this;
+  }
+
+  group_security_key(group_security_key&& from);
+  #endif
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const group_security_key& default_instance();
+
+  void Swap(group_security_key* other);
+
+  // implements Message ----------------------------------------------
+
+  group_security_key* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const group_security_key& from);
+  void MergeFrom(const group_security_key& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required bytes key = 1;
+  inline bool has_key() const;
+  inline void clear_key();
+  static const int kKeyFieldNumber = 1;
+  inline const ::std::string& key() const;
+  inline void set_key(const ::std::string& value);
+  inline void set_key(const char* value);
+  inline void set_key(const void* value, size_t size);
+  inline ::std::string* mutable_key();
+  inline ::std::string* release_key();
+  inline void set_allocated_key(::std::string* key);
+
+  // required bytes prev_key = 2;
+  inline bool has_prev_key() const;
+  inline void clear_prev_key();
+  static const int kPrevKeyFieldNumber = 2;
+  inline const ::std::string& prev_key() const;
+  inline void set_prev_key(const ::std::string& value);
+  inline void set_prev_key(const char* value);
+  inline void set_prev_key(const void* value, size_t size);
+  inline ::std::string* mutable_prev_key();
+  inline ::std::string* release_prev_key();
+  inline void set_allocated_prev_key(::std::string* prev_key);
+
+  // required uint64 valid_until = 3;
+  inline bool has_valid_until() const;
+  inline void clear_valid_until();
+  static const int kValidUntilFieldNumber = 3;
+  inline ::google::protobuf::uint64 valid_until() const;
+  inline void set_valid_until(::google::protobuf::uint64 value);
+
+  // required uint32 key_id = 4;
+  inline bool has_key_id() const;
+  inline void clear_key_id();
+  static const int kKeyIdFieldNumber = 4;
+  inline ::google::protobuf::uint32 key_id() const;
+  inline void set_key_id(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:message.group_security_key)
+ private:
+  inline void set_has_key();
+  inline void clear_has_key();
+  inline void set_has_prev_key();
+  inline void clear_has_prev_key();
+  inline void set_has_valid_until();
+  inline void clear_has_valid_until();
+  inline void set_has_key_id();
+  inline void clear_has_key_id();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* key_;
+  ::std::string* prev_key_;
+  ::google::protobuf::uint64 valid_until_;
+  ::google::protobuf::uint32 key_id_;
+  friend void  protobuf_AddDesc_im_2eproto();
+  friend void protobuf_AssignDesc_im_2eproto();
+  friend void protobuf_ShutdownFile_im_2eproto();
+
+  void InitAsDefaultInstance();
+  static group_security_key* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class control_message_buddy_state_notify : public ::google::protobuf::Message {
+ public:
+  control_message_buddy_state_notify();
+  virtual ~control_message_buddy_state_notify();
+
+  control_message_buddy_state_notify(const control_message_buddy_state_notify& from);
+
+  inline control_message_buddy_state_notify& operator=(const control_message_buddy_state_notify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  #if __cplusplus >= 201103L || _MSC_VER >= 1600
+  inline control_message_buddy_state_notify& operator=(control_message_buddy_state_notify&& from) {
+    if (&from != this) {
+      Clear();
+      Swap(&from);
+    }
+    return *this;
+  }
+
+  control_message_buddy_state_notify(control_message_buddy_state_notify&& from);
+  #endif
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const control_message_buddy_state_notify& default_instance();
+
+  void Swap(control_message_buddy_state_notify* other);
+
+  // implements Message ----------------------------------------------
+
+  control_message_buddy_state_notify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const control_message_buddy_state_notify& from);
+  void MergeFrom(const control_message_buddy_state_notify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .proto.av_address who = 1;
+  inline bool has_who() const;
+  inline void clear_who();
+  static const int kWhoFieldNumber = 1;
+  inline const ::proto::av_address& who() const;
+  inline ::proto::av_address* mutable_who();
+  inline ::proto::av_address* release_who();
+  inline void set_allocated_who(::proto::av_address* who);
+
+  // required .message.control_message.buddy_state state = 2;
+  inline bool has_state() const;
+  inline void clear_state();
+  static const int kStateFieldNumber = 2;
+  inline ::message::control_message_buddy_state state() const;
+  inline void set_state(::message::control_message_buddy_state value);
+
+  // @@protoc_insertion_point(class_scope:message.control_message.buddy_state_notify)
+ private:
+  inline void set_has_who();
+  inline void clear_has_who();
+  inline void set_has_state();
+  inline void clear_has_state();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::proto::av_address* who_;
+  int state_;
+  friend void  protobuf_AddDesc_im_2eproto();
+  friend void protobuf_AssignDesc_im_2eproto();
+  friend void protobuf_ShutdownFile_im_2eproto();
+
+  void InitAsDefaultInstance();
+  static control_message_buddy_state_notify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class control_message : public ::google::protobuf::Message {
+ public:
+  control_message();
+  virtual ~control_message();
+
+  control_message(const control_message& from);
+
+  inline control_message& operator=(const control_message& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  #if __cplusplus >= 201103L || _MSC_VER >= 1600
+  inline control_message& operator=(control_message&& from) {
+    if (&from != this) {
+      Clear();
+      Swap(&from);
+    }
+    return *this;
+  }
+
+  control_message(control_message&& from);
+  #endif
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const control_message& default_instance();
+
+  void Swap(control_message* other);
+
+  // implements Message ----------------------------------------------
+
+  control_message* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const control_message& from);
+  void MergeFrom(const control_message& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef control_message_buddy_state_notify buddy_state_notify;
+
+  typedef control_message_buddy_state buddy_state;
+  static const buddy_state ONLINE = control_message_buddy_state_ONLINE;
+  static const buddy_state OFFLINE = control_message_buddy_state_OFFLINE;
+  static const buddy_state HIDDING = control_message_buddy_state_HIDDING;
+  static inline bool buddy_state_IsValid(int value) {
+    return control_message_buddy_state_IsValid(value);
+  }
+  static const buddy_state buddy_state_MIN =
+    control_message_buddy_state_buddy_state_MIN;
+  static const buddy_state buddy_state_MAX =
+    control_message_buddy_state_buddy_state_MAX;
+  static const int buddy_state_ARRAYSIZE =
+    control_message_buddy_state_buddy_state_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  buddy_state_descriptor() {
+    return control_message_buddy_state_descriptor();
+  }
+  static inline const ::std::string& buddy_state_Name(buddy_state value) {
+    return control_message_buddy_state_Name(value);
+  }
+  static inline bool buddy_state_Parse(const ::std::string& name,
+      buddy_state* value) {
+    return control_message_buddy_state_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // optional .proto.av_address sender = 1;
+  inline bool has_sender() const;
+  inline void clear_sender();
+  static const int kSenderFieldNumber = 1;
+  inline const ::proto::av_address& sender() const;
+  inline ::proto::av_address* mutable_sender();
+  inline ::proto::av_address* release_sender();
+  inline void set_allocated_sender(::proto::av_address* sender);
+
+  // optional .message.group_security_key group_key = 2;
+  inline bool has_group_key() const;
+  inline void clear_group_key();
+  static const int kGroupKeyFieldNumber = 2;
+  inline const ::message::group_security_key& group_key() const;
+  inline ::message::group_security_key* mutable_group_key();
+  inline ::message::group_security_key* release_group_key();
+  inline void set_allocated_group_key(::message::group_security_key* group_key);
+
+  // repeated .proto.av_address new_bie = 3;
+  inline int new_bie_size() const;
+  inline void clear_new_bie();
+  static const int kNewBieFieldNumber = 3;
+  inline const ::proto::av_address& new_bie(int index) const;
+  inline ::proto::av_address* mutable_new_bie(int index);
+  inline ::proto::av_address* add_new_bie();
+  inline const ::google::protobuf::RepeatedPtrField< ::proto::av_address >&
+      new_bie() const;
+  inline ::google::protobuf::RepeatedPtrField< ::proto::av_address >*
+      mutable_new_bie();
+
+  // repeated .proto.av_address gone_bie = 4;
+  inline int gone_bie_size() const;
+  inline void clear_gone_bie();
+  static const int kGoneBieFieldNumber = 4;
+  inline const ::proto::av_address& gone_bie(int index) const;
+  inline ::proto::av_address* mutable_gone_bie(int index);
+  inline ::proto::av_address* add_gone_bie();
+  inline const ::google::protobuf::RepeatedPtrField< ::proto::av_address >&
+      gone_bie() const;
+  inline ::google::protobuf::RepeatedPtrField< ::proto::av_address >*
+      mutable_gone_bie();
+
+  // repeated .message.control_message.buddy_state_notify buddy_status = 5;
+  inline int buddy_status_size() const;
+  inline void clear_buddy_status();
+  static const int kBuddyStatusFieldNumber = 5;
+  inline const ::message::control_message_buddy_state_notify& buddy_status(int index) const;
+  inline ::message::control_message_buddy_state_notify* mutable_buddy_status(int index);
+  inline ::message::control_message_buddy_state_notify* add_buddy_status();
+  inline const ::google::protobuf::RepeatedPtrField< ::message::control_message_buddy_state_notify >&
+      buddy_status() const;
+  inline ::google::protobuf::RepeatedPtrField< ::message::control_message_buddy_state_notify >*
+      mutable_buddy_status();
+
+  // @@protoc_insertion_point(class_scope:message.control_message)
+ private:
+  inline void set_has_sender();
+  inline void clear_has_sender();
+  inline void set_has_group_key();
+  inline void clear_has_group_key();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::proto::av_address* sender_;
+  ::message::group_security_key* group_key_;
+  ::google::protobuf::RepeatedPtrField< ::proto::av_address > new_bie_;
+  ::google::protobuf::RepeatedPtrField< ::proto::av_address > gone_bie_;
+  ::google::protobuf::RepeatedPtrField< ::message::control_message_buddy_state_notify > buddy_status_;
+  friend void  protobuf_AddDesc_im_2eproto();
+  friend void protobuf_AssignDesc_im_2eproto();
+  friend void protobuf_ShutdownFile_im_2eproto();
+
+  void InitAsDefaultInstance();
+  static control_message* default_instance_;
 };
 // ===================================================================
 
@@ -843,7 +1284,7 @@ inline void text_message::clear_text() {
   clear_has_text();
 }
 inline const ::std::string& text_message::text() const {
-  // @@protoc_insertion_point(field_get:proto.text_message.text)
+  // @@protoc_insertion_point(field_get:message.text_message.text)
   return *text_;
 }
 inline void text_message::set_text(const ::std::string& value) {
@@ -852,7 +1293,7 @@ inline void text_message::set_text(const ::std::string& value) {
     text_ = new ::std::string;
   }
   text_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.text_message.text)
+  // @@protoc_insertion_point(field_set:message.text_message.text)
 }
 inline void text_message::set_text(const char* value) {
   set_has_text();
@@ -860,7 +1301,7 @@ inline void text_message::set_text(const char* value) {
     text_ = new ::std::string;
   }
   text_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.text_message.text)
+  // @@protoc_insertion_point(field_set_char:message.text_message.text)
 }
 inline void text_message::set_text(const char* value, size_t size) {
   set_has_text();
@@ -868,14 +1309,14 @@ inline void text_message::set_text(const char* value, size_t size) {
     text_ = new ::std::string;
   }
   text_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.text_message.text)
+  // @@protoc_insertion_point(field_set_pointer:message.text_message.text)
 }
 inline ::std::string* text_message::mutable_text() {
   set_has_text();
   if (text_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     text_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.text_message.text)
+  // @@protoc_insertion_point(field_mutable:message.text_message.text)
   return text_;
 }
 inline ::std::string* text_message::release_text() {
@@ -899,7 +1340,7 @@ inline void text_message::set_allocated_text(::std::string* text) {
     clear_has_text();
     text_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.text_message.text)
+  // @@protoc_insertion_point(field_set_allocated:message.text_message.text)
 }
 
 // optional string fontname = 2;
@@ -919,7 +1360,7 @@ inline void text_message::clear_fontname() {
   clear_has_fontname();
 }
 inline const ::std::string& text_message::fontname() const {
-  // @@protoc_insertion_point(field_get:proto.text_message.fontname)
+  // @@protoc_insertion_point(field_get:message.text_message.fontname)
   return *fontname_;
 }
 inline void text_message::set_fontname(const ::std::string& value) {
@@ -928,7 +1369,7 @@ inline void text_message::set_fontname(const ::std::string& value) {
     fontname_ = new ::std::string;
   }
   fontname_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.text_message.fontname)
+  // @@protoc_insertion_point(field_set:message.text_message.fontname)
 }
 inline void text_message::set_fontname(const char* value) {
   set_has_fontname();
@@ -936,7 +1377,7 @@ inline void text_message::set_fontname(const char* value) {
     fontname_ = new ::std::string;
   }
   fontname_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.text_message.fontname)
+  // @@protoc_insertion_point(field_set_char:message.text_message.fontname)
 }
 inline void text_message::set_fontname(const char* value, size_t size) {
   set_has_fontname();
@@ -944,14 +1385,14 @@ inline void text_message::set_fontname(const char* value, size_t size) {
     fontname_ = new ::std::string;
   }
   fontname_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.text_message.fontname)
+  // @@protoc_insertion_point(field_set_pointer:message.text_message.fontname)
 }
 inline ::std::string* text_message::mutable_fontname() {
   set_has_fontname();
   if (fontname_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     fontname_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.text_message.fontname)
+  // @@protoc_insertion_point(field_mutable:message.text_message.fontname)
   return fontname_;
 }
 inline ::std::string* text_message::release_fontname() {
@@ -975,7 +1416,7 @@ inline void text_message::set_allocated_fontname(::std::string* fontname) {
     clear_has_fontname();
     fontname_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.text_message.fontname)
+  // @@protoc_insertion_point(field_set_allocated:message.text_message.fontname)
 }
 
 // optional float fontsie = 3;
@@ -993,13 +1434,13 @@ inline void text_message::clear_fontsie() {
   clear_has_fontsie();
 }
 inline float text_message::fontsie() const {
-  // @@protoc_insertion_point(field_get:proto.text_message.fontsie)
+  // @@protoc_insertion_point(field_get:message.text_message.fontsie)
   return fontsie_;
 }
 inline void text_message::set_fontsie(float value) {
   set_has_fontsie();
   fontsie_ = value;
-  // @@protoc_insertion_point(field_set:proto.text_message.fontsie)
+  // @@protoc_insertion_point(field_set:message.text_message.fontsie)
 }
 
 // optional string hlink = 4;
@@ -1019,7 +1460,7 @@ inline void text_message::clear_hlink() {
   clear_has_hlink();
 }
 inline const ::std::string& text_message::hlink() const {
-  // @@protoc_insertion_point(field_get:proto.text_message.hlink)
+  // @@protoc_insertion_point(field_get:message.text_message.hlink)
   return *hlink_;
 }
 inline void text_message::set_hlink(const ::std::string& value) {
@@ -1028,7 +1469,7 @@ inline void text_message::set_hlink(const ::std::string& value) {
     hlink_ = new ::std::string;
   }
   hlink_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.text_message.hlink)
+  // @@protoc_insertion_point(field_set:message.text_message.hlink)
 }
 inline void text_message::set_hlink(const char* value) {
   set_has_hlink();
@@ -1036,7 +1477,7 @@ inline void text_message::set_hlink(const char* value) {
     hlink_ = new ::std::string;
   }
   hlink_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.text_message.hlink)
+  // @@protoc_insertion_point(field_set_char:message.text_message.hlink)
 }
 inline void text_message::set_hlink(const char* value, size_t size) {
   set_has_hlink();
@@ -1044,14 +1485,14 @@ inline void text_message::set_hlink(const char* value, size_t size) {
     hlink_ = new ::std::string;
   }
   hlink_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.text_message.hlink)
+  // @@protoc_insertion_point(field_set_pointer:message.text_message.hlink)
 }
 inline ::std::string* text_message::mutable_hlink() {
   set_has_hlink();
   if (hlink_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     hlink_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.text_message.hlink)
+  // @@protoc_insertion_point(field_mutable:message.text_message.hlink)
   return hlink_;
 }
 inline ::std::string* text_message::release_hlink() {
@@ -1075,7 +1516,7 @@ inline void text_message::set_allocated_hlink(::std::string* hlink) {
     clear_has_hlink();
     hlink_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.text_message.hlink)
+  // @@protoc_insertion_point(field_set_allocated:message.text_message.hlink)
 }
 
 // -------------------------------------------------------------------
@@ -1099,7 +1540,7 @@ inline void img_message::clear_image() {
   clear_has_image();
 }
 inline const ::std::string& img_message::image() const {
-  // @@protoc_insertion_point(field_get:proto.img_message.image)
+  // @@protoc_insertion_point(field_get:message.img_message.image)
   return *image_;
 }
 inline void img_message::set_image(const ::std::string& value) {
@@ -1108,7 +1549,7 @@ inline void img_message::set_image(const ::std::string& value) {
     image_ = new ::std::string;
   }
   image_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.img_message.image)
+  // @@protoc_insertion_point(field_set:message.img_message.image)
 }
 inline void img_message::set_image(const char* value) {
   set_has_image();
@@ -1116,7 +1557,7 @@ inline void img_message::set_image(const char* value) {
     image_ = new ::std::string;
   }
   image_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.img_message.image)
+  // @@protoc_insertion_point(field_set_char:message.img_message.image)
 }
 inline void img_message::set_image(const void* value, size_t size) {
   set_has_image();
@@ -1124,14 +1565,14 @@ inline void img_message::set_image(const void* value, size_t size) {
     image_ = new ::std::string;
   }
   image_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.img_message.image)
+  // @@protoc_insertion_point(field_set_pointer:message.img_message.image)
 }
 inline ::std::string* img_message::mutable_image() {
   set_has_image();
   if (image_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     image_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.img_message.image)
+  // @@protoc_insertion_point(field_mutable:message.img_message.image)
   return image_;
 }
 inline ::std::string* img_message::release_image() {
@@ -1155,7 +1596,7 @@ inline void img_message::set_allocated_image(::std::string* image) {
     clear_has_image();
     image_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.img_message.image)
+  // @@protoc_insertion_point(field_set_allocated:message.img_message.image)
 }
 
 // optional bytes image_digest = 2;
@@ -1175,7 +1616,7 @@ inline void img_message::clear_image_digest() {
   clear_has_image_digest();
 }
 inline const ::std::string& img_message::image_digest() const {
-  // @@protoc_insertion_point(field_get:proto.img_message.image_digest)
+  // @@protoc_insertion_point(field_get:message.img_message.image_digest)
   return *image_digest_;
 }
 inline void img_message::set_image_digest(const ::std::string& value) {
@@ -1184,7 +1625,7 @@ inline void img_message::set_image_digest(const ::std::string& value) {
     image_digest_ = new ::std::string;
   }
   image_digest_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.img_message.image_digest)
+  // @@protoc_insertion_point(field_set:message.img_message.image_digest)
 }
 inline void img_message::set_image_digest(const char* value) {
   set_has_image_digest();
@@ -1192,7 +1633,7 @@ inline void img_message::set_image_digest(const char* value) {
     image_digest_ = new ::std::string;
   }
   image_digest_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.img_message.image_digest)
+  // @@protoc_insertion_point(field_set_char:message.img_message.image_digest)
 }
 inline void img_message::set_image_digest(const void* value, size_t size) {
   set_has_image_digest();
@@ -1200,14 +1641,14 @@ inline void img_message::set_image_digest(const void* value, size_t size) {
     image_digest_ = new ::std::string;
   }
   image_digest_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.img_message.image_digest)
+  // @@protoc_insertion_point(field_set_pointer:message.img_message.image_digest)
 }
 inline ::std::string* img_message::mutable_image_digest() {
   set_has_image_digest();
   if (image_digest_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     image_digest_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.img_message.image_digest)
+  // @@protoc_insertion_point(field_mutable:message.img_message.image_digest)
   return image_digest_;
 }
 inline ::std::string* img_message::release_image_digest() {
@@ -1231,7 +1672,7 @@ inline void img_message::set_allocated_image_digest(::std::string* image_digest)
     clear_has_image_digest();
     image_digest_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.img_message.image_digest)
+  // @@protoc_insertion_point(field_set_allocated:message.img_message.image_digest)
 }
 
 // optional string hlink = 4;
@@ -1251,7 +1692,7 @@ inline void img_message::clear_hlink() {
   clear_has_hlink();
 }
 inline const ::std::string& img_message::hlink() const {
-  // @@protoc_insertion_point(field_get:proto.img_message.hlink)
+  // @@protoc_insertion_point(field_get:message.img_message.hlink)
   return *hlink_;
 }
 inline void img_message::set_hlink(const ::std::string& value) {
@@ -1260,7 +1701,7 @@ inline void img_message::set_hlink(const ::std::string& value) {
     hlink_ = new ::std::string;
   }
   hlink_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.img_message.hlink)
+  // @@protoc_insertion_point(field_set:message.img_message.hlink)
 }
 inline void img_message::set_hlink(const char* value) {
   set_has_hlink();
@@ -1268,7 +1709,7 @@ inline void img_message::set_hlink(const char* value) {
     hlink_ = new ::std::string;
   }
   hlink_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.img_message.hlink)
+  // @@protoc_insertion_point(field_set_char:message.img_message.hlink)
 }
 inline void img_message::set_hlink(const char* value, size_t size) {
   set_has_hlink();
@@ -1276,14 +1717,14 @@ inline void img_message::set_hlink(const char* value, size_t size) {
     hlink_ = new ::std::string;
   }
   hlink_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.img_message.hlink)
+  // @@protoc_insertion_point(field_set_pointer:message.img_message.hlink)
 }
 inline ::std::string* img_message::mutable_hlink() {
   set_has_hlink();
   if (hlink_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     hlink_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.img_message.hlink)
+  // @@protoc_insertion_point(field_mutable:message.img_message.hlink)
   return hlink_;
 }
 inline ::std::string* img_message::release_hlink() {
@@ -1307,7 +1748,7 @@ inline void img_message::set_allocated_hlink(::std::string* hlink) {
     clear_has_hlink();
     hlink_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.img_message.hlink)
+  // @@protoc_insertion_point(field_set_allocated:message.img_message.hlink)
 }
 
 // -------------------------------------------------------------------
@@ -1331,7 +1772,7 @@ inline void emoji_message::clear_emoji() {
   clear_has_emoji();
 }
 inline const ::std::string& emoji_message::emoji() const {
-  // @@protoc_insertion_point(field_get:proto.emoji_message.emoji)
+  // @@protoc_insertion_point(field_get:message.emoji_message.emoji)
   return *emoji_;
 }
 inline void emoji_message::set_emoji(const ::std::string& value) {
@@ -1340,7 +1781,7 @@ inline void emoji_message::set_emoji(const ::std::string& value) {
     emoji_ = new ::std::string;
   }
   emoji_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.emoji_message.emoji)
+  // @@protoc_insertion_point(field_set:message.emoji_message.emoji)
 }
 inline void emoji_message::set_emoji(const char* value) {
   set_has_emoji();
@@ -1348,7 +1789,7 @@ inline void emoji_message::set_emoji(const char* value) {
     emoji_ = new ::std::string;
   }
   emoji_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.emoji_message.emoji)
+  // @@protoc_insertion_point(field_set_char:message.emoji_message.emoji)
 }
 inline void emoji_message::set_emoji(const char* value, size_t size) {
   set_has_emoji();
@@ -1356,14 +1797,14 @@ inline void emoji_message::set_emoji(const char* value, size_t size) {
     emoji_ = new ::std::string;
   }
   emoji_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.emoji_message.emoji)
+  // @@protoc_insertion_point(field_set_pointer:message.emoji_message.emoji)
 }
 inline ::std::string* emoji_message::mutable_emoji() {
   set_has_emoji();
   if (emoji_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     emoji_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.emoji_message.emoji)
+  // @@protoc_insertion_point(field_mutable:message.emoji_message.emoji)
   return emoji_;
 }
 inline ::std::string* emoji_message::release_emoji() {
@@ -1387,7 +1828,7 @@ inline void emoji_message::set_allocated_emoji(::std::string* emoji) {
     clear_has_emoji();
     emoji_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.emoji_message.emoji)
+  // @@protoc_insertion_point(field_set_allocated:message.emoji_message.emoji)
 }
 
 // optional string theme = 2;
@@ -1407,7 +1848,7 @@ inline void emoji_message::clear_theme() {
   clear_has_theme();
 }
 inline const ::std::string& emoji_message::theme() const {
-  // @@protoc_insertion_point(field_get:proto.emoji_message.theme)
+  // @@protoc_insertion_point(field_get:message.emoji_message.theme)
   return *theme_;
 }
 inline void emoji_message::set_theme(const ::std::string& value) {
@@ -1416,7 +1857,7 @@ inline void emoji_message::set_theme(const ::std::string& value) {
     theme_ = new ::std::string;
   }
   theme_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.emoji_message.theme)
+  // @@protoc_insertion_point(field_set:message.emoji_message.theme)
 }
 inline void emoji_message::set_theme(const char* value) {
   set_has_theme();
@@ -1424,7 +1865,7 @@ inline void emoji_message::set_theme(const char* value) {
     theme_ = new ::std::string;
   }
   theme_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.emoji_message.theme)
+  // @@protoc_insertion_point(field_set_char:message.emoji_message.theme)
 }
 inline void emoji_message::set_theme(const char* value, size_t size) {
   set_has_theme();
@@ -1432,14 +1873,14 @@ inline void emoji_message::set_theme(const char* value, size_t size) {
     theme_ = new ::std::string;
   }
   theme_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.emoji_message.theme)
+  // @@protoc_insertion_point(field_set_pointer:message.emoji_message.theme)
 }
 inline ::std::string* emoji_message::mutable_theme() {
   set_has_theme();
   if (theme_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     theme_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.emoji_message.theme)
+  // @@protoc_insertion_point(field_mutable:message.emoji_message.theme)
   return theme_;
 }
 inline ::std::string* emoji_message::release_theme() {
@@ -1463,7 +1904,7 @@ inline void emoji_message::set_allocated_theme(::std::string* theme) {
     clear_has_theme();
     theme_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.emoji_message.theme)
+  // @@protoc_insertion_point(field_set_allocated:message.emoji_message.theme)
 }
 
 // optional bytes custom_image = 3;
@@ -1483,7 +1924,7 @@ inline void emoji_message::clear_custom_image() {
   clear_has_custom_image();
 }
 inline const ::std::string& emoji_message::custom_image() const {
-  // @@protoc_insertion_point(field_get:proto.emoji_message.custom_image)
+  // @@protoc_insertion_point(field_get:message.emoji_message.custom_image)
   return *custom_image_;
 }
 inline void emoji_message::set_custom_image(const ::std::string& value) {
@@ -1492,7 +1933,7 @@ inline void emoji_message::set_custom_image(const ::std::string& value) {
     custom_image_ = new ::std::string;
   }
   custom_image_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.emoji_message.custom_image)
+  // @@protoc_insertion_point(field_set:message.emoji_message.custom_image)
 }
 inline void emoji_message::set_custom_image(const char* value) {
   set_has_custom_image();
@@ -1500,7 +1941,7 @@ inline void emoji_message::set_custom_image(const char* value) {
     custom_image_ = new ::std::string;
   }
   custom_image_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.emoji_message.custom_image)
+  // @@protoc_insertion_point(field_set_char:message.emoji_message.custom_image)
 }
 inline void emoji_message::set_custom_image(const void* value, size_t size) {
   set_has_custom_image();
@@ -1508,14 +1949,14 @@ inline void emoji_message::set_custom_image(const void* value, size_t size) {
     custom_image_ = new ::std::string;
   }
   custom_image_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.emoji_message.custom_image)
+  // @@protoc_insertion_point(field_set_pointer:message.emoji_message.custom_image)
 }
 inline ::std::string* emoji_message::mutable_custom_image() {
   set_has_custom_image();
   if (custom_image_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     custom_image_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.emoji_message.custom_image)
+  // @@protoc_insertion_point(field_mutable:message.emoji_message.custom_image)
   return custom_image_;
 }
 inline ::std::string* emoji_message::release_custom_image() {
@@ -1539,14 +1980,14 @@ inline void emoji_message::set_allocated_custom_image(::std::string* custom_imag
     clear_has_custom_image();
     custom_image_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.emoji_message.custom_image)
+  // @@protoc_insertion_point(field_set_allocated:message.emoji_message.custom_image)
 }
 
 // -------------------------------------------------------------------
 
 // symmetry_encryption_key_distribution
 
-// required .proto.symmetry_encryption_key_distribution.EncryptionType keytype = 1;
+// required .message.symmetry_encryption_key_distribution.EncryptionType keytype = 1;
 inline bool symmetry_encryption_key_distribution::has_keytype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1560,15 +2001,15 @@ inline void symmetry_encryption_key_distribution::clear_keytype() {
   keytype_ = 0;
   clear_has_keytype();
 }
-inline ::proto::symmetry_encryption_key_distribution_EncryptionType symmetry_encryption_key_distribution::keytype() const {
-  // @@protoc_insertion_point(field_get:proto.symmetry_encryption_key_distribution.keytype)
-  return static_cast< ::proto::symmetry_encryption_key_distribution_EncryptionType >(keytype_);
+inline ::message::symmetry_encryption_key_distribution_EncryptionType symmetry_encryption_key_distribution::keytype() const {
+  // @@protoc_insertion_point(field_get:message.symmetry_encryption_key_distribution.keytype)
+  return static_cast< ::message::symmetry_encryption_key_distribution_EncryptionType >(keytype_);
 }
-inline void symmetry_encryption_key_distribution::set_keytype(::proto::symmetry_encryption_key_distribution_EncryptionType value) {
-  assert(::proto::symmetry_encryption_key_distribution_EncryptionType_IsValid(value));
+inline void symmetry_encryption_key_distribution::set_keytype(::message::symmetry_encryption_key_distribution_EncryptionType value) {
+  assert(::message::symmetry_encryption_key_distribution_EncryptionType_IsValid(value));
   set_has_keytype();
   keytype_ = value;
-  // @@protoc_insertion_point(field_set:proto.symmetry_encryption_key_distribution.keytype)
+  // @@protoc_insertion_point(field_set:message.symmetry_encryption_key_distribution.keytype)
 }
 
 // required bytes key = 2;
@@ -1588,7 +2029,7 @@ inline void symmetry_encryption_key_distribution::clear_key() {
   clear_has_key();
 }
 inline const ::std::string& symmetry_encryption_key_distribution::key() const {
-  // @@protoc_insertion_point(field_get:proto.symmetry_encryption_key_distribution.key)
+  // @@protoc_insertion_point(field_get:message.symmetry_encryption_key_distribution.key)
   return *key_;
 }
 inline void symmetry_encryption_key_distribution::set_key(const ::std::string& value) {
@@ -1597,7 +2038,7 @@ inline void symmetry_encryption_key_distribution::set_key(const ::std::string& v
     key_ = new ::std::string;
   }
   key_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.symmetry_encryption_key_distribution.key)
+  // @@protoc_insertion_point(field_set:message.symmetry_encryption_key_distribution.key)
 }
 inline void symmetry_encryption_key_distribution::set_key(const char* value) {
   set_has_key();
@@ -1605,7 +2046,7 @@ inline void symmetry_encryption_key_distribution::set_key(const char* value) {
     key_ = new ::std::string;
   }
   key_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.symmetry_encryption_key_distribution.key)
+  // @@protoc_insertion_point(field_set_char:message.symmetry_encryption_key_distribution.key)
 }
 inline void symmetry_encryption_key_distribution::set_key(const void* value, size_t size) {
   set_has_key();
@@ -1613,14 +2054,14 @@ inline void symmetry_encryption_key_distribution::set_key(const void* value, siz
     key_ = new ::std::string;
   }
   key_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.symmetry_encryption_key_distribution.key)
+  // @@protoc_insertion_point(field_set_pointer:message.symmetry_encryption_key_distribution.key)
 }
 inline ::std::string* symmetry_encryption_key_distribution::mutable_key() {
   set_has_key();
   if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     key_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.symmetry_encryption_key_distribution.key)
+  // @@protoc_insertion_point(field_mutable:message.symmetry_encryption_key_distribution.key)
   return key_;
 }
 inline ::std::string* symmetry_encryption_key_distribution::release_key() {
@@ -1644,14 +2085,14 @@ inline void symmetry_encryption_key_distribution::set_allocated_key(::std::strin
     clear_has_key();
     key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.symmetry_encryption_key_distribution.key)
+  // @@protoc_insertion_point(field_set_allocated:message.symmetry_encryption_key_distribution.key)
 }
 
 // -------------------------------------------------------------------
 
 // avim_message
 
-// optional .proto.text_message item_text = 1;
+// optional .message.text_message item_text = 1;
 inline bool avim_message::has_item_text() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1662,26 +2103,26 @@ inline void avim_message::clear_has_item_text() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void avim_message::clear_item_text() {
-  if (item_text_ != NULL) item_text_->::proto::text_message::Clear();
+  if (item_text_ != NULL) item_text_->::message::text_message::Clear();
   clear_has_item_text();
 }
-inline const ::proto::text_message& avim_message::item_text() const {
-  // @@protoc_insertion_point(field_get:proto.avim_message.item_text)
+inline const ::message::text_message& avim_message::item_text() const {
+  // @@protoc_insertion_point(field_get:message.avim_message.item_text)
   return item_text_ != NULL ? *item_text_ : *default_instance_->item_text_;
 }
-inline ::proto::text_message* avim_message::mutable_item_text() {
+inline ::message::text_message* avim_message::mutable_item_text() {
   set_has_item_text();
-  if (item_text_ == NULL) item_text_ = new ::proto::text_message;
-  // @@protoc_insertion_point(field_mutable:proto.avim_message.item_text)
+  if (item_text_ == NULL) item_text_ = new ::message::text_message;
+  // @@protoc_insertion_point(field_mutable:message.avim_message.item_text)
   return item_text_;
 }
-inline ::proto::text_message* avim_message::release_item_text() {
+inline ::message::text_message* avim_message::release_item_text() {
   clear_has_item_text();
-  ::proto::text_message* temp = item_text_;
+  ::message::text_message* temp = item_text_;
   item_text_ = NULL;
   return temp;
 }
-inline void avim_message::set_allocated_item_text(::proto::text_message* item_text) {
+inline void avim_message::set_allocated_item_text(::message::text_message* item_text) {
   delete item_text_;
   item_text_ = item_text;
   if (item_text) {
@@ -1689,10 +2130,10 @@ inline void avim_message::set_allocated_item_text(::proto::text_message* item_te
   } else {
     clear_has_item_text();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.avim_message.item_text)
+  // @@protoc_insertion_point(field_set_allocated:message.avim_message.item_text)
 }
 
-// optional .proto.img_message item_image = 2;
+// optional .message.img_message item_image = 2;
 inline bool avim_message::has_item_image() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1703,26 +2144,26 @@ inline void avim_message::clear_has_item_image() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void avim_message::clear_item_image() {
-  if (item_image_ != NULL) item_image_->::proto::img_message::Clear();
+  if (item_image_ != NULL) item_image_->::message::img_message::Clear();
   clear_has_item_image();
 }
-inline const ::proto::img_message& avim_message::item_image() const {
-  // @@protoc_insertion_point(field_get:proto.avim_message.item_image)
+inline const ::message::img_message& avim_message::item_image() const {
+  // @@protoc_insertion_point(field_get:message.avim_message.item_image)
   return item_image_ != NULL ? *item_image_ : *default_instance_->item_image_;
 }
-inline ::proto::img_message* avim_message::mutable_item_image() {
+inline ::message::img_message* avim_message::mutable_item_image() {
   set_has_item_image();
-  if (item_image_ == NULL) item_image_ = new ::proto::img_message;
-  // @@protoc_insertion_point(field_mutable:proto.avim_message.item_image)
+  if (item_image_ == NULL) item_image_ = new ::message::img_message;
+  // @@protoc_insertion_point(field_mutable:message.avim_message.item_image)
   return item_image_;
 }
-inline ::proto::img_message* avim_message::release_item_image() {
+inline ::message::img_message* avim_message::release_item_image() {
   clear_has_item_image();
-  ::proto::img_message* temp = item_image_;
+  ::message::img_message* temp = item_image_;
   item_image_ = NULL;
   return temp;
 }
-inline void avim_message::set_allocated_item_image(::proto::img_message* item_image) {
+inline void avim_message::set_allocated_item_image(::message::img_message* item_image) {
   delete item_image_;
   item_image_ = item_image;
   if (item_image) {
@@ -1730,10 +2171,10 @@ inline void avim_message::set_allocated_item_image(::proto::img_message* item_im
   } else {
     clear_has_item_image();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.avim_message.item_image)
+  // @@protoc_insertion_point(field_set_allocated:message.avim_message.item_image)
 }
 
-// optional .proto.emoji_message item_emoji = 3;
+// optional .message.emoji_message item_emoji = 3;
 inline bool avim_message::has_item_emoji() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1744,26 +2185,26 @@ inline void avim_message::clear_has_item_emoji() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void avim_message::clear_item_emoji() {
-  if (item_emoji_ != NULL) item_emoji_->::proto::emoji_message::Clear();
+  if (item_emoji_ != NULL) item_emoji_->::message::emoji_message::Clear();
   clear_has_item_emoji();
 }
-inline const ::proto::emoji_message& avim_message::item_emoji() const {
-  // @@protoc_insertion_point(field_get:proto.avim_message.item_emoji)
+inline const ::message::emoji_message& avim_message::item_emoji() const {
+  // @@protoc_insertion_point(field_get:message.avim_message.item_emoji)
   return item_emoji_ != NULL ? *item_emoji_ : *default_instance_->item_emoji_;
 }
-inline ::proto::emoji_message* avim_message::mutable_item_emoji() {
+inline ::message::emoji_message* avim_message::mutable_item_emoji() {
   set_has_item_emoji();
-  if (item_emoji_ == NULL) item_emoji_ = new ::proto::emoji_message;
-  // @@protoc_insertion_point(field_mutable:proto.avim_message.item_emoji)
+  if (item_emoji_ == NULL) item_emoji_ = new ::message::emoji_message;
+  // @@protoc_insertion_point(field_mutable:message.avim_message.item_emoji)
   return item_emoji_;
 }
-inline ::proto::emoji_message* avim_message::release_item_emoji() {
+inline ::message::emoji_message* avim_message::release_item_emoji() {
   clear_has_item_emoji();
-  ::proto::emoji_message* temp = item_emoji_;
+  ::message::emoji_message* temp = item_emoji_;
   item_emoji_ = NULL;
   return temp;
 }
-inline void avim_message::set_allocated_item_emoji(::proto::emoji_message* item_emoji) {
+inline void avim_message::set_allocated_item_emoji(::message::emoji_message* item_emoji) {
   delete item_emoji_;
   item_emoji_ = item_emoji;
   if (item_emoji) {
@@ -1771,10 +2212,10 @@ inline void avim_message::set_allocated_item_emoji(::proto::emoji_message* item_
   } else {
     clear_has_item_emoji();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.avim_message.item_emoji)
+  // @@protoc_insertion_point(field_set_allocated:message.avim_message.item_emoji)
 }
 
-// optional .proto.symmetry_encryption_key_distribution item_key = 20;
+// optional .message.symmetry_encryption_key_distribution item_key = 20;
 inline bool avim_message::has_item_key() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -1785,26 +2226,26 @@ inline void avim_message::clear_has_item_key() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void avim_message::clear_item_key() {
-  if (item_key_ != NULL) item_key_->::proto::symmetry_encryption_key_distribution::Clear();
+  if (item_key_ != NULL) item_key_->::message::symmetry_encryption_key_distribution::Clear();
   clear_has_item_key();
 }
-inline const ::proto::symmetry_encryption_key_distribution& avim_message::item_key() const {
-  // @@protoc_insertion_point(field_get:proto.avim_message.item_key)
+inline const ::message::symmetry_encryption_key_distribution& avim_message::item_key() const {
+  // @@protoc_insertion_point(field_get:message.avim_message.item_key)
   return item_key_ != NULL ? *item_key_ : *default_instance_->item_key_;
 }
-inline ::proto::symmetry_encryption_key_distribution* avim_message::mutable_item_key() {
+inline ::message::symmetry_encryption_key_distribution* avim_message::mutable_item_key() {
   set_has_item_key();
-  if (item_key_ == NULL) item_key_ = new ::proto::symmetry_encryption_key_distribution;
-  // @@protoc_insertion_point(field_mutable:proto.avim_message.item_key)
+  if (item_key_ == NULL) item_key_ = new ::message::symmetry_encryption_key_distribution;
+  // @@protoc_insertion_point(field_mutable:message.avim_message.item_key)
   return item_key_;
 }
-inline ::proto::symmetry_encryption_key_distribution* avim_message::release_item_key() {
+inline ::message::symmetry_encryption_key_distribution* avim_message::release_item_key() {
   clear_has_item_key();
-  ::proto::symmetry_encryption_key_distribution* temp = item_key_;
+  ::message::symmetry_encryption_key_distribution* temp = item_key_;
   item_key_ = NULL;
   return temp;
 }
-inline void avim_message::set_allocated_item_key(::proto::symmetry_encryption_key_distribution* item_key) {
+inline void avim_message::set_allocated_item_key(::message::symmetry_encryption_key_distribution* item_key) {
   delete item_key_;
   item_key_ = item_key;
   if (item_key) {
@@ -1812,80 +2253,576 @@ inline void avim_message::set_allocated_item_key(::proto::symmetry_encryption_ke
   } else {
     clear_has_item_key();
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.avim_message.item_key)
+  // @@protoc_insertion_point(field_set_allocated:message.avim_message.item_key)
 }
 
 // -------------------------------------------------------------------
 
-// avim_message_packet
+// message_packet
 
-// repeated .proto.avim_message avim = 1;
-inline int avim_message_packet::avim_size() const {
+// repeated .message.avim_message avim = 1;
+inline int message_packet::avim_size() const {
   return avim_.size();
 }
-inline void avim_message_packet::clear_avim() {
+inline void message_packet::clear_avim() {
   avim_.Clear();
 }
-inline const ::proto::avim_message& avim_message_packet::avim(int index) const {
-  // @@protoc_insertion_point(field_get:proto.avim_message_packet.avim)
+inline const ::message::avim_message& message_packet::avim(int index) const {
+  // @@protoc_insertion_point(field_get:message.message_packet.avim)
   return avim_.Get(index);
 }
-inline ::proto::avim_message* avim_message_packet::mutable_avim(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.avim_message_packet.avim)
+inline ::message::avim_message* message_packet::mutable_avim(int index) {
+  // @@protoc_insertion_point(field_mutable:message.message_packet.avim)
   return avim_.Mutable(index);
 }
-inline ::proto::avim_message* avim_message_packet::add_avim() {
-  // @@protoc_insertion_point(field_add:proto.avim_message_packet.avim)
+inline ::message::avim_message* message_packet::add_avim() {
+  // @@protoc_insertion_point(field_add:message.message_packet.avim)
   return avim_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::proto::avim_message >&
-avim_message_packet::avim() const {
-  // @@protoc_insertion_point(field_list:proto.avim_message_packet.avim)
+inline const ::google::protobuf::RepeatedPtrField< ::message::avim_message >&
+message_packet::avim() const {
+  // @@protoc_insertion_point(field_list:message.message_packet.avim)
   return avim_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::proto::avim_message >*
-avim_message_packet::mutable_avim() {
-  // @@protoc_insertion_point(field_mutable_list:proto.avim_message_packet.avim)
+inline ::google::protobuf::RepeatedPtrField< ::message::avim_message >*
+message_packet::mutable_avim() {
+  // @@protoc_insertion_point(field_mutable_list:message.message_packet.avim)
   return &avim_;
 }
 
 // optional uint64 serial = 2;
-inline bool avim_message_packet::has_serial() const {
+inline bool message_packet::has_serial() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void avim_message_packet::set_has_serial() {
+inline void message_packet::set_has_serial() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void avim_message_packet::clear_has_serial() {
+inline void message_packet::clear_has_serial() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void avim_message_packet::clear_serial() {
+inline void message_packet::clear_serial() {
   serial_ = GOOGLE_ULONGLONG(0);
   clear_has_serial();
 }
-inline ::google::protobuf::uint64 avim_message_packet::serial() const {
-  // @@protoc_insertion_point(field_get:proto.avim_message_packet.serial)
+inline ::google::protobuf::uint64 message_packet::serial() const {
+  // @@protoc_insertion_point(field_get:message.message_packet.serial)
   return serial_;
 }
-inline void avim_message_packet::set_serial(::google::protobuf::uint64 value) {
+inline void message_packet::set_serial(::google::protobuf::uint64 value) {
   set_has_serial();
   serial_ = value;
-  // @@protoc_insertion_point(field_set:proto.avim_message_packet.serial)
+  // @@protoc_insertion_point(field_set:message.message_packet.serial)
+}
+
+// optional .proto.av_address sender = 3;
+inline bool message_packet::has_sender() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void message_packet::set_has_sender() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void message_packet::clear_has_sender() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void message_packet::clear_sender() {
+  if (sender_ != NULL) sender_->::proto::av_address::Clear();
+  clear_has_sender();
+}
+inline const ::proto::av_address& message_packet::sender() const {
+  // @@protoc_insertion_point(field_get:message.message_packet.sender)
+  return sender_ != NULL ? *sender_ : *default_instance_->sender_;
+}
+inline ::proto::av_address* message_packet::mutable_sender() {
+  set_has_sender();
+  if (sender_ == NULL) sender_ = new ::proto::av_address;
+  // @@protoc_insertion_point(field_mutable:message.message_packet.sender)
+  return sender_;
+}
+inline ::proto::av_address* message_packet::release_sender() {
+  clear_has_sender();
+  ::proto::av_address* temp = sender_;
+  sender_ = NULL;
+  return temp;
+}
+inline void message_packet::set_allocated_sender(::proto::av_address* sender) {
+  delete sender_;
+  sender_ = sender;
+  if (sender) {
+    set_has_sender();
+  } else {
+    clear_has_sender();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.message_packet.sender)
+}
+
+// -------------------------------------------------------------------
+
+// group_security_key
+
+// required bytes key = 1;
+inline bool group_security_key::has_key() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void group_security_key::set_has_key() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void group_security_key::clear_has_key() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void group_security_key::clear_key() {
+  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_->clear();
+  }
+  clear_has_key();
+}
+inline const ::std::string& group_security_key::key() const {
+  // @@protoc_insertion_point(field_get:message.group_security_key.key)
+  return *key_;
+}
+inline void group_security_key::set_key(const ::std::string& value) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  key_->assign(value);
+  // @@protoc_insertion_point(field_set:message.group_security_key.key)
+}
+inline void group_security_key::set_key(const char* value) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  key_->assign(value);
+  // @@protoc_insertion_point(field_set_char:message.group_security_key.key)
+}
+inline void group_security_key::set_key(const void* value, size_t size) {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  key_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:message.group_security_key.key)
+}
+inline ::std::string* group_security_key::mutable_key() {
+  set_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    key_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:message.group_security_key.key)
+  return key_;
+}
+inline ::std::string* group_security_key::release_key() {
+  clear_has_key();
+  if (key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = key_;
+    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void group_security_key::set_allocated_key(::std::string* key) {
+  if (key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete key_;
+  }
+  if (key) {
+    set_has_key();
+    key_ = key;
+  } else {
+    clear_has_key();
+    key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.group_security_key.key)
+}
+
+// required bytes prev_key = 2;
+inline bool group_security_key::has_prev_key() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void group_security_key::set_has_prev_key() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void group_security_key::clear_has_prev_key() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void group_security_key::clear_prev_key() {
+  if (prev_key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    prev_key_->clear();
+  }
+  clear_has_prev_key();
+}
+inline const ::std::string& group_security_key::prev_key() const {
+  // @@protoc_insertion_point(field_get:message.group_security_key.prev_key)
+  return *prev_key_;
+}
+inline void group_security_key::set_prev_key(const ::std::string& value) {
+  set_has_prev_key();
+  if (prev_key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    prev_key_ = new ::std::string;
+  }
+  prev_key_->assign(value);
+  // @@protoc_insertion_point(field_set:message.group_security_key.prev_key)
+}
+inline void group_security_key::set_prev_key(const char* value) {
+  set_has_prev_key();
+  if (prev_key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    prev_key_ = new ::std::string;
+  }
+  prev_key_->assign(value);
+  // @@protoc_insertion_point(field_set_char:message.group_security_key.prev_key)
+}
+inline void group_security_key::set_prev_key(const void* value, size_t size) {
+  set_has_prev_key();
+  if (prev_key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    prev_key_ = new ::std::string;
+  }
+  prev_key_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:message.group_security_key.prev_key)
+}
+inline ::std::string* group_security_key::mutable_prev_key() {
+  set_has_prev_key();
+  if (prev_key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    prev_key_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:message.group_security_key.prev_key)
+  return prev_key_;
+}
+inline ::std::string* group_security_key::release_prev_key() {
+  clear_has_prev_key();
+  if (prev_key_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = prev_key_;
+    prev_key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void group_security_key::set_allocated_prev_key(::std::string* prev_key) {
+  if (prev_key_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete prev_key_;
+  }
+  if (prev_key) {
+    set_has_prev_key();
+    prev_key_ = prev_key;
+  } else {
+    clear_has_prev_key();
+    prev_key_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.group_security_key.prev_key)
+}
+
+// required uint64 valid_until = 3;
+inline bool group_security_key::has_valid_until() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void group_security_key::set_has_valid_until() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void group_security_key::clear_has_valid_until() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void group_security_key::clear_valid_until() {
+  valid_until_ = GOOGLE_ULONGLONG(0);
+  clear_has_valid_until();
+}
+inline ::google::protobuf::uint64 group_security_key::valid_until() const {
+  // @@protoc_insertion_point(field_get:message.group_security_key.valid_until)
+  return valid_until_;
+}
+inline void group_security_key::set_valid_until(::google::protobuf::uint64 value) {
+  set_has_valid_until();
+  valid_until_ = value;
+  // @@protoc_insertion_point(field_set:message.group_security_key.valid_until)
+}
+
+// required uint32 key_id = 4;
+inline bool group_security_key::has_key_id() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void group_security_key::set_has_key_id() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void group_security_key::clear_has_key_id() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void group_security_key::clear_key_id() {
+  key_id_ = 0u;
+  clear_has_key_id();
+}
+inline ::google::protobuf::uint32 group_security_key::key_id() const {
+  // @@protoc_insertion_point(field_get:message.group_security_key.key_id)
+  return key_id_;
+}
+inline void group_security_key::set_key_id(::google::protobuf::uint32 value) {
+  set_has_key_id();
+  key_id_ = value;
+  // @@protoc_insertion_point(field_set:message.group_security_key.key_id)
+}
+
+// -------------------------------------------------------------------
+
+// control_message_buddy_state_notify
+
+// required .proto.av_address who = 1;
+inline bool control_message_buddy_state_notify::has_who() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void control_message_buddy_state_notify::set_has_who() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void control_message_buddy_state_notify::clear_has_who() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void control_message_buddy_state_notify::clear_who() {
+  if (who_ != NULL) who_->::proto::av_address::Clear();
+  clear_has_who();
+}
+inline const ::proto::av_address& control_message_buddy_state_notify::who() const {
+  // @@protoc_insertion_point(field_get:message.control_message.buddy_state_notify.who)
+  return who_ != NULL ? *who_ : *default_instance_->who_;
+}
+inline ::proto::av_address* control_message_buddy_state_notify::mutable_who() {
+  set_has_who();
+  if (who_ == NULL) who_ = new ::proto::av_address;
+  // @@protoc_insertion_point(field_mutable:message.control_message.buddy_state_notify.who)
+  return who_;
+}
+inline ::proto::av_address* control_message_buddy_state_notify::release_who() {
+  clear_has_who();
+  ::proto::av_address* temp = who_;
+  who_ = NULL;
+  return temp;
+}
+inline void control_message_buddy_state_notify::set_allocated_who(::proto::av_address* who) {
+  delete who_;
+  who_ = who;
+  if (who) {
+    set_has_who();
+  } else {
+    clear_has_who();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.control_message.buddy_state_notify.who)
+}
+
+// required .message.control_message.buddy_state state = 2;
+inline bool control_message_buddy_state_notify::has_state() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void control_message_buddy_state_notify::set_has_state() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void control_message_buddy_state_notify::clear_has_state() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void control_message_buddy_state_notify::clear_state() {
+  state_ = 0;
+  clear_has_state();
+}
+inline ::message::control_message_buddy_state control_message_buddy_state_notify::state() const {
+  // @@protoc_insertion_point(field_get:message.control_message.buddy_state_notify.state)
+  return static_cast< ::message::control_message_buddy_state >(state_);
+}
+inline void control_message_buddy_state_notify::set_state(::message::control_message_buddy_state value) {
+  assert(::message::control_message_buddy_state_IsValid(value));
+  set_has_state();
+  state_ = value;
+  // @@protoc_insertion_point(field_set:message.control_message.buddy_state_notify.state)
+}
+
+// -------------------------------------------------------------------
+
+// control_message
+
+// optional .proto.av_address sender = 1;
+inline bool control_message::has_sender() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void control_message::set_has_sender() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void control_message::clear_has_sender() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void control_message::clear_sender() {
+  if (sender_ != NULL) sender_->::proto::av_address::Clear();
+  clear_has_sender();
+}
+inline const ::proto::av_address& control_message::sender() const {
+  // @@protoc_insertion_point(field_get:message.control_message.sender)
+  return sender_ != NULL ? *sender_ : *default_instance_->sender_;
+}
+inline ::proto::av_address* control_message::mutable_sender() {
+  set_has_sender();
+  if (sender_ == NULL) sender_ = new ::proto::av_address;
+  // @@protoc_insertion_point(field_mutable:message.control_message.sender)
+  return sender_;
+}
+inline ::proto::av_address* control_message::release_sender() {
+  clear_has_sender();
+  ::proto::av_address* temp = sender_;
+  sender_ = NULL;
+  return temp;
+}
+inline void control_message::set_allocated_sender(::proto::av_address* sender) {
+  delete sender_;
+  sender_ = sender;
+  if (sender) {
+    set_has_sender();
+  } else {
+    clear_has_sender();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.control_message.sender)
+}
+
+// optional .message.group_security_key group_key = 2;
+inline bool control_message::has_group_key() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void control_message::set_has_group_key() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void control_message::clear_has_group_key() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void control_message::clear_group_key() {
+  if (group_key_ != NULL) group_key_->::message::group_security_key::Clear();
+  clear_has_group_key();
+}
+inline const ::message::group_security_key& control_message::group_key() const {
+  // @@protoc_insertion_point(field_get:message.control_message.group_key)
+  return group_key_ != NULL ? *group_key_ : *default_instance_->group_key_;
+}
+inline ::message::group_security_key* control_message::mutable_group_key() {
+  set_has_group_key();
+  if (group_key_ == NULL) group_key_ = new ::message::group_security_key;
+  // @@protoc_insertion_point(field_mutable:message.control_message.group_key)
+  return group_key_;
+}
+inline ::message::group_security_key* control_message::release_group_key() {
+  clear_has_group_key();
+  ::message::group_security_key* temp = group_key_;
+  group_key_ = NULL;
+  return temp;
+}
+inline void control_message::set_allocated_group_key(::message::group_security_key* group_key) {
+  delete group_key_;
+  group_key_ = group_key;
+  if (group_key) {
+    set_has_group_key();
+  } else {
+    clear_has_group_key();
+  }
+  // @@protoc_insertion_point(field_set_allocated:message.control_message.group_key)
+}
+
+// repeated .proto.av_address new_bie = 3;
+inline int control_message::new_bie_size() const {
+  return new_bie_.size();
+}
+inline void control_message::clear_new_bie() {
+  new_bie_.Clear();
+}
+inline const ::proto::av_address& control_message::new_bie(int index) const {
+  // @@protoc_insertion_point(field_get:message.control_message.new_bie)
+  return new_bie_.Get(index);
+}
+inline ::proto::av_address* control_message::mutable_new_bie(int index) {
+  // @@protoc_insertion_point(field_mutable:message.control_message.new_bie)
+  return new_bie_.Mutable(index);
+}
+inline ::proto::av_address* control_message::add_new_bie() {
+  // @@protoc_insertion_point(field_add:message.control_message.new_bie)
+  return new_bie_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto::av_address >&
+control_message::new_bie() const {
+  // @@protoc_insertion_point(field_list:message.control_message.new_bie)
+  return new_bie_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto::av_address >*
+control_message::mutable_new_bie() {
+  // @@protoc_insertion_point(field_mutable_list:message.control_message.new_bie)
+  return &new_bie_;
+}
+
+// repeated .proto.av_address gone_bie = 4;
+inline int control_message::gone_bie_size() const {
+  return gone_bie_.size();
+}
+inline void control_message::clear_gone_bie() {
+  gone_bie_.Clear();
+}
+inline const ::proto::av_address& control_message::gone_bie(int index) const {
+  // @@protoc_insertion_point(field_get:message.control_message.gone_bie)
+  return gone_bie_.Get(index);
+}
+inline ::proto::av_address* control_message::mutable_gone_bie(int index) {
+  // @@protoc_insertion_point(field_mutable:message.control_message.gone_bie)
+  return gone_bie_.Mutable(index);
+}
+inline ::proto::av_address* control_message::add_gone_bie() {
+  // @@protoc_insertion_point(field_add:message.control_message.gone_bie)
+  return gone_bie_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto::av_address >&
+control_message::gone_bie() const {
+  // @@protoc_insertion_point(field_list:message.control_message.gone_bie)
+  return gone_bie_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto::av_address >*
+control_message::mutable_gone_bie() {
+  // @@protoc_insertion_point(field_mutable_list:message.control_message.gone_bie)
+  return &gone_bie_;
+}
+
+// repeated .message.control_message.buddy_state_notify buddy_status = 5;
+inline int control_message::buddy_status_size() const {
+  return buddy_status_.size();
+}
+inline void control_message::clear_buddy_status() {
+  buddy_status_.Clear();
+}
+inline const ::message::control_message_buddy_state_notify& control_message::buddy_status(int index) const {
+  // @@protoc_insertion_point(field_get:message.control_message.buddy_status)
+  return buddy_status_.Get(index);
+}
+inline ::message::control_message_buddy_state_notify* control_message::mutable_buddy_status(int index) {
+  // @@protoc_insertion_point(field_mutable:message.control_message.buddy_status)
+  return buddy_status_.Mutable(index);
+}
+inline ::message::control_message_buddy_state_notify* control_message::add_buddy_status() {
+  // @@protoc_insertion_point(field_add:message.control_message.buddy_status)
+  return buddy_status_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::message::control_message_buddy_state_notify >&
+control_message::buddy_status() const {
+  // @@protoc_insertion_point(field_list:message.control_message.buddy_status)
+  return buddy_status_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::message::control_message_buddy_state_notify >*
+control_message::mutable_buddy_status() {
+  // @@protoc_insertion_point(field_mutable_list:message.control_message.buddy_status)
+  return &buddy_status_;
 }
 
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace proto
+}  // namespace message
 
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::proto::symmetry_encryption_key_distribution_EncryptionType> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::message::symmetry_encryption_key_distribution_EncryptionType> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::proto::symmetry_encryption_key_distribution_EncryptionType>() {
-  return ::proto::symmetry_encryption_key_distribution_EncryptionType_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::message::symmetry_encryption_key_distribution_EncryptionType>() {
+  return ::message::symmetry_encryption_key_distribution_EncryptionType_descriptor();
+}
+template <> struct is_proto_enum< ::message::control_message_buddy_state> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::message::control_message_buddy_state>() {
+  return ::message::control_message_buddy_state_descriptor();
 }
 
 }  // namespace google
