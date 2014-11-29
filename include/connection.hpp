@@ -41,7 +41,7 @@ namespace av_router {
 
 	public:
 		void start();
-		void close();
+		void stop();
 
 		tcp::socket& socket();
 		void write_msg(const std::string& msg);
@@ -49,6 +49,8 @@ namespace av_router {
 		boost::any retrive_module_private(const std::string& module_name);
 		void store_module_private(const std::string& module_name, const boost::any& ptr);
 	private:
+		void close();
+
 		void handle_read_header(const boost::system::error_code& error, std::size_t bytes_transferred);
 		void handle_read_body(const boost::system::error_code& error, std::size_t bytes_transferred);
 		void handle_write(const boost::system::error_code& error);
@@ -82,32 +84,26 @@ namespace av_router {
 			c->start();
 		}
 
-		/// remove the connection.
-		void remove_connection(connection_ptr c)
+		/// Stop the specified connection.
+		void stop(connection_ptr c)
 		{
 			boost::mutex::scoped_lock l(m_mutex);
 			if (m_connections.find(c) != m_connections.end())
 				m_connections.erase(c);
+			c->stop();
 		}
 
 		/// Stop all connections.
 		void stop_all()
 		{
 			boost::mutex::scoped_lock l(m_mutex);
-			for (auto weak : m_connections)
-			{
-				connection_ptr shared = weak.lock();
-				assert(shared);
-				if (shared)
-				{
-					shared->close();
-				}
-			}
+			std::for_each(m_connections.begin(), m_connections.end(),
+				boost::bind(&connection::stop, _1));
 			m_connections.clear();
 		}
 
 	private:
 		boost::mutex m_mutex;
-		std::set<connection_weak_ptr> m_connections;
+		std::set<connection_ptr> m_connections;
 	};
 }

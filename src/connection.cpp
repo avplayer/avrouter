@@ -18,10 +18,6 @@ namespace av_router {
 
 	connection::~connection()
 	{
-		m_connection_manager->remove_connection(shared_from_this());
-		m_server.do_connection_notify(1, shared_from_this());
-		close();
-
 		LOG_DBG << "destruct connection: " << this;
 	}
 
@@ -48,18 +44,22 @@ namespace av_router {
 		);
 	}
 
-	void connection::close()
+	void connection::stop()
 	{
-		m_abort = true;
-
-		//是否应该判断下m_socket.is_open()?
+		m_server.do_connection_notify(1, shared_from_this());
 		boost::system::error_code ignore_ec;
+		m_abort = true;
 		m_socket.close(ignore_ec);
 	}
 
 	tcp::socket& connection::socket()
 	{
 		return m_socket;
+	}
+
+	void connection::close()
+	{
+		m_connection_manager->stop(shared_from_this());
 	}
 
 	void connection::handle_read_header(const boost::system::error_code& error, std::size_t bytes_transferred)
