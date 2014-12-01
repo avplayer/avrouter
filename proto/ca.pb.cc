@@ -287,7 +287,7 @@ void csr_request::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_request::csr_request(csr_request&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -602,7 +602,7 @@ void csr_result::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_result::csr_result(csr_result&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -930,7 +930,7 @@ void push_ok::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 push_ok::push_ok(push_ok&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1156,7 +1156,7 @@ void cert_pull::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 cert_pull::cert_pull(cert_pull&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1395,7 +1395,7 @@ void csr_pull::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_pull::csr_pull(csr_pull&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1631,7 +1631,7 @@ void csr_pendding::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_pendding::csr_pendding(csr_pendding&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1816,7 +1816,7 @@ void csr_pendding_list::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_pendding_list::csr_pendding_list(csr_pendding_list&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 

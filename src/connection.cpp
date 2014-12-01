@@ -1,4 +1,4 @@
-#include <boost/smart_ptr.hpp>
+﻿#include <boost/smart_ptr.hpp>
 #include <boost/any.hpp>
 #include "router_server.hpp"
 #include "connection.hpp"
@@ -81,7 +81,7 @@ namespace av_router {
 		tempbuf.sgetn(reinterpret_cast<char*>(&packet_length), sizeof(packet_length));
 		packet_length = ntohl(packet_length);
 
-		if (packet_length > 64 * 1024) // 过大的数据包, 此客户端有问题, 果然断开.
+		if (packet_length > 64 * 1024) // 过大的数据包, 此客户端有问题, 果断断开.
 		{
 			close();
 			return;
@@ -141,10 +141,11 @@ namespace av_router {
 
 	void connection::handle_write(const boost::system::error_code& error)
 	{
-		// 通知writr完成.
-		auto handler = m_write_queue.front().handler;
+		write_handler& handler = m_write_queue.front().handler;
 		if (handler)
+		{
 			handler(error);
+		}
 
 		if (!error)
 		{
@@ -167,16 +168,16 @@ namespace av_router {
 		}
 	}
 
-	void connection::write_msg(const std::string& msg, const msg_handler& handler)
+	void connection::write_msg(const std::string& msg, const write_handler& handler)
 	{
-		m_io_service.post(boost::bind(&connection::do_write, shared_from_this(), msg,handler));
+		m_io_service.post(boost::bind(&connection::do_write, shared_from_this(), msg, handler));
 	}
 
-	void connection::do_write(std::string msg, msg_handler handler)
+	void connection::do_write(std::string msg, write_handler handler)
 	{
 		bool write_in_progress = !m_write_queue.empty();
-		msg_pack_t pack = { msg, handler };
-		m_write_queue.push_back(pack);
+		message item = { msg, handler };
+		m_write_queue.push_back(item);
 		if (!write_in_progress)
 		{
 			boost::asio::async_write(m_socket,
@@ -188,17 +189,16 @@ namespace av_router {
 				)
 			);
 		}
-
 	}
 
-	boost::any connection::retrive_module_private(const std::string& module_name)
+	boost::any connection::property(const std::string& prop)
 	{
-		return m_module_private_info_ptrs[module_name];
+		return m_connection_propertys[prop];
 	}
 
-	void connection::store_module_private(const std::string& module_name, const boost::any& ptr)
+	void connection::property(const std::string& prop, const boost::any& value)
 	{
-		m_module_private_info_ptrs[module_name] = ptr;
+		m_connection_propertys[prop] = value;
 	}
 
 }
