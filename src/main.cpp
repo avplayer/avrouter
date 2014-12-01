@@ -137,6 +137,7 @@ int main(int argc, char** argv)
 		// 添加包的转发处理模块
 		router_serv.add_message_process_moudle("proto.avpacket", boost::bind(&forward_moudle::process_packet, &forward_packet, _1, _2, _3));
 		router_serv.add_connection_process_moudle("proto.avpacket", boost::bind(&forward_moudle::connection_notify, &forward_packet, _1, _2, _3));
+
 		// 启动服务器.
 		router_serv.start();
 
