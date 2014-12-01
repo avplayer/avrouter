@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright (C) 2013 Jack.
 //
 // Author: jack
@@ -45,11 +45,15 @@ namespace av_router {
 		void stop();
 
 		tcp::socket& socket();
-		typedef boost::function<void(const boost::system::error_code&)> msg_handler;
-		void write_msg(const std::string& msg, const msg_handler& handler = msg_handler());
 
-		boost::any retrive_module_private(const std::string& module_name);
-		void store_module_private(const std::string& module_name, const boost::any& ptr);
+		// 消息发送接口, 消息必须是encode编码后的字符串, 支持回调.
+		typedef boost::function<void(const boost::system::error_code&)> write_handler;
+		void write_msg(const std::string& msg, const write_handler& handler = write_handler());
+
+		// 当前连接属性获取或设置.
+		boost::any property(const std::string& prop);
+		void property(const std::string& prop, const boost::any& value);
+
 	private:
 		void close();
 
@@ -57,7 +61,7 @@ namespace av_router {
 		void handle_read_body(const boost::system::error_code& error, std::size_t bytes_transferred);
 		void handle_write(const boost::system::error_code& error);
 
-		void do_write(std::string msg, msg_handler handler);
+		void do_write(std::string msg, write_handler handler);
 
 	private:
 		boost::asio::io_service& m_io_service;
@@ -66,15 +70,15 @@ namespace av_router {
 		connection_manager* m_connection_manager;
 		boost::asio::streambuf m_request;
 		boost::asio::streambuf m_response;
-		struct msg_pack_t
+		struct message
 		{
 			std::string msg;
-			msg_handler handler;
+			write_handler handler;
 		};
-		typedef std::deque<msg_pack_t> write_queue;
+		typedef std::deque<message> write_queue;
 		write_queue m_write_queue;
+		std::map<std::string, boost::any> m_connection_propertys;
 		bool m_abort;
-		std::map<std::string, boost::any> m_module_private_info_ptrs;
 	};
 
 	typedef boost::shared_ptr<connection> connection_ptr;

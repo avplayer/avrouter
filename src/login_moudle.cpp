@@ -81,12 +81,12 @@ namespace av_router {
 		if (iter == m_log_state.end())
 			return false;
 
-		std::string login_check_key = boost::any_cast<std::string>(connection->retrive_module_private("login_check_key"));
+		std::string login_check_key = boost::any_cast<std::string>(connection->property("login_check_key"));
 
 		const unsigned char* in = (unsigned char*)login->user_cert().data();
 
 		boost::shared_ptr<X509> user_cert(d2i_X509(NULL, &in, static_cast<long>(login->user_cert().length())), X509_free);
-		connection->store_module_private("user_cert", user_cert);
+		connection->property("user_cert", user_cert);
 
 		unsigned char* common_name_ptr = NULL;
 		auto cert_name = X509_get_subject_name(user_cert.get());
@@ -122,7 +122,7 @@ namespace av_router {
 			result.set_result(proto::login_result::LOGIN_SUCCEED);
 
 			// 记录登录用户名
-			connection->store_module_private("user_name", common_name);
+			connection->property("user_name", common_name);
 		}
 		else
 		{
@@ -176,8 +176,8 @@ namespace av_router {
 		LOG_DBG << "key: " << key;
 		std::string response = encode(server_hello);
 
-		connection->store_module_private("symmetickey", shared_key);
-		connection->store_module_private("login_check_key", server_hello.random_pub_key());
+		connection->property("symmetickey", shared_key);
+		connection->property("login_check_key", server_hello.random_pub_key());
 
 		// 发回消息.
 		connection->write_msg(response);
