@@ -405,7 +405,7 @@ void client_hello::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 client_hello::client_hello(client_hello&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -836,7 +836,7 @@ void server_hello::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 server_hello::server_hello(server_hello&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1232,7 +1232,7 @@ void login::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 login::login(login&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1599,7 +1599,7 @@ void login_result::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 login_result::login_result(login_result&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1836,7 +1836,7 @@ void username_availability_check::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 username_availability_check::username_availability_check(username_availability_check&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -2109,7 +2109,7 @@ void username_availability_result::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 username_availability_result::username_availability_result(username_availability_result&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -2354,7 +2354,7 @@ void user_register::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 user_register::user_register(user_register&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -2844,7 +2844,7 @@ void user_register_result::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 user_register_result::user_register_result(user_register_result&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -3132,7 +3132,7 @@ void user_cert_lost_request::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 user_cert_lost_request::user_cert_lost_request(user_cert_lost_request&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -3499,7 +3499,7 @@ void user_cert_lost_verify::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 user_cert_lost_verify::user_cert_lost_verify(user_cert_lost_verify&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 

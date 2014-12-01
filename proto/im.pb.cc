@@ -78,9 +78,10 @@ void protobuf_AssignDesc_im_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(text_message));
   img_message_descriptor_ = file->message_type(1);
-  static const int img_message_offsets_[3] = {
+  static const int img_message_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(img_message, image_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(img_message, image_digest_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(img_message, animated_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(img_message, hlink_),
   };
   img_message_reflection_ =
@@ -282,37 +283,37 @@ void protobuf_AddDesc_im_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\010im.proto\022\007message\032\raddress.proto\"N\n\014te"
     "xt_message\022\014\n\004text\030\001 \002(\t\022\020\n\010fontname\030\002 \001"
-    "(\t\022\017\n\007fontsie\030\003 \001(\002\022\r\n\005hlink\030\004 \001(\t\"A\n\013im"
+    "(\t\022\017\n\007fontsie\030\003 \001(\002\022\r\n\005hlink\030\004 \001(\t\"S\n\013im"
     "g_message\022\r\n\005image\030\001 \002(\014\022\024\n\014image_digest"
-    "\030\002 \001(\014\022\r\n\005hlink\030\004 \001(\t\"C\n\remoji_message\022\r"
-    "\n\005emoji\030\001 \002(\t\022\r\n\005theme\030\002 \001(\t\022\024\n\014custom_i"
-    "mage\030\003 \001(\014\"\335\001\n$symmetry_encryption_key_d"
-    "istribution\022M\n\007keytype\030\001 \002(\0162<.message.s"
-    "ymmetry_encryption_key_distribution.Encr"
-    "yptionType\022\013\n\003key\030\002 \002(\014\"Y\n\016EncryptionTyp"
-    "e\022\007\n\003AES\020\000\022\007\n\003DES\020\001\022\014\n\010BlowFish\020\002\022\013\n\007Two"
-    "Fish\020\003\022\014\n\010Camellia\020\004\022\014\n\010DES3_EDE\020\005\"\317\001\n\014a"
-    "vim_message\022(\n\titem_text\030\001 \001(\0132\025.message"
-    ".text_message\022(\n\nitem_image\030\002 \001(\0132\024.mess"
-    "age.img_message\022*\n\nitem_emoji\030\003 \001(\0132\026.me"
-    "ssage.emoji_message\022\?\n\010item_key\030\024 \001(\0132-."
-    "message.symmetry_encryption_key_distribu"
-    "tion\"h\n\016message_packet\022#\n\004avim\030\001 \003(\0132\025.m"
-    "essage.avim_message\022\016\n\006serial\030\002 \001(\004\022!\n\006s"
-    "ender\030\003 \001(\0132\021.proto.av_address\"X\n\022group_"
-    "security_key\022\013\n\003key\030\001 \002(\014\022\020\n\010prev_key\030\002 "
-    "\002(\014\022\023\n\013valid_until\030\003 \002(\004\022\016\n\006key_id\030\004 \002(\r"
-    "\"\220\003\n\017control_message\022!\n\006sender\030\001 \001(\0132\021.p"
-    "roto.av_address\022.\n\tgroup_key\030\002 \001(\0132\033.mes"
-    "sage.group_security_key\022\"\n\007new_bie\030\003 \003(\013"
-    "2\021.proto.av_address\022#\n\010gone_bie\030\004 \003(\0132\021."
-    "proto.av_address\022A\n\014buddy_status\030\005 \003(\0132+"
-    ".message.control_message.buddy_state_not"
-    "ify\032i\n\022buddy_state_notify\022\036\n\003who\030\001 \002(\0132\021"
-    ".proto.av_address\0223\n\005state\030\002 \002(\0162$.messa"
-    "ge.control_message.buddy_state\"3\n\013buddy_"
-    "state\022\n\n\006ONLINE\020\000\022\013\n\007OFFLINE\020\001\022\013\n\007HIDDIN"
-    "G\020\002P\000", 1285);
+    "\030\002 \001(\014\022\020\n\010animated\030\003 \001(\010\022\r\n\005hlink\030\004 \001(\t\""
+    "C\n\remoji_message\022\r\n\005emoji\030\001 \002(\t\022\r\n\005theme"
+    "\030\002 \001(\t\022\024\n\014custom_image\030\003 \001(\014\"\335\001\n$symmetr"
+    "y_encryption_key_distribution\022M\n\007keytype"
+    "\030\001 \002(\0162<.message.symmetry_encryption_key"
+    "_distribution.EncryptionType\022\013\n\003key\030\002 \002("
+    "\014\"Y\n\016EncryptionType\022\007\n\003AES\020\000\022\007\n\003DES\020\001\022\014\n"
+    "\010BlowFish\020\002\022\013\n\007TwoFish\020\003\022\014\n\010Camellia\020\004\022\014"
+    "\n\010DES3_EDE\020\005\"\317\001\n\014avim_message\022(\n\titem_te"
+    "xt\030\001 \001(\0132\025.message.text_message\022(\n\nitem_"
+    "image\030\002 \001(\0132\024.message.img_message\022*\n\nite"
+    "m_emoji\030\003 \001(\0132\026.message.emoji_message\022\?\n"
+    "\010item_key\030\024 \001(\0132-.message.symmetry_encry"
+    "ption_key_distribution\"h\n\016message_packet"
+    "\022#\n\004avim\030\001 \003(\0132\025.message.avim_message\022\016\n"
+    "\006serial\030\002 \001(\004\022!\n\006sender\030\003 \001(\0132\021.proto.av"
+    "_address\"X\n\022group_security_key\022\013\n\003key\030\001 "
+    "\002(\014\022\020\n\010prev_key\030\002 \002(\014\022\023\n\013valid_until\030\003 \002"
+    "(\004\022\016\n\006key_id\030\004 \002(\r\"\220\003\n\017control_message\022!"
+    "\n\006sender\030\001 \001(\0132\021.proto.av_address\022.\n\tgro"
+    "up_key\030\002 \001(\0132\033.message.group_security_ke"
+    "y\022\"\n\007new_bie\030\003 \003(\0132\021.proto.av_address\022#\n"
+    "\010gone_bie\030\004 \003(\0132\021.proto.av_address\022A\n\014bu"
+    "ddy_status\030\005 \003(\0132+.message.control_messa"
+    "ge.buddy_state_notify\032i\n\022buddy_state_not"
+    "ify\022\036\n\003who\030\001 \002(\0132\021.proto.av_address\0223\n\005s"
+    "tate\030\002 \002(\0162$.message.control_message.bud"
+    "dy_state\"3\n\013buddy_state\022\n\n\006ONLINE\020\000\022\013\n\007O"
+    "FFLINE\020\001\022\013\n\007HIDDING\020\002P\000", 1303);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "im.proto", &protobuf_RegisterTypes);
   text_message::default_instance_ = new text_message();
@@ -381,7 +382,7 @@ void text_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 text_message::text_message(text_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -756,6 +757,7 @@ void text_message::Swap(text_message* other) {
 #ifndef _MSC_VER
 const int img_message::kImageFieldNumber;
 const int img_message::kImageDigestFieldNumber;
+const int img_message::kAnimatedFieldNumber;
 const int img_message::kHlinkFieldNumber;
 #endif  // !_MSC_VER
 
@@ -780,6 +782,7 @@ void img_message::SharedCtor() {
   _cached_size_ = 0;
   image_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   image_digest_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  animated_ = false;
   hlink_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -787,7 +790,7 @@ void img_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 img_message::img_message(img_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -832,7 +835,7 @@ img_message* img_message::New() const {
 }
 
 void img_message::Clear() {
-  if (_has_bits_[0 / 32] & 7) {
+  if (_has_bits_[0 / 32] & 15) {
     if (has_image()) {
       if (image_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         image_->clear();
@@ -843,6 +846,7 @@ void img_message::Clear() {
         image_digest_->clear();
       }
     }
+    animated_ = false;
     if (has_hlink()) {
       if (hlink_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         hlink_->clear();
@@ -881,6 +885,21 @@ bool img_message::MergePartialFromCodedStream(
          parse_image_digest:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_image_digest()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_animated;
+        break;
+      }
+
+      // optional bool animated = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_animated:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &animated_)));
+          set_has_animated();
         } else {
           goto handle_unusual;
         }
@@ -942,6 +961,11 @@ void img_message::SerializeWithCachedSizes(
       2, this->image_digest(), output);
   }
 
+  // optional bool animated = 3;
+  if (has_animated()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->animated(), output);
+  }
+
   // optional string hlink = 4;
   if (has_hlink()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -974,6 +998,11 @@ void img_message::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         2, this->image_digest(), target);
+  }
+
+  // optional bool animated = 3;
+  if (has_animated()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->animated(), target);
   }
 
   // optional string hlink = 4;
@@ -1011,6 +1040,11 @@ int img_message::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
           this->image_digest());
+    }
+
+    // optional bool animated = 3;
+    if (has_animated()) {
+      total_size += 1 + 1;
     }
 
     // optional string hlink = 4;
@@ -1053,6 +1087,9 @@ void img_message::MergeFrom(const img_message& from) {
     if (from.has_image_digest()) {
       set_image_digest(from.image_digest());
     }
+    if (from.has_animated()) {
+      set_animated(from.animated());
+    }
     if (from.has_hlink()) {
       set_hlink(from.hlink());
     }
@@ -1082,6 +1119,7 @@ void img_message::Swap(img_message* other) {
   if (other != this) {
     std::swap(image_, other->image_);
     std::swap(image_digest_, other->image_digest_);
+    std::swap(animated_, other->animated_);
     std::swap(hlink_, other->hlink_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -1134,7 +1172,7 @@ void emoji_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 emoji_message::emoji_message(emoji_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1520,7 +1558,7 @@ void symmetry_encryption_key_distribution::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 symmetry_encryption_key_distribution::symmetry_encryption_key_distribution(symmetry_encryption_key_distribution&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -1813,7 +1851,7 @@ void avim_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 avim_message::avim_message(avim_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -2187,7 +2225,7 @@ void message_packet::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 message_packet::message_packet(message_packet&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -2509,7 +2547,7 @@ void group_security_key::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 group_security_key::group_security_key(group_security_key&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -2907,7 +2945,7 @@ void control_message_buddy_state_notify::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 control_message_buddy_state_notify::control_message_buddy_state_notify(control_message_buddy_state_notify&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
@@ -3196,7 +3234,7 @@ void control_message::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 control_message::control_message(control_message&& from)
   : ::google::protobuf::Message() {
-  Swap(&from);
+  SharedCtor();  Swap(&from);
 }
 #endif
 
