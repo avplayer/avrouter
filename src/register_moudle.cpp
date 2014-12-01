@@ -13,159 +13,6 @@
 
 namespace av_router {
 
-	namespace detail {
-
-		template<class AsyncStream>
-		static google::protobuf::Message* async_read_protobuf_message(AsyncStream& stream, boost::asio::yield_context yield_context)
-		{
-			boost::system::error_code ec;
-
-			std::string buf;
-			buf.resize(4);
-			boost::asio::async_read(stream, boost::asio::buffer(&buf[0], 4), yield_context[ec]);
-			if (ec)
-			{
-				LOG_ERR << "async read ca.avplayer.org packet header, error: " << ec.message();
-				return nullptr;
-			}
-
-			uint32_t pktlen = ntohl(*(uint32_t*)(buf.data()));
-			if (pktlen >= 10000)
-				return nullptr;
-
-			buf.resize(pktlen + 4);
-			boost::asio::async_read(stream, boost::asio::buffer(&buf[4], pktlen), yield_context[ec]);
-			if (ec)
-			{
-				LOG_ERR << "async read ca.avplayer.org packet body, error: " << ec.message();
-				return nullptr;
-			}
-
-			return decode(buf);
-		}
-
-		// NOTE: 看上去很复杂, 不过这个是暂时的, 因为稍后会用大兽模式, 与 CA 建立长连接来处理
-		// 而不是像现在这样使用短连接+轮询.
-		template<class Handler>
-		static void async_send_csr_coro(boost::asio::io_service& io, std::string csr, std::string rsa_fingerprint, Handler handler, boost::asio::yield_context yield_context)
-		{
-			boost::system::error_code ec;
-			tcp::socket sock(io);
-
-			// 解析ca.avplayer.org
-			tcp::resolver resolver(io);
-			auto endpoint_it = resolver.async_resolve(tcp::resolver::query("ca.avplayer.org", "8086"), yield_context[ec]);
-			if (ec)
-			{
-				LOG_ERR << "resolver ca.avplayer.org failed, error: " << ec.message();
-				return;
-			}
-
-			// 连接到ca.avplayer.org:8086
-			boost::asio::async_connect(sock, endpoint_it, yield_context[ec]);
-			if (ec)
-			{
-				LOG_ERR << "async connect to ca.avplayer.org failed, error: " << ec.message();
-				return;
-			}
-
-			proto::ca::csr_push csr_push;
-			csr_push.set_csr(csr);
-
-			// 发送push_csr请求.
-			boost::asio::async_write(sock, boost::asio::buffer(encode(csr_push)), yield_context[ec]);
-			if (ec)
-			{
-				LOG_ERR << "async write push_csr to ca.avplayer.org failed, error: " << ec.message();
-				return;
-			}
-
-			bool push_ready = false;
-			// 等待 push_ok
-			do {
-				std::shared_ptr<google::protobuf::Message> msg(async_read_protobuf_message(sock, yield_context));
-				if (msg && msg->GetTypeName() == "proto.ca.push_ok")
-				{
-					for (const std::string& fingerprint : dynamic_cast<proto::ca::push_ok*>(msg.get())->fingerprints())
-					{
-						if (fingerprint == rsa_fingerprint)
-							push_ready = true;
-					}
-				}
-			} while (false);
-
-			if (!push_ready)
-			{
-				io.post(std::bind(handler, -1, std::string()));
-				return;
-			}
-
-			boost::asio::deadline_timer timer(io);
-			std::atomic<bool> can_read(false);
-
-			boost::asio::async_read(sock, boost::asio::null_buffers(),
-				[&can_read](boost::system::error_code ec, std::size_t)
-				{
-					can_read = !ec;
-				});
-
-			// 十秒后取消读取.
-			timer.expires_from_now(boost::posix_time::seconds(10));
-			timer.async_wait(yield_context[ec]);
-			if (ec)
-			{
-				LOG_ERR << "async timer wait error: " << ec.message();
-				return;
-			}
-
-			// 每秒轮询一次 pull_cert
-			// 只轮询 10 次, 这样要求 10s 内给出结果.
-			for (int i = 0; i < 10 && !can_read; i++)
-			{
-				proto::ca::cert_pull cert_pull;
-				cert_pull.set_fingerprint(rsa_fingerprint);
-				boost::asio::async_write(sock, boost::asio::buffer(encode(csr_push)), yield_context[ec]);
-				if (ec)
-				{
-					LOG_ERR << "async write csr_push to ca.avplayer.org failed, error: " << ec.message();
-					return;
-				}
-				boost::asio::deadline_timer timer(io);
-				timer.expires_from_now(boost::posix_time::seconds(1));
-				timer.async_wait(yield_context[ec]);
-				if (ec)
-				{
-					LOG_ERR << "async timer wait error: " << ec.message();
-					return;
-				}
-			}
-			timer.cancel(ec);
-
-			if (can_read)
-			{
-				// 返回 cert.
-				std::shared_ptr<google::protobuf::Message> msg(async_read_protobuf_message(sock, yield_context));
-
-				if (msg && msg->GetTypeName() == "proto.ca.cert_push" && dynamic_cast<proto::ca::cert_push*>(msg.get())->fingerprint() == rsa_fingerprint)
-				{
-					io.post(std::bind(handler, 0, dynamic_cast<proto::ca::cert_push*>(msg.get())->cert()));
-				}
-			}
-
-			io.post(std::bind(handler, 1, std::string()));
-		}
-
-		// 暂时的嘛, 等 CA 签名服务器写好了, 这个就可以删了.
-		template<class Handler>
-		static void async_send_csr(boost::asio::io_service& io, std::string csr, std::string rsa_figureprint, Handler handler)
-		{
-			// 开协程, 否则编程太麻烦了, 不是么?
-			boost::asio::spawn(io, boost::bind(detail::async_send_csr_coro<Handler>, boost::ref(io), csr, rsa_figureprint, handler, _1));
-		}
-
-	} // namespace detail
-
-
 	register_moudle::register_moudle(io_service_pool& io_pool, database& db)
 		: m_io_service_pool(io_pool)
 		, m_database(db)
@@ -247,6 +94,7 @@ namespace av_router {
 
 		// 确定是合法的 CSR 证书, 接着数据库内插
 		std::string user_name = register_msg->user_name();
+		std::string csr_der_string = register_msg->csr();
 		m_database.register_user(user_name, rsa_pubkey, register_msg->mail_address(), register_msg->cell_phone(),
 			[=](bool result)
 			{
@@ -263,38 +111,12 @@ namespace av_router {
 
 					SHA1((unsigned char*)rsa_pubkey.data(), rsa_pubkey.length(), (unsigned char*) &rsa_figureprint[0]);
 
-					std::shared_ptr<BIO> bio(BIO_new(BIO_s_mem()), BIO_free);
-					PEM_write_bio_X509_REQ(bio.get(), csr.get());
+					proto::ca::csr_request csr_request;
+					csr_request.set_csr(csr_der_string);
+					csr_request.set_fingerprint(rsa_figureprint);
 
-					unsigned char* PEM_CSR = NULL;
-					auto PEM_CSR_LEN = BIO_get_mem_data(bio.get(), &PEM_CSR);
-					std::string pem_csr((char*)PEM_CSR, PEM_CSR_LEN);
+					// TODO call to packet forwarder to send request to avca
 
-					LOG_DBG << pem_csr;
-
-					detail::async_send_csr(m_io_service_pool.get_io_service(), pem_csr, rsa_figureprint,
-					[=](int result, std::string cert)
-					{
-						LOG_INFO << "csr sended";
-
-						if (result == 0)
-						{
-							// 将 CERT 存入数据库, 向用户返回可以马上登录!
-							m_database.update_user_cert(user_name, cert, boost::bind(&register_moudle::proto_write_user_register_response, this,
-								proto::user_register_result::REGISTER_SUCCEED, boost::optional<std::string>(cert), connection, _1));
-						}
-						else if (result == 1)
-						{
-							// 注册成功, CERT 等待.
-							proto_write_user_register_response(proto::user_register_result::REGISTER_SUCCEED_PENDDING_CERT, boost::optional<std::string>(), connection, true);
-						}
-						else
-						{
-							//  回滚数据库.
-							m_database.delete_user(user_name, boost::bind(&register_moudle::proto_write_user_register_response, this,
-								proto::user_register_result::REGISTER_FAILED_CA_DOWN, boost::optional<std::string>(), connection, _1));
-						}
-					});
 				}
 				else
 				{
