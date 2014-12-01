@@ -315,6 +315,13 @@ class img_message : public ::google::protobuf::Message {
   inline ::std::string* release_image_digest();
   inline void set_allocated_image_digest(::std::string* image_digest);
 
+  // optional bool animated = 3;
+  inline bool has_animated() const;
+  inline void clear_animated();
+  static const int kAnimatedFieldNumber = 3;
+  inline bool animated() const;
+  inline void set_animated(bool value);
+
   // optional string hlink = 4;
   inline bool has_hlink() const;
   inline void clear_hlink();
@@ -333,6 +340,8 @@ class img_message : public ::google::protobuf::Message {
   inline void clear_has_image();
   inline void set_has_image_digest();
   inline void clear_has_image_digest();
+  inline void set_has_animated();
+  inline void clear_has_animated();
   inline void set_has_hlink();
   inline void clear_has_hlink();
 
@@ -343,6 +352,7 @@ class img_message : public ::google::protobuf::Message {
   ::std::string* image_;
   ::std::string* image_digest_;
   ::std::string* hlink_;
+  bool animated_;
   friend void  protobuf_AddDesc_im_2eproto();
   friend void protobuf_AssignDesc_im_2eproto();
   friend void protobuf_ShutdownFile_im_2eproto();
@@ -1675,15 +1685,39 @@ inline void img_message::set_allocated_image_digest(::std::string* image_digest)
   // @@protoc_insertion_point(field_set_allocated:message.img_message.image_digest)
 }
 
-// optional string hlink = 4;
-inline bool img_message::has_hlink() const {
+// optional bool animated = 3;
+inline bool img_message::has_animated() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void img_message::set_has_hlink() {
+inline void img_message::set_has_animated() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void img_message::clear_has_hlink() {
+inline void img_message::clear_has_animated() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void img_message::clear_animated() {
+  animated_ = false;
+  clear_has_animated();
+}
+inline bool img_message::animated() const {
+  // @@protoc_insertion_point(field_get:message.img_message.animated)
+  return animated_;
+}
+inline void img_message::set_animated(bool value) {
+  set_has_animated();
+  animated_ = value;
+  // @@protoc_insertion_point(field_set:message.img_message.animated)
+}
+
+// optional string hlink = 4;
+inline bool img_message::has_hlink() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void img_message::set_has_hlink() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void img_message::clear_has_hlink() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void img_message::clear_hlink() {
   if (hlink_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {

@@ -21,12 +21,13 @@ namespace ca {
 
 namespace {
 
-const ::google::protobuf::Descriptor* csr_push_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* csr_request_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  csr_push_reflection_ = NULL;
-const ::google::protobuf::Descriptor* cert_push_descriptor_ = NULL;
+  csr_request_reflection_ = NULL;
+const ::google::protobuf::Descriptor* csr_result_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  cert_push_reflection_ = NULL;
+  csr_result_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* csr_result_csr_code_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* push_ok_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   push_ok_reflection_ = NULL;
@@ -52,38 +53,40 @@ void protobuf_AssignDesc_ca_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "ca.proto");
   GOOGLE_CHECK(file != NULL);
-  csr_push_descriptor_ = file->message_type(0);
-  static const int csr_push_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_push, fingerprint_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_push, csr_),
+  csr_request_descriptor_ = file->message_type(0);
+  static const int csr_request_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, fingerprint_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, csr_),
   };
-  csr_push_reflection_ =
+  csr_request_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      csr_push_descriptor_,
-      csr_push::default_instance_,
-      csr_push_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_push, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_push, _unknown_fields_),
+      csr_request_descriptor_,
+      csr_request::default_instance_,
+      csr_request_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(csr_push));
-  cert_push_descriptor_ = file->message_type(1);
-  static const int cert_push_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_push, fingerprint_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_push, cert_),
+      sizeof(csr_request));
+  csr_result_descriptor_ = file->message_type(1);
+  static const int csr_result_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, fingerprint_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, cert_),
   };
-  cert_push_reflection_ =
+  csr_result_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      cert_push_descriptor_,
-      cert_push::default_instance_,
-      cert_push_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_push, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_push, _unknown_fields_),
+      csr_result_descriptor_,
+      csr_result::default_instance_,
+      csr_result_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(cert_push));
+      sizeof(csr_result));
+  csr_result_csr_code_descriptor_ = csr_result_descriptor_->enum_type(0);
   push_ok_descriptor_ = file->message_type(2);
   static const int push_ok_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(push_ok, fingerprints_),
@@ -172,9 +175,9 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    csr_push_descriptor_, &csr_push::default_instance());
+    csr_request_descriptor_, &csr_request::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    cert_push_descriptor_, &cert_push::default_instance());
+    csr_result_descriptor_, &csr_result::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     push_ok_descriptor_, &push_ok::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -190,10 +193,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_ca_2eproto() {
-  delete csr_push::default_instance_;
-  delete csr_push_reflection_;
-  delete cert_push::default_instance_;
-  delete cert_push_reflection_;
+  delete csr_request::default_instance_;
+  delete csr_request_reflection_;
+  delete csr_result::default_instance_;
+  delete csr_result_reflection_;
   delete push_ok::default_instance_;
   delete push_ok_reflection_;
   delete cert_pull::default_instance_;
@@ -213,25 +216,28 @@ void protobuf_AddDesc_ca_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\010ca.proto\022\010proto.ca\",\n\010csr_push\022\023\n\013fing"
-    "erprint\030\001 \002(\014\022\013\n\003csr\030\002 \002(\014\".\n\tcert_push\022"
-    "\023\n\013fingerprint\030\001 \002(\014\022\014\n\004cert\030\002 \002(\014\"\037\n\007pu"
-    "sh_ok\022\024\n\014fingerprints\030\001 \003(\014\" \n\tcert_pull"
-    "\022\023\n\013fingerprint\030\001 \002(\014\"\037\n\010csr_pull\022\023\n\013fin"
-    "gerprint\030\001 \002(\014\"\016\n\014csr_pendding\"5\n\021csr_pe"
-    "ndding_list\022\013\n\003num\030\001 \002(\r\022\023\n\013fingerprint\030"
-    "\002 \003(\014", 285);
+    "\n\010ca.proto\022\010proto.ca\"/\n\013csr_request\022\023\n\013f"
+    "ingerprint\030\001 \002(\014\022\013\n\003csr\030\002 \002(\014\"\277\001\n\ncsr_re"
+    "sult\022-\n\006result\030\001 \002(\0162\035.proto.ca.csr_resu"
+    "lt.csr_code\022\023\n\013fingerprint\030\002 \002(\014\022\014\n\004cert"
+    "\030\003 \002(\014\"_\n\010csr_code\022\006\n\002OK\020\000\022\026\n\022FAILED_INV"
+    "ALID_CSR\020\001\022\032\n\026FAILED_DUPLICATED_NAME\020\002\022\027"
+    "\n\023FAILED_NO_PRIVILEGE\020\003\"\037\n\007push_ok\022\024\n\014fi"
+    "ngerprints\030\001 \003(\014\" \n\tcert_pull\022\023\n\013fingerp"
+    "rint\030\001 \002(\014\"\037\n\010csr_pull\022\023\n\013fingerprint\030\001 "
+    "\002(\014\"\016\n\014csr_pendding\"5\n\021csr_pendding_list"
+    "\022\013\n\003num\030\001 \002(\r\022\023\n\013fingerprint\030\002 \003(\014", 434);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ca.proto", &protobuf_RegisterTypes);
-  csr_push::default_instance_ = new csr_push();
-  cert_push::default_instance_ = new cert_push();
+  csr_request::default_instance_ = new csr_request();
+  csr_result::default_instance_ = new csr_result();
   push_ok::default_instance_ = new push_ok();
   cert_pull::default_instance_ = new cert_pull();
   csr_pull::default_instance_ = new csr_pull();
   csr_pendding::default_instance_ = new csr_pendding();
   csr_pendding_list::default_instance_ = new csr_pendding_list();
-  csr_push::default_instance_->InitAsDefaultInstance();
-  cert_push::default_instance_->InitAsDefaultInstance();
+  csr_request::default_instance_->InitAsDefaultInstance();
+  csr_result::default_instance_->InitAsDefaultInstance();
   push_ok::default_instance_->InitAsDefaultInstance();
   cert_pull::default_instance_->InitAsDefaultInstance();
   csr_pull::default_instance_->InitAsDefaultInstance();
@@ -250,27 +256,27 @@ struct StaticDescriptorInitializer_ca_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int csr_push::kFingerprintFieldNumber;
-const int csr_push::kCsrFieldNumber;
+const int csr_request::kFingerprintFieldNumber;
+const int csr_request::kCsrFieldNumber;
 #endif  // !_MSC_VER
 
-csr_push::csr_push()
+csr_request::csr_request()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.ca.csr_push)
+  // @@protoc_insertion_point(constructor:proto.ca.csr_request)
 }
 
-void csr_push::InitAsDefaultInstance() {
+void csr_request::InitAsDefaultInstance() {
 }
 
-csr_push::csr_push(const csr_push& from)
+csr_request::csr_request(const csr_request& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.ca.csr_push)
+  // @@protoc_insertion_point(copy_constructor:proto.ca.csr_request)
 }
 
-void csr_push::SharedCtor() {
+void csr_request::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -279,18 +285,18 @@ void csr_push::SharedCtor() {
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-csr_push::csr_push(csr_push&& from)
+csr_request::csr_request(csr_request&& from)
   : ::google::protobuf::Message() {
   Swap(&from);
 }
 #endif
 
-csr_push::~csr_push() {
-  // @@protoc_insertion_point(destructor:proto.ca.csr_push)
+csr_request::~csr_request() {
+  // @@protoc_insertion_point(destructor:proto.ca.csr_request)
   SharedDtor();
 }
 
-void csr_push::SharedDtor() {
+void csr_request::SharedDtor() {
   if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete fingerprint_;
   }
@@ -301,28 +307,28 @@ void csr_push::SharedDtor() {
   }
 }
 
-void csr_push::SetCachedSize(int size) const {
+void csr_request::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* csr_push::descriptor() {
+const ::google::protobuf::Descriptor* csr_request::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return csr_push_descriptor_;
+  return csr_request_descriptor_;
 }
 
-const csr_push& csr_push::default_instance() {
+const csr_request& csr_request::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ca_2eproto();
   return *default_instance_;
 }
 
-csr_push* csr_push::default_instance_ = NULL;
+csr_request* csr_request::default_instance_ = NULL;
 
-csr_push* csr_push::New() const {
-  return new csr_push;
+csr_request* csr_request::New() const {
+  return new csr_request;
 }
 
-void csr_push::Clear() {
+void csr_request::Clear() {
   if (_has_bits_[0 / 32] & 3) {
     if (has_fingerprint()) {
       if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -339,11 +345,11 @@ void csr_push::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool csr_push::MergePartialFromCodedStream(
+bool csr_request::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.ca.csr_push)
+  // @@protoc_insertion_point(parse_start:proto.ca.csr_request)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -388,17 +394,17 @@ bool csr_push::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.ca.csr_push)
+  // @@protoc_insertion_point(parse_success:proto.ca.csr_request)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.ca.csr_push)
+  // @@protoc_insertion_point(parse_failure:proto.ca.csr_request)
   return false;
 #undef DO_
 }
 
-void csr_push::SerializeWithCachedSizes(
+void csr_request::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.ca.csr_push)
+  // @@protoc_insertion_point(serialize_start:proto.ca.csr_request)
   // required bytes fingerprint = 1;
   if (has_fingerprint()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
@@ -415,12 +421,12 @@ void csr_push::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.ca.csr_push)
+  // @@protoc_insertion_point(serialize_end:proto.ca.csr_request)
 }
 
-::google::protobuf::uint8* csr_push::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* csr_request::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.csr_push)
+  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.csr_request)
   // required bytes fingerprint = 1;
   if (has_fingerprint()) {
     target =
@@ -439,11 +445,11 @@ void csr_push::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.csr_push)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.csr_request)
   return target;
 }
 
-int csr_push::ByteSize() const {
+int csr_request::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -473,10 +479,10 @@ int csr_push::ByteSize() const {
   return total_size;
 }
 
-void csr_push::MergeFrom(const ::google::protobuf::Message& from) {
+void csr_request::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const csr_push* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const csr_push*>(
+  const csr_request* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const csr_request*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -485,7 +491,7 @@ void csr_push::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void csr_push::MergeFrom(const csr_push& from) {
+void csr_request::MergeFrom(const csr_request& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_fingerprint()) {
@@ -498,25 +504,25 @@ void csr_push::MergeFrom(const csr_push& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void csr_push::CopyFrom(const ::google::protobuf::Message& from) {
+void csr_request::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void csr_push::CopyFrom(const csr_push& from) {
+void csr_request::CopyFrom(const csr_request& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool csr_push::IsInitialized() const {
+bool csr_request::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
 
   return true;
 }
 
-void csr_push::Swap(csr_push* other) {
+void csr_request::Swap(csr_request* other) {
   if (other != this) {
     std::swap(fingerprint_, other->fingerprint_);
     std::swap(csr_, other->csr_);
@@ -526,59 +532,86 @@ void csr_push::Swap(csr_push* other) {
   }
 }
 
-::google::protobuf::Metadata csr_push::GetMetadata() const {
+::google::protobuf::Metadata csr_request::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = csr_push_descriptor_;
-  metadata.reflection = csr_push_reflection_;
+  metadata.descriptor = csr_request_descriptor_;
+  metadata.reflection = csr_request_reflection_;
   return metadata;
 }
 
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* csr_result_csr_code_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return csr_result_csr_code_descriptor_;
+}
+bool csr_result_csr_code_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
 #ifndef _MSC_VER
-const int cert_push::kFingerprintFieldNumber;
-const int cert_push::kCertFieldNumber;
+const csr_result_csr_code csr_result::OK;
+const csr_result_csr_code csr_result::FAILED_INVALID_CSR;
+const csr_result_csr_code csr_result::FAILED_DUPLICATED_NAME;
+const csr_result_csr_code csr_result::FAILED_NO_PRIVILEGE;
+const csr_result_csr_code csr_result::csr_code_MIN;
+const csr_result_csr_code csr_result::csr_code_MAX;
+const int csr_result::csr_code_ARRAYSIZE;
+#endif  // _MSC_VER
+#ifndef _MSC_VER
+const int csr_result::kResultFieldNumber;
+const int csr_result::kFingerprintFieldNumber;
+const int csr_result::kCertFieldNumber;
 #endif  // !_MSC_VER
 
-cert_push::cert_push()
+csr_result::csr_result()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.ca.cert_push)
+  // @@protoc_insertion_point(constructor:proto.ca.csr_result)
 }
 
-void cert_push::InitAsDefaultInstance() {
+void csr_result::InitAsDefaultInstance() {
 }
 
-cert_push::cert_push(const cert_push& from)
+csr_result::csr_result(const csr_result& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.ca.cert_push)
+  // @@protoc_insertion_point(copy_constructor:proto.ca.csr_result)
 }
 
-void cert_push::SharedCtor() {
+void csr_result::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
+  result_ = 0;
   fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-cert_push::cert_push(cert_push&& from)
+csr_result::csr_result(csr_result&& from)
   : ::google::protobuf::Message() {
   Swap(&from);
 }
 #endif
 
-cert_push::~cert_push() {
-  // @@protoc_insertion_point(destructor:proto.ca.cert_push)
+csr_result::~csr_result() {
+  // @@protoc_insertion_point(destructor:proto.ca.csr_result)
   SharedDtor();
 }
 
-void cert_push::SharedDtor() {
+void csr_result::SharedDtor() {
   if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete fingerprint_;
   }
@@ -589,29 +622,30 @@ void cert_push::SharedDtor() {
   }
 }
 
-void cert_push::SetCachedSize(int size) const {
+void csr_result::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* cert_push::descriptor() {
+const ::google::protobuf::Descriptor* csr_result::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return cert_push_descriptor_;
+  return csr_result_descriptor_;
 }
 
-const cert_push& cert_push::default_instance() {
+const csr_result& csr_result::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ca_2eproto();
   return *default_instance_;
 }
 
-cert_push* cert_push::default_instance_ = NULL;
+csr_result* csr_result::default_instance_ = NULL;
 
-cert_push* cert_push::New() const {
-  return new cert_push;
+csr_result* csr_result::New() const {
+  return new csr_result;
 }
 
-void cert_push::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
+void csr_result::Clear() {
+  if (_has_bits_[0 / 32] & 7) {
+    result_ = 0;
     if (has_fingerprint()) {
       if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         fingerprint_->clear();
@@ -627,31 +661,51 @@ void cert_push::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool cert_push::MergePartialFromCodedStream(
+bool csr_result::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.ca.cert_push)
+  // @@protoc_insertion_point(parse_start:proto.ca.csr_result)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required bytes fingerprint = 1;
+      // required .proto.ca.csr_result.csr_code result = 1;
       case 1: {
-        if (tag == 10) {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::proto::ca::csr_result_csr_code_IsValid(value)) {
+            set_result(static_cast< ::proto::ca::csr_result_csr_code >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_fingerprint;
+        break;
+      }
+
+      // required bytes fingerprint = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_fingerprint:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_fingerprint()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_cert;
+        if (input->ExpectTag(26)) goto parse_cert;
         break;
       }
 
-      // required bytes cert = 2;
-      case 2: {
-        if (tag == 18) {
+      // required bytes cert = 3;
+      case 3: {
+        if (tag == 26) {
          parse_cert:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_cert()));
@@ -676,73 +730,91 @@ bool cert_push::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.ca.cert_push)
+  // @@protoc_insertion_point(parse_success:proto.ca.csr_result)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.ca.cert_push)
+  // @@protoc_insertion_point(parse_failure:proto.ca.csr_result)
   return false;
 #undef DO_
 }
 
-void cert_push::SerializeWithCachedSizes(
+void csr_result::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.ca.cert_push)
-  // required bytes fingerprint = 1;
-  if (has_fingerprint()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->fingerprint(), output);
+  // @@protoc_insertion_point(serialize_start:proto.ca.csr_result)
+  // required .proto.ca.csr_result.csr_code result = 1;
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->result(), output);
   }
 
-  // required bytes cert = 2;
+  // required bytes fingerprint = 2;
+  if (has_fingerprint()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
+      2, this->fingerprint(), output);
+  }
+
+  // required bytes cert = 3;
   if (has_cert()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      2, this->cert(), output);
+      3, this->cert(), output);
   }
 
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.ca.cert_push)
+  // @@protoc_insertion_point(serialize_end:proto.ca.csr_result)
 }
 
-::google::protobuf::uint8* cert_push::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* csr_result::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.cert_push)
-  // required bytes fingerprint = 1;
+  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.csr_result)
+  // required .proto.ca.csr_result.csr_code result = 1;
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->result(), target);
+  }
+
+  // required bytes fingerprint = 2;
   if (has_fingerprint()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->fingerprint(), target);
+        2, this->fingerprint(), target);
   }
 
-  // required bytes cert = 2;
+  // required bytes cert = 3;
   if (has_cert()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->cert(), target);
+        3, this->cert(), target);
   }
 
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.cert_push)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.csr_result)
   return target;
 }
 
-int cert_push::ByteSize() const {
+int csr_result::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required bytes fingerprint = 1;
+    // required .proto.ca.csr_result.csr_code result = 1;
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+    }
+
+    // required bytes fingerprint = 2;
     if (has_fingerprint()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
           this->fingerprint());
     }
 
-    // required bytes cert = 2;
+    // required bytes cert = 3;
     if (has_cert()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -761,10 +833,10 @@ int cert_push::ByteSize() const {
   return total_size;
 }
 
-void cert_push::MergeFrom(const ::google::protobuf::Message& from) {
+void csr_result::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const cert_push* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const cert_push*>(
+  const csr_result* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const csr_result*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -773,9 +845,12 @@ void cert_push::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void cert_push::MergeFrom(const cert_push& from) {
+void csr_result::MergeFrom(const csr_result& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
     if (from.has_fingerprint()) {
       set_fingerprint(from.fingerprint());
     }
@@ -786,26 +861,27 @@ void cert_push::MergeFrom(const cert_push& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void cert_push::CopyFrom(const ::google::protobuf::Message& from) {
+void csr_result::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void cert_push::CopyFrom(const cert_push& from) {
+void csr_result::CopyFrom(const csr_result& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool cert_push::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+bool csr_result::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
   return true;
 }
 
-void cert_push::Swap(cert_push* other) {
+void csr_result::Swap(csr_result* other) {
   if (other != this) {
+    std::swap(result_, other->result_);
     std::swap(fingerprint_, other->fingerprint_);
     std::swap(cert_, other->cert_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -814,11 +890,11 @@ void cert_push::Swap(cert_push* other) {
   }
 }
 
-::google::protobuf::Metadata cert_push::GetMetadata() const {
+::google::protobuf::Metadata csr_result::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = cert_push_descriptor_;
-  metadata.reflection = cert_push_reflection_;
+  metadata.descriptor = csr_result_descriptor_;
+  metadata.reflection = csr_result_reflection_;
   return metadata;
 }
 
