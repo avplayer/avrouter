@@ -81,7 +81,7 @@ namespace av_router {
 		tempbuf.sgetn(reinterpret_cast<char*>(&packet_length), sizeof(packet_length));
 		packet_length = ntohl(packet_length);
 
-		if (packet_length > 64 * 1024) // 过大的数据包, 此客户端有问题, 果然断开.
+		if (packet_length > 64 * 1024) // 过大的数据包, 此客户端有问题, 果断断开.
 		{
 			close();
 			return;

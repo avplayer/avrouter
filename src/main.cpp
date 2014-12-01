@@ -87,7 +87,7 @@ int main(int argc, char** argv)
 			"connect_timeout = '" + db_timeout + "' "
 			"application_name = '" + db_application_name + "'";
 
-		// 十个数据库并发链接.
+		// 指定个数据库并发链接.
 		soci::connection_pool db_pool(pool_size);
 
 		try
@@ -96,7 +96,6 @@ int main(int argc, char** argv)
 			for (size_t i = 0; i != pool_size; ++i)
 			{
 				soci::session& sql = db_pool.at(i);
-				// 连接本机的数据库.
 				// 直接指定数据库后端, 避免寻找dll而失败, 这里指定为postgresql数据库后端.
 				sql.open(soci::postgresql, connection_string);
 			}
@@ -110,11 +109,11 @@ int main(int argc, char** argv)
 		boost::shared_ptr<X509> root_cert(PEM_read_bio_X509(bp.get(), 0, 0, 0), X509_free);
 		bp.reset();
 
-		// 8线程并发.
+		// 指定线程并发数.
 		io_service_pool io_pool(num_threads);
 		// 创建服务器.
 		router_server router_serv(io_pool, server_port);
-		// 创建 http 服务器
+		// 创建 http 服务器.
 		http_server http_serv(io_pool, http_port);
 
 		database async_database(io_pool.get_io_service(), db_pool);
@@ -134,7 +133,7 @@ int main(int argc, char** argv)
 		router_serv.add_message_process_moudle("proto.client_hello", boost::bind(&login_moudle::process_hello_message, &moudle_login, _1, _2, _3));
 		router_serv.add_message_process_moudle("proto.login", boost::bind(&login_moudle::process_login_message, &moudle_login, _1, _2, _3));
 
-		// 添加包的转发处理模块
+		// 添加包的转发处理模块.
 		router_serv.add_message_process_moudle("proto.avpacket", boost::bind(&forward_moudle::process_packet, &forward_packet, _1, _2, _3));
 		router_serv.add_connection_process_moudle("proto.avpacket", boost::bind(&forward_moudle::connection_notify, &forward_packet, _1, _2, _3));
 
