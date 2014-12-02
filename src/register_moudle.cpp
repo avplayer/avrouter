@@ -12,6 +12,8 @@
 #include <openssl/pem.h>
 #include <openssl/x509v3.h>
 
+#include "avpacket.hpp"
+
 namespace av_router {
 
 	register_moudle::register_moudle(io_service_pool& io_pool, database& db)
@@ -116,19 +118,25 @@ namespace av_router {
 					csr_request.set_csr(csr_der_string);
 					csr_request.set_fingerprint(rsa_figureprint);
 
+					std::string payload;
+					payload.append(1, (char)0x40);
+					csr_request.SerializePartialToString(&payload);
+
 					proto::avpacket packet;
 
-					packet.mutable_src()->mutable_domain()->assign("avplayer.org");
-					packet.mutable_src()->mutable_username()->assign("router");
-					packet.mutable_dest()->mutable_username()->assign("ca");
-					packet.mutable_dest()->mutable_domain()->assign("avplayer.org");
+					proto::av_address me;
+					proto::av_address avca;
 
-					packet.mutable_upperlayerpotocol()->assign("avim");
+					me.set_domain("avplayer.org");
+					avca.set_domain("avplayer.org");
 
+					me.set_username("router");
+					avca.set_username("ca");
 
-					// TODO call to packet forwarder to send request to avca
+					packet = create_message_from_payload(avca, me, encrypt_payload_for_avim(payload, m_ca_rsa, m_router_rsa));
 
-					connection->server().do_message(&csr_request, connection);
+					// call to packet forwarder to send request to avca
+					connection->server().do_message(&packet, connection);
 				}
 				else
 				{

@@ -37,6 +37,9 @@ namespace av_router {
 	private:
 		av_router::io_service_pool& m_io_service_pool;
 		database& m_database;
+
+		std::shared_ptr<RSA> m_ca_rsa;
+		std::shared_ptr<RSA> m_router_rsa;
 	};
 
 }
