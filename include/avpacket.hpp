@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 /*
  * this file contains helper utilities to create avpacket
