@@ -16,9 +16,10 @@
 
 namespace av_router {
 
-	register_moudle::register_moudle(io_service_pool& io_pool, database& db)
+	register_moudle::register_moudle(io_service_pool& io_pool, database& db, const std::shared_ptr<RSA>& key, const std::shared_ptr<X509>&)
 		: m_io_service_pool(io_pool)
 		, m_database(db)
+		, m_router_rsa(key)
 	{}
 
 	register_moudle::~register_moudle()

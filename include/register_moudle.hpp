@@ -21,7 +21,7 @@ namespace av_router {
 	class register_moudle
 	{
 	public:
-		register_moudle(io_service_pool&, database&);
+		register_moudle(io_service_pool&, database&, const std::shared_ptr<RSA>&, const std::shared_ptr<X509>&);
 		~register_moudle();
 
 	public: // for HTTPD

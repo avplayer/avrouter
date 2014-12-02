@@ -18,6 +18,11 @@ if(MSVC)
 	set (Boost_USE_STATIC_LIBS TRUE)
 endif()
 
+option(BUILD_PRODUCTION "build for production" OFF)
+if( BUILD_PRODUCTION )
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DNO_TEST")
+endif()
+
 find_package(Threads REQUIRED)
 find_package(Boost 1.54 COMPONENTS thread system coroutine context regex date_time chrono filesystem program_options REQUIRED)
 find_package(Protobuf REQUIRED)

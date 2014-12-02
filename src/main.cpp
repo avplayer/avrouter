@@ -50,6 +50,7 @@ int main(int argc, char** argv)
 		std::string db_name;
 		std::string db_timeout;
 		std::string db_application_name;
+		std::string key_filename, cert_filename;
 
 		po::options_description desc("options");
 		desc.add_options()
@@ -66,6 +67,8 @@ int main(int argc, char** argv)
 			("db_name", po::value<std::string>(&db_name)->default_value("avim"), "postresql database name")
 			("db_timeout", po::value<std::string>(&db_timeout)->default_value("3"), "postresql database timeout")
 			("db_application_name", po::value<std::string>(&db_application_name)->default_value("3"), "postresql database application_name")
+			("key", po::value<std::string>(&key_filename), "avim key")
+			("cert", po::value<std::string>(&cert_filename), "avim cert")
 			;
 
 		po::variables_map vm;
@@ -105,9 +108,37 @@ int main(int argc, char** argv)
 			LOG_ERR << "create database connection pool failed, error: " << ec.what();
 		}
 
-		boost::shared_ptr<BIO> bp(BIO_new_mem_buf((void*)avim_root_ca_certificate_string, strlen(avim_root_ca_certificate_string)), BIO_free);
-		boost::shared_ptr<X509> root_cert(PEM_read_bio_X509(bp.get(), 0, 0, 0), X509_free);
-		bp.reset();
+		boost::shared_ptr<BIO> bio(BIO_new_mem_buf((void*)avim_root_ca_certificate_string, strlen(avim_root_ca_certificate_string)), BIO_free);
+		boost::shared_ptr<X509> root_cert(PEM_read_bio_X509(bio.get(), 0, 0, 0), X509_free);
+
+		if (key_filename.empty() || cert_filename.empty())
+		{
+			std::cout << desc << "\n";
+			std::cout << "where to load key and cert?" << "\n";
+			return 1;
+		}
+		bio.reset(BIO_new_file(key_filename.c_str(), "r"), BIO_free);
+		auto _c_rsa_key = PEM_read_bio_RSAPrivateKey(bio.get(), nullptr, [](char* buf, int, int, void*)->int
+		{
+#ifndef NO_TEST
+			strcpy(buf, "route");
+			return 5;
+#else
+			// 提示用户输入密码
+			auto text = getpass("输入密码解锁 avim 密钥: ");
+			if (text && strlen(text))
+			{
+				strncpy(buf, text, strlen(text));
+				return strlen(text);
+			}
+			return -1;
+#endif
+		}, (void*) 0);
+
+		bio.reset(BIO_new_file(cert_filename.c_str(), "r"), BIO_free);
+		std::shared_ptr<RSA> avim_key(_c_rsa_key, RSA_free);
+		std::shared_ptr<X509> avim_cert(PEM_read_bio_X509(bio.get(), NULL, NULL, NULL), X509_free);
+		bio.reset();
 
 		// 指定线程并发数.
 		io_service_pool io_pool(num_threads);
@@ -121,7 +152,7 @@ int main(int argc, char** argv)
 		// 创建登陆处理模块.
 		login_moudle moudle_login(io_pool, async_database, root_cert.get());
 		forward_moudle forward_packet(io_pool);
-		register_moudle moudle_register(io_pool, async_database);
+		register_moudle moudle_register(io_pool, async_database, avim_key, avim_cert);
 
 		// 添加注册模块处理.
 		router_serv.add_message_process_moudle("proto.username_availability_check",
