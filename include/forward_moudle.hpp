@@ -31,12 +31,11 @@ namespace av_router {
 		bool process_packet(google::protobuf::Message*, connection_ptr, connection_manager&);
 
 	private:
-		void write_agmp_message(connection_ptr, const proto::agmp&, const proto::av_address&);
-	private:
 		av_router::io_service_pool& m_io_service_poll;
 		std::string m_thisdomain;
 		typedef std::map<std::string, connection_weak_ptr> routing_table_type;
 		routing_table_type m_routing_table;
+		std::shared_ptr<proto::av_address> m_this_address;
 	};
 
 }

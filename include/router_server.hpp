@@ -44,15 +44,14 @@ namespace av_router {
 		bool add_connection_process_moudle(const std::string& name, connection_callback cb);
 		bool del_connection_process_moudle(const std::string& name);
 
+		// 调用name所对应的消息处理模块.
+		bool do_message(google::protobuf::Message*, connection_ptr);
+		void do_connection_notify(int type, connection_ptr conn);
 	private:
 		// 处理客户连接.
 		void handle_accept(const boost::system::error_code& error);
 		// 滴哒.
 		void on_tick(const boost::system::error_code& error);
-
-		// 调用name所对应的消息处理模块.
-		bool do_message(google::protobuf::Message*, connection_ptr);
-		void do_connection_notify(int type, connection_ptr conn);
 
 		// 开始的具体实现.
 		void start_impl();

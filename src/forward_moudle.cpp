@@ -1,10 +1,12 @@
 #include <boost/any.hpp>
 
 #include "forward_moudle.hpp"
-#include "message.pb.h"
+#include "packet.pb.h"
 
 #include <openssl/dh.h>
 #include <openssl/aes.h>
+
+#include "avpacket.hpp"
 
 namespace av_router {
 
@@ -12,24 +14,13 @@ namespace av_router {
 		: m_io_service_poll(io_pool)
 	{
 		m_thisdomain = "avplayer.org";
+		m_this_address.reset(new proto::av_address);
+		*m_this_address->mutable_domain() = m_thisdomain;
+		*m_this_address->mutable_username() = "router";
 	}
 
 	forward_moudle::~forward_moudle()
 	{}
-
-	void forward_moudle::write_agmp_message(connection_ptr connection,const proto::agmp& agmp, const proto::av_address& dest)
-	{
-		proto::avpacket returnpkt;
-		returnpkt.mutable_dest()->CopyFrom(dest);
-		returnpkt.mutable_src()->set_domain("avplayer.org");
-		returnpkt.mutable_src()->set_username("router");
-		returnpkt.mutable_upperlayerpotocol()->assign("agmp");
-		returnpkt.set_time_to_live(1);
-
-		returnpkt.mutable_payload()->assign(agmp.SerializeAsString());
-
-		connection->write_msg(encode(returnpkt));
-	}
 
 	void forward_moudle::connection_notify(int type, connection_ptr connection, connection_manager&)
 	{
@@ -78,18 +69,15 @@ namespace av_router {
 			else
 			{
 				// 发送 ttl = 0 消息.
-				proto::agmp agmp;
-				agmp.mutable_ttlout()->mutable_host()->CopyFrom(pkt->dest());
-				write_agmp_message(connection, agmp, pkt->src());
+				connection->write_msg(encode(
+					create_agmp_message_ttlout(pkt->dest(), pkt->src(), *m_this_address)));
 			}
 		}
 		else
 		{
 			// 没找到，回一个 agmp 消息报告 no route to host.
-			proto::agmp agmp;
-			agmp.mutable_noroutetohost()->mutable_host()->CopyFrom(pkt->dest());
-			write_agmp_message(connection, agmp, pkt->src());
-
+			connection->write_msg(encode(
+				create_agmp_message_noroutetohost(pkt->dest(), pkt->src(), *m_this_address)));
 		}
 		// TODO 根据目的地址转发消息.
 		return true;

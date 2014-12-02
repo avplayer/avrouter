@@ -2,6 +2,7 @@
 #include "register_moudle.hpp"
 #include "user.pb.h"
 #include "ca.pb.h"
+#include "packet.pb.h"
 
 #include <future>
 #include <boost/regex.hpp>
@@ -115,8 +116,19 @@ namespace av_router {
 					csr_request.set_csr(csr_der_string);
 					csr_request.set_fingerprint(rsa_figureprint);
 
+					proto::avpacket packet;
+
+					packet.mutable_src()->mutable_domain()->assign("avplayer.org");
+					packet.mutable_src()->mutable_username()->assign("router");
+					packet.mutable_dest()->mutable_username()->assign("ca");
+					packet.mutable_dest()->mutable_domain()->assign("avplayer.org");
+
+					packet.mutable_upperlayerpotocol()->assign("avim");
+
+
 					// TODO call to packet forwarder to send request to avca
 
+					connection->server().do_message(&csr_request, connection);
 				}
 				else
 				{

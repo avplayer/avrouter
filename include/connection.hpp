@@ -45,6 +45,7 @@ namespace av_router {
 		void stop();
 
 		tcp::socket& socket();
+		router_server& server(){return m_server;};
 
 		// 消息发送接口, 消息必须是encode编码后的字符串, 支持回调.
 		typedef boost::function<void(const boost::system::error_code&)> write_handler;
