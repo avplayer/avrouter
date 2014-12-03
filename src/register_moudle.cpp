@@ -14,22 +14,12 @@
 
 #include "avpacket.hpp"
 
-extern const char *ca_cert_string;
-
 namespace av_router {
 
-	register_moudle::register_moudle(io_service_pool& io_pool, database& db, const std::shared_ptr<RSA>& key, const std::shared_ptr<X509>&)
+	register_moudle::register_moudle(io_service_pool& io_pool, database& db)
 		: m_io_service_pool(io_pool)
 		, m_database(db)
-		, m_router_rsa(key)
 	{
-		boost::shared_ptr<BIO> bio;
-		bio.reset(BIO_new_mem_buf((void*)ca_cert_string, strlen(ca_cert_string)), BIO_free);
-		std::shared_ptr<X509> ca_cert(PEM_read_bio_X509(bio.get(), NULL, NULL, NULL), X509_free);
-
-		auto evp_pkey = X509_get_pubkey(ca_cert.get());
-		m_ca_rsa.reset(EVP_PKEY_get1_RSA(evp_pkey), RSA_free);
-		EVP_PKEY_free(evp_pkey);
 	}
 
 	register_moudle::~register_moudle()
@@ -112,6 +102,7 @@ namespace av_router {
 		m_database.register_user(user_name, rsa_pubkey, register_msg->mail_address(), register_msg->cell_phone(),
 			[=](bool result)
 			{
+				result = true;
 				LOG_INFO << "database fine : " << result;
 
 				// 插入成功了, 那就立马签名出证书来
@@ -128,26 +119,12 @@ namespace av_router {
 					proto::ca::csr_request csr_request;
 					csr_request.set_csr(csr_der_string);
 					csr_request.set_fingerprint(rsa_figureprint);
-
-					std::string payload;
-					payload.append(1, (char)0x40);
-					csr_request.SerializeToString(&payload);
-
-					proto::avpacket packet;
-
-					proto::av_address me;
-					proto::av_address avca;
-
-					me.set_domain("avplayer.org");
-					avca.set_domain("avplayer.org");
-
-					me.set_username("router");
-					avca.set_username("ca");
-
-					packet = create_message_from_payload(avca, me, encrypt_payload_for_avim(payload, m_ca_rsa, m_router_rsa));
-
 					// call to packet forwarder to send request to avca
-					connection->server().do_message(&packet, connection);
+					if (connection->server().do_message(&csr_request, connection))
+					{
+						// TODO 发送成功, 等待 ca 返回
+						// 问题是 ca 返回是在另一个模块里处理的, 咋办
+					}
 				}
 				else
 				{

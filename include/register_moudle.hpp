@@ -21,7 +21,7 @@ namespace av_router {
 	class register_moudle
 	{
 	public:
-		register_moudle(io_service_pool&, database&, const std::shared_ptr<RSA>&, const std::shared_ptr<X509>&);
+		register_moudle(av_router::io_service_pool& io_pool, av_router::database& db);
 		~register_moudle();
 
 	public: // for HTTPD
@@ -37,9 +37,6 @@ namespace av_router {
 	private:
 		av_router::io_service_pool& m_io_service_pool;
 		database& m_database;
-
-		std::shared_ptr<RSA> m_ca_rsa;
-		std::shared_ptr<RSA> m_router_rsa;
 	};
 
 }
