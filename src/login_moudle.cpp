@@ -54,7 +54,7 @@ namespace av_router {
 			boost::shared_ptr<X509_STORE_CTX> storeCtx(X509_STORE_CTX_new(), X509_STORE_CTX_free);
 			X509_STORE_CTX_init(storeCtx.get(), m_store, cert, NULL);
 			X509_STORE_CTX_set_flags(storeCtx.get(), X509_V_FLAG_CB_ISSUER_CHECK);
-			return X509_verify_cert(storeCtx.get()) ? true : false;
+			return X509_verify_cert(storeCtx.get()) == 1? true : false;
 		}
 
 	private:
@@ -84,8 +84,9 @@ namespace av_router {
 		std::string login_check_key = boost::any_cast<std::string>(connection->property("login_check_key"));
 
 		const unsigned char* in = (unsigned char*)login->user_cert().data();
+		auto in_len = static_cast<long>(login->user_cert().length());
 
-		boost::shared_ptr<X509> user_cert(d2i_X509(NULL, &in, static_cast<long>(login->user_cert().length())), X509_free);
+		boost::shared_ptr<X509> user_cert(d2i_X509(NULL, &in, in_len), X509_free);
 		connection->property("user_cert", user_cert);
 
 		unsigned char* common_name_ptr = NULL;
