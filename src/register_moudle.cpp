@@ -14,13 +14,23 @@
 
 #include "avpacket.hpp"
 
+extern const char *ca_cert_string;
+
 namespace av_router {
 
 	register_moudle::register_moudle(io_service_pool& io_pool, database& db, const std::shared_ptr<RSA>& key, const std::shared_ptr<X509>&)
 		: m_io_service_pool(io_pool)
 		, m_database(db)
 		, m_router_rsa(key)
-	{}
+	{
+		boost::shared_ptr<BIO> bio;
+		bio.reset(BIO_new_mem_buf((void*)ca_cert_string, strlen(ca_cert_string)), BIO_free);
+		std::shared_ptr<X509> ca_cert(PEM_read_bio_X509(bio.get(), NULL, NULL, NULL), X509_free);
+
+		auto evp_pkey = X509_get_pubkey(ca_cert.get());
+		m_ca_rsa.reset(EVP_PKEY_get1_RSA(evp_pkey), RSA_free);
+		EVP_PKEY_free(evp_pkey);
+	}
 
 	register_moudle::~register_moudle()
 	{}
@@ -121,7 +131,7 @@ namespace av_router {
 
 					std::string payload;
 					payload.append(1, (char)0x40);
-					csr_request.SerializePartialToString(&payload);
+					csr_request.SerializeToString(&payload);
 
 					proto::avpacket packet;
 
