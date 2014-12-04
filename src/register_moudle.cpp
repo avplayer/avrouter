@@ -102,7 +102,6 @@ namespace av_router {
 		m_database.register_user(user_name, rsa_pubkey, register_msg->mail_address(), register_msg->cell_phone(),
 			[=](bool result)
 			{
-				result = true;
 				LOG_INFO << "database fine : " << result;
 
 				// 插入成功了, 那就立马签名出证书来
@@ -124,6 +123,14 @@ namespace av_router {
 					{
 						// TODO 发送成功, 等待 ca 返回
 						// 问题是 ca 返回是在另一个模块里处理的, 咋办
+					}else
+					{
+						// TODO ca 不在线, 注册失败! 回退数据库
+						m_database.delete_user(user_name, [=, this](bool result)
+						{
+							// 返回注册失败
+							proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CA_BUSY, boost::optional<std::string>(), connection, false);
+						});
 					}
 				}
 				else
