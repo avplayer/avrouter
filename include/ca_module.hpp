@@ -7,6 +7,9 @@
 
 #pragma once
 
+#include <thread>
+#include <mutex>
+
 #include "router_server.hpp"
 #include "serialization.hpp"
 
@@ -30,10 +33,15 @@ namespace av_router {
 		void connection_notify(int type, connection_ptr, connection_manager&);
 		bool process_ca_announce(google::protobuf::Message*, connection_ptr, connection_manager&);
 		bool process_csr_request(google::protobuf::Message*, connection_ptr, connection_manager&);
+		bool process_csr_result(google::protobuf::Message*, connection_ptr, connection_manager&);
 
 	private:
 		av_router::io_service_pool& m_io_service_poll;
 
 		connection_weak_ptr m_ca_connection;
+
+		std::map<std::string, connection_ptr> m_user_cons;
+
+		std::mutex	m_mutex;
 	};
 }
