@@ -126,7 +126,7 @@ namespace av_router {
 					}else
 					{
 						// TODO ca 不在线, 注册失败! 回退数据库
-						m_database.delete_user(user_name, [=, this](bool result)
+						m_database.delete_user(user_name, [=](bool result)
 						{
 							// 返回注册失败
 							proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CA_BUSY, boost::optional<std::string>(), connection, false);
