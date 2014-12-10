@@ -47,7 +47,7 @@ namespace av_router {
 			return false;
 		}
 
-		// 根据发送人更新 routing_table
+		// 根据发送人更新 routing_table.
 		if (m_routing_table.find(pkt->src().username()) == std::end(m_routing_table))
 		{
 			connection->property("username", pkt->src().username());

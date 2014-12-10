@@ -52,7 +52,7 @@ namespace av_router {
 		return true;
 	}
 
-	// HTTP 版本, 大同小异, 只是返回的不是 protobuf 消息, 而是 json 格式的消息
+	// HTTP 版本, 大同小异, 只是返回的不是 protobuf 消息, 而是 json 格式的消息.
 	void register_moudle::availability_check_httpd(const request& req, http_connection_ptr conn, http_connection_manager&)
 	{
 		std::string user_name;
@@ -64,12 +64,13 @@ namespace av_router {
 		user_name = request_parameter["username"];
 
 		m_database.availability_check(user_name,
-		[conn](int result)
-		{
+			[conn](int result)
+			{
 			// TODO 返回 json 数据.
 			auto body = boost::str(boost::format("{\"code\" : \"%d\"}") % result);
 			conn->write_response(body);
-		});
+			}
+		);
 	}
 
 	bool register_moudle::user_register(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
@@ -96,7 +97,7 @@ namespace av_router {
 
 		LOG_INFO << "csr fine, start registering";
 
-		// 确定是合法的 CSR 证书, 接着数据库内插
+		// 确定是合法的 CSR 证书, 接着数据库内插.
 		std::string user_name = register_msg->user_name();
 		std::string csr_der_string = register_msg->csr();
 		m_database.register_user(user_name, rsa_pubkey, register_msg->mail_address(), register_msg->cell_phone(),
@@ -104,7 +105,7 @@ namespace av_router {
 			{
 				LOG_INFO << "database fine : " << result;
 
-				// 插入成功了, 那就立马签名出证书来
+				// 插入成功了, 那就立马签名出证书来.
 				if(result)
 				{
 					LOG_INFO << "now send csr to peter";
@@ -118,17 +119,17 @@ namespace av_router {
 					proto::ca::csr_request csr_request;
 					csr_request.set_csr(csr_der_string);
 					csr_request.set_fingerprint(rsa_figureprint);
-					// call to packet forwarder to send request to avca
+					// call to packet forwarder to send request to avca.
 					if (connection->server().do_message(&csr_request, connection))
 					{
-						// TODO 发送成功, 等待 ca 返回
-						// 问题是 ca 返回是在另一个模块里处理的, 咋办
+						// TODO 发送成功, 等待 ca 返回.
+						// 问题是 ca 返回是在另一个模块里处理的, 咋办.
 					}else
 					{
-						// TODO ca 不在线, 注册失败! 回退数据库
+						// TODO ca 不在线, 注册失败! 回退数据库.
 						m_database.delete_user(user_name, [=](bool result)
 						{
-							// 返回注册失败
+							// 返回注册失败.
 							proto_write_user_register_response(proto::user_register_result::REGISTER_FAILED_CA_BUSY, boost::optional<std::string>(), connection, false);
 						});
 					}

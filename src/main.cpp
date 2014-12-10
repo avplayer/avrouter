@@ -148,7 +148,7 @@ int main(int argc, char** argv)
 
 		// 愚弄傻逼, 让他们以为服务器是 jsp 的.
 		http_serv.add_uri_handler("/username_availability_check.jsp", bind(&register_moudle::availability_check_httpd, &moudle_register, _1, _2, _3));
-		// 启动 HTTPD
+		// 启动 HTTPD.
 		http_serv.start();
 
 		// Ctrl+c异步处理退出.
