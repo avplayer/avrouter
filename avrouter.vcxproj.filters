@@ -19,18 +19,6 @@
     <ClCompile Include="src\http_connection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="proto\message.pb.cc">
-      <Filter>proto</Filter>
-    </ClCompile>
-    <ClCompile Include="proto\user.pb.cc">
-      <Filter>proto</Filter>
-    </ClCompile>
-    <ClCompile Include="proto\address.pb.cc">
-      <Filter>proto</Filter>
-    </ClCompile>
-    <ClCompile Include="proto\im.pb.cc">
-      <Filter>proto</Filter>
-    </ClCompile>
     <ClCompile Include="src\database.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -46,8 +34,26 @@
     <ClCompile Include="src\router_server.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="proto\packet.pb.cc">
+      <Filter>proto</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\user.pb.cc">
+      <Filter>proto</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\address.pb.cc">
+      <Filter>proto</Filter>
+    </ClCompile>
     <ClCompile Include="proto\ca.pb.cc">
       <Filter>proto</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\group.pb.cc">
+      <Filter>proto</Filter>
+    </ClCompile>
+    <ClCompile Include="proto\im.pb.cc">
+      <Filter>proto</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ca_module.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,18 +74,6 @@
     </ClInclude>
     <ClInclude Include="include\logging.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="proto\message.pb.h">
-      <Filter>proto</Filter>
-    </ClInclude>
-    <ClInclude Include="proto\user.pb.h">
-      <Filter>proto</Filter>
-    </ClInclude>
-    <ClInclude Include="proto\address.pb.h">
-      <Filter>proto</Filter>
-    </ClInclude>
-    <ClInclude Include="proto\im.pb.h">
-      <Filter>proto</Filter>
     </ClInclude>
     <ClInclude Include="include\database.hpp">
       <Filter>Header Files</Filter>
@@ -105,8 +99,26 @@
     <ClInclude Include="include\router_server.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="proto\packet.pb.h">
+      <Filter>proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\user.pb.h">
+      <Filter>proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\address.pb.h">
+      <Filter>proto</Filter>
+    </ClInclude>
     <ClInclude Include="proto\ca.pb.h">
       <Filter>proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\group.pb.h">
+      <Filter>proto</Filter>
+    </ClInclude>
+    <ClInclude Include="proto\im.pb.h">
+      <Filter>proto</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ca_module.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
