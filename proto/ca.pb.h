@@ -37,17 +37,15 @@ void protobuf_ShutdownFile_ca_2eproto();
 
 class csr_request;
 class csr_result;
-class push_ok;
 class cert_pull;
-class csr_pull;
-class csr_pendding;
-class csr_pendding_list;
+class cert_pull_result;
+class ca_announce;
 
 enum csr_result_csr_code {
   csr_result_csr_code_OK = 0,
-  csr_result_csr_code_FAILED_INVALID_CSR = 1,
-  csr_result_csr_code_FAILED_DUPLICATED_NAME = 2,
-  csr_result_csr_code_FAILED_NO_PRIVILEGE = 3
+  csr_result_csr_code_FAILED_INVALID_CSR = 100,
+  csr_result_csr_code_FAILED_DUPLICATED_NAME = 101,
+  csr_result_csr_code_FAILED_NO_PRIVILEGE = 102
 };
 bool csr_result_csr_code_IsValid(int value);
 const csr_result_csr_code csr_result_csr_code_csr_code_MIN = csr_result_csr_code_OK;
@@ -324,104 +322,6 @@ class csr_result : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class push_ok : public ::google::protobuf::Message {
- public:
-  push_ok();
-  virtual ~push_ok();
-
-  push_ok(const push_ok& from);
-
-  inline push_ok& operator=(const push_ok& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline push_ok& operator=(push_ok&& from) {
-    if (&from != this) {
-      Clear();
-      Swap(&from);
-    }
-    return *this;
-  }
-
-  push_ok(push_ok&& from);
-  #endif
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const push_ok& default_instance();
-
-  void Swap(push_ok* other);
-
-  // implements Message ----------------------------------------------
-
-  push_ok* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const push_ok& from);
-  void MergeFrom(const push_ok& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated bytes fingerprints = 1;
-  inline int fingerprints_size() const;
-  inline void clear_fingerprints();
-  static const int kFingerprintsFieldNumber = 1;
-  inline const ::std::string& fingerprints(int index) const;
-  inline ::std::string* mutable_fingerprints(int index);
-  inline void set_fingerprints(int index, const ::std::string& value);
-  inline void set_fingerprints(int index, const char* value);
-  inline void set_fingerprints(int index, const void* value, size_t size);
-  inline ::std::string* add_fingerprints();
-  inline void add_fingerprints(const ::std::string& value);
-  inline void add_fingerprints(const char* value);
-  inline void add_fingerprints(const void* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& fingerprints() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_fingerprints();
-
-  // @@protoc_insertion_point(class_scope:proto.ca.push_ok)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> fingerprints_;
-  friend void  protobuf_AddDesc_ca_2eproto();
-  friend void protobuf_AssignDesc_ca_2eproto();
-  friend void protobuf_ShutdownFile_ca_2eproto();
-
-  void InitAsDefaultInstance();
-  static push_ok* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class cert_pull : public ::google::protobuf::Message {
  public:
   cert_pull();
@@ -518,20 +418,20 @@ class cert_pull : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class csr_pull : public ::google::protobuf::Message {
+class cert_pull_result : public ::google::protobuf::Message {
  public:
-  csr_pull();
-  virtual ~csr_pull();
+  cert_pull_result();
+  virtual ~cert_pull_result();
 
-  csr_pull(const csr_pull& from);
+  cert_pull_result(const cert_pull_result& from);
 
-  inline csr_pull& operator=(const csr_pull& from) {
+  inline cert_pull_result& operator=(const cert_pull_result& from) {
     CopyFrom(from);
     return *this;
   }
 
   #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline csr_pull& operator=(csr_pull&& from) {
+  inline cert_pull_result& operator=(cert_pull_result&& from) {
     if (&from != this) {
       Clear();
       Swap(&from);
@@ -539,7 +439,7 @@ class csr_pull : public ::google::protobuf::Message {
     return *this;
   }
 
-  csr_pull(csr_pull&& from);
+  cert_pull_result(cert_pull_result&& from);
   #endif
 
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
@@ -551,17 +451,17 @@ class csr_pull : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const csr_pull& default_instance();
+  static const cert_pull_result& default_instance();
 
-  void Swap(csr_pull* other);
+  void Swap(cert_pull_result* other);
 
   // implements Message ----------------------------------------------
 
-  csr_pull* New() const;
+  cert_pull_result* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const csr_pull& from);
-  void MergeFrom(const csr_pull& from);
+  void CopyFrom(const cert_pull_result& from);
+  void MergeFrom(const cert_pull_result& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -583,51 +483,51 @@ class csr_pull : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required bytes fingerprint = 1;
-  inline bool has_fingerprint() const;
-  inline void clear_fingerprint();
-  static const int kFingerprintFieldNumber = 1;
-  inline const ::std::string& fingerprint() const;
-  inline void set_fingerprint(const ::std::string& value);
-  inline void set_fingerprint(const char* value);
-  inline void set_fingerprint(const void* value, size_t size);
-  inline ::std::string* mutable_fingerprint();
-  inline ::std::string* release_fingerprint();
-  inline void set_allocated_fingerprint(::std::string* fingerprint);
+  // optional bytes cert = 1;
+  inline bool has_cert() const;
+  inline void clear_cert();
+  static const int kCertFieldNumber = 1;
+  inline const ::std::string& cert() const;
+  inline void set_cert(const ::std::string& value);
+  inline void set_cert(const char* value);
+  inline void set_cert(const void* value, size_t size);
+  inline ::std::string* mutable_cert();
+  inline ::std::string* release_cert();
+  inline void set_allocated_cert(::std::string* cert);
 
-  // @@protoc_insertion_point(class_scope:proto.ca.csr_pull)
+  // @@protoc_insertion_point(class_scope:proto.ca.cert_pull_result)
  private:
-  inline void set_has_fingerprint();
-  inline void clear_has_fingerprint();
+  inline void set_has_cert();
+  inline void clear_has_cert();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::std::string* fingerprint_;
+  ::std::string* cert_;
   friend void  protobuf_AddDesc_ca_2eproto();
   friend void protobuf_AssignDesc_ca_2eproto();
   friend void protobuf_ShutdownFile_ca_2eproto();
 
   void InitAsDefaultInstance();
-  static csr_pull* default_instance_;
+  static cert_pull_result* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class csr_pendding : public ::google::protobuf::Message {
+class ca_announce : public ::google::protobuf::Message {
  public:
-  csr_pendding();
-  virtual ~csr_pendding();
+  ca_announce();
+  virtual ~ca_announce();
 
-  csr_pendding(const csr_pendding& from);
+  ca_announce(const ca_announce& from);
 
-  inline csr_pendding& operator=(const csr_pendding& from) {
+  inline ca_announce& operator=(const ca_announce& from) {
     CopyFrom(from);
     return *this;
   }
 
   #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline csr_pendding& operator=(csr_pendding&& from) {
+  inline ca_announce& operator=(ca_announce&& from) {
     if (&from != this) {
       Clear();
       Swap(&from);
@@ -635,7 +535,7 @@ class csr_pendding : public ::google::protobuf::Message {
     return *this;
   }
 
-  csr_pendding(csr_pendding&& from);
+  ca_announce(ca_announce&& from);
   #endif
 
   inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
@@ -647,17 +547,17 @@ class csr_pendding : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const csr_pendding& default_instance();
+  static const ca_announce& default_instance();
 
-  void Swap(csr_pendding* other);
+  void Swap(ca_announce* other);
 
   // implements Message ----------------------------------------------
 
-  csr_pendding* New() const;
+  ca_announce* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const csr_pendding& from);
-  void MergeFrom(const csr_pendding& from);
+  void CopyFrom(const ca_announce& from);
+  void MergeFrom(const ca_announce& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -679,127 +579,44 @@ class csr_pendding : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:proto.ca.csr_pendding)
+  // required string ca_name = 1;
+  inline bool has_ca_name() const;
+  inline void clear_ca_name();
+  static const int kCaNameFieldNumber = 1;
+  inline const ::std::string& ca_name() const;
+  inline void set_ca_name(const ::std::string& value);
+  inline void set_ca_name(const char* value);
+  inline void set_ca_name(const char* value, size_t size);
+  inline ::std::string* mutable_ca_name();
+  inline ::std::string* release_ca_name();
+  inline void set_allocated_ca_name(::std::string* ca_name);
+
+  // optional int32 ca_level = 2;
+  inline bool has_ca_level() const;
+  inline void clear_ca_level();
+  static const int kCaLevelFieldNumber = 2;
+  inline ::google::protobuf::int32 ca_level() const;
+  inline void set_ca_level(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:proto.ca.ca_announce)
  private:
+  inline void set_has_ca_name();
+  inline void clear_has_ca_name();
+  inline void set_has_ca_level();
+  inline void clear_has_ca_level();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::std::string* ca_name_;
+  ::google::protobuf::int32 ca_level_;
   friend void  protobuf_AddDesc_ca_2eproto();
   friend void protobuf_AssignDesc_ca_2eproto();
   friend void protobuf_ShutdownFile_ca_2eproto();
 
   void InitAsDefaultInstance();
-  static csr_pendding* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class csr_pendding_list : public ::google::protobuf::Message {
- public:
-  csr_pendding_list();
-  virtual ~csr_pendding_list();
-
-  csr_pendding_list(const csr_pendding_list& from);
-
-  inline csr_pendding_list& operator=(const csr_pendding_list& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  #if __cplusplus >= 201103L || _MSC_VER >= 1600
-  inline csr_pendding_list& operator=(csr_pendding_list&& from) {
-    if (&from != this) {
-      Clear();
-      Swap(&from);
-    }
-    return *this;
-  }
-
-  csr_pendding_list(csr_pendding_list&& from);
-  #endif
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const csr_pendding_list& default_instance();
-
-  void Swap(csr_pendding_list* other);
-
-  // implements Message ----------------------------------------------
-
-  csr_pendding_list* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const csr_pendding_list& from);
-  void MergeFrom(const csr_pendding_list& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // required uint32 num = 1;
-  inline bool has_num() const;
-  inline void clear_num();
-  static const int kNumFieldNumber = 1;
-  inline ::google::protobuf::uint32 num() const;
-  inline void set_num(::google::protobuf::uint32 value);
-
-  // repeated bytes fingerprint = 2;
-  inline int fingerprint_size() const;
-  inline void clear_fingerprint();
-  static const int kFingerprintFieldNumber = 2;
-  inline const ::std::string& fingerprint(int index) const;
-  inline ::std::string* mutable_fingerprint(int index);
-  inline void set_fingerprint(int index, const ::std::string& value);
-  inline void set_fingerprint(int index, const char* value);
-  inline void set_fingerprint(int index, const void* value, size_t size);
-  inline ::std::string* add_fingerprint();
-  inline void add_fingerprint(const ::std::string& value);
-  inline void add_fingerprint(const char* value);
-  inline void add_fingerprint(const void* value, size_t size);
-  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& fingerprint() const;
-  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_fingerprint();
-
-  // @@protoc_insertion_point(class_scope:proto.ca.csr_pendding_list)
- private:
-  inline void set_has_num();
-  inline void clear_has_num();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> fingerprint_;
-  ::google::protobuf::uint32 num_;
-  friend void  protobuf_AddDesc_ca_2eproto();
-  friend void protobuf_AssignDesc_ca_2eproto();
-  friend void protobuf_ShutdownFile_ca_2eproto();
-
-  void InitAsDefaultInstance();
-  static csr_pendding_list* default_instance_;
+  static ca_announce* default_instance_;
 };
 // ===================================================================
 
@@ -1143,64 +960,6 @@ inline void csr_result::set_allocated_cert(::std::string* cert) {
 
 // -------------------------------------------------------------------
 
-// push_ok
-
-// repeated bytes fingerprints = 1;
-inline int push_ok::fingerprints_size() const {
-  return fingerprints_.size();
-}
-inline void push_ok::clear_fingerprints() {
-  fingerprints_.Clear();
-}
-inline const ::std::string& push_ok::fingerprints(int index) const {
-  // @@protoc_insertion_point(field_get:proto.ca.push_ok.fingerprints)
-  return fingerprints_.Get(index);
-}
-inline ::std::string* push_ok::mutable_fingerprints(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.ca.push_ok.fingerprints)
-  return fingerprints_.Mutable(index);
-}
-inline void push_ok::set_fingerprints(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:proto.ca.push_ok.fingerprints)
-  fingerprints_.Mutable(index)->assign(value);
-}
-inline void push_ok::set_fingerprints(int index, const char* value) {
-  fingerprints_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.ca.push_ok.fingerprints)
-}
-inline void push_ok::set_fingerprints(int index, const void* value, size_t size) {
-  fingerprints_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.ca.push_ok.fingerprints)
-}
-inline ::std::string* push_ok::add_fingerprints() {
-  return fingerprints_.Add();
-}
-inline void push_ok::add_fingerprints(const ::std::string& value) {
-  fingerprints_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:proto.ca.push_ok.fingerprints)
-}
-inline void push_ok::add_fingerprints(const char* value) {
-  fingerprints_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:proto.ca.push_ok.fingerprints)
-}
-inline void push_ok::add_fingerprints(const void* value, size_t size) {
-  fingerprints_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:proto.ca.push_ok.fingerprints)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-push_ok::fingerprints() const {
-  // @@protoc_insertion_point(field_list:proto.ca.push_ok.fingerprints)
-  return fingerprints_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-push_ok::mutable_fingerprints() {
-  // @@protoc_insertion_point(field_mutable_list:proto.ca.push_ok.fingerprints)
-  return &fingerprints_;
-}
-
-// -------------------------------------------------------------------
-
 // cert_pull
 
 // required bytes fingerprint = 1;
@@ -1281,168 +1040,186 @@ inline void cert_pull::set_allocated_fingerprint(::std::string* fingerprint) {
 
 // -------------------------------------------------------------------
 
-// csr_pull
+// cert_pull_result
 
-// required bytes fingerprint = 1;
-inline bool csr_pull::has_fingerprint() const {
+// optional bytes cert = 1;
+inline bool cert_pull_result::has_cert() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void csr_pull::set_has_fingerprint() {
+inline void cert_pull_result::set_has_cert() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void csr_pull::clear_has_fingerprint() {
+inline void cert_pull_result::clear_has_cert() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void csr_pull::clear_fingerprint() {
-  if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    fingerprint_->clear();
+inline void cert_pull_result::clear_cert() {
+  if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cert_->clear();
   }
-  clear_has_fingerprint();
+  clear_has_cert();
 }
-inline const ::std::string& csr_pull::fingerprint() const {
-  // @@protoc_insertion_point(field_get:proto.ca.csr_pull.fingerprint)
-  return *fingerprint_;
+inline const ::std::string& cert_pull_result::cert() const {
+  // @@protoc_insertion_point(field_get:proto.ca.cert_pull_result.cert)
+  return *cert_;
 }
-inline void csr_pull::set_fingerprint(const ::std::string& value) {
-  set_has_fingerprint();
-  if (fingerprint_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    fingerprint_ = new ::std::string;
+inline void cert_pull_result::set_cert(const ::std::string& value) {
+  set_has_cert();
+  if (cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cert_ = new ::std::string;
   }
-  fingerprint_->assign(value);
-  // @@protoc_insertion_point(field_set:proto.ca.csr_pull.fingerprint)
+  cert_->assign(value);
+  // @@protoc_insertion_point(field_set:proto.ca.cert_pull_result.cert)
 }
-inline void csr_pull::set_fingerprint(const char* value) {
-  set_has_fingerprint();
-  if (fingerprint_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    fingerprint_ = new ::std::string;
+inline void cert_pull_result::set_cert(const char* value) {
+  set_has_cert();
+  if (cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cert_ = new ::std::string;
   }
-  fingerprint_->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.ca.csr_pull.fingerprint)
+  cert_->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto.ca.cert_pull_result.cert)
 }
-inline void csr_pull::set_fingerprint(const void* value, size_t size) {
-  set_has_fingerprint();
-  if (fingerprint_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    fingerprint_ = new ::std::string;
+inline void cert_pull_result::set_cert(const void* value, size_t size) {
+  set_has_cert();
+  if (cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cert_ = new ::std::string;
   }
-  fingerprint_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.ca.csr_pull.fingerprint)
+  cert_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto.ca.cert_pull_result.cert)
 }
-inline ::std::string* csr_pull::mutable_fingerprint() {
-  set_has_fingerprint();
-  if (fingerprint_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    fingerprint_ = new ::std::string;
+inline ::std::string* cert_pull_result::mutable_cert() {
+  set_has_cert();
+  if (cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    cert_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:proto.ca.csr_pull.fingerprint)
-  return fingerprint_;
+  // @@protoc_insertion_point(field_mutable:proto.ca.cert_pull_result.cert)
+  return cert_;
 }
-inline ::std::string* csr_pull::release_fingerprint() {
-  clear_has_fingerprint();
-  if (fingerprint_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+inline ::std::string* cert_pull_result::release_cert() {
+  clear_has_cert();
+  if (cert_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
   } else {
-    ::std::string* temp = fingerprint_;
-    fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    ::std::string* temp = cert_;
+    cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     return temp;
   }
 }
-inline void csr_pull::set_allocated_fingerprint(::std::string* fingerprint) {
-  if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete fingerprint_;
+inline void cert_pull_result::set_allocated_cert(::std::string* cert) {
+  if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cert_;
   }
-  if (fingerprint) {
-    set_has_fingerprint();
-    fingerprint_ = fingerprint;
+  if (cert) {
+    set_has_cert();
+    cert_ = cert;
   } else {
-    clear_has_fingerprint();
-    fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    clear_has_cert();
+    cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:proto.ca.csr_pull.fingerprint)
+  // @@protoc_insertion_point(field_set_allocated:proto.ca.cert_pull_result.cert)
 }
 
 // -------------------------------------------------------------------
 
-// csr_pendding
+// ca_announce
 
-// -------------------------------------------------------------------
-
-// csr_pendding_list
-
-// required uint32 num = 1;
-inline bool csr_pendding_list::has_num() const {
+// required string ca_name = 1;
+inline bool ca_announce::has_ca_name() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void csr_pendding_list::set_has_num() {
+inline void ca_announce::set_has_ca_name() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void csr_pendding_list::clear_has_num() {
+inline void ca_announce::clear_has_ca_name() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void csr_pendding_list::clear_num() {
-  num_ = 0u;
-  clear_has_num();
+inline void ca_announce::clear_ca_name() {
+  if (ca_name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ca_name_->clear();
+  }
+  clear_has_ca_name();
 }
-inline ::google::protobuf::uint32 csr_pendding_list::num() const {
-  // @@protoc_insertion_point(field_get:proto.ca.csr_pendding_list.num)
-  return num_;
+inline const ::std::string& ca_announce::ca_name() const {
+  // @@protoc_insertion_point(field_get:proto.ca.ca_announce.ca_name)
+  return *ca_name_;
 }
-inline void csr_pendding_list::set_num(::google::protobuf::uint32 value) {
-  set_has_num();
-  num_ = value;
-  // @@protoc_insertion_point(field_set:proto.ca.csr_pendding_list.num)
+inline void ca_announce::set_ca_name(const ::std::string& value) {
+  set_has_ca_name();
+  if (ca_name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ca_name_ = new ::std::string;
+  }
+  ca_name_->assign(value);
+  // @@protoc_insertion_point(field_set:proto.ca.ca_announce.ca_name)
+}
+inline void ca_announce::set_ca_name(const char* value) {
+  set_has_ca_name();
+  if (ca_name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ca_name_ = new ::std::string;
+  }
+  ca_name_->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto.ca.ca_announce.ca_name)
+}
+inline void ca_announce::set_ca_name(const char* value, size_t size) {
+  set_has_ca_name();
+  if (ca_name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ca_name_ = new ::std::string;
+  }
+  ca_name_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto.ca.ca_announce.ca_name)
+}
+inline ::std::string* ca_announce::mutable_ca_name() {
+  set_has_ca_name();
+  if (ca_name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ca_name_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:proto.ca.ca_announce.ca_name)
+  return ca_name_;
+}
+inline ::std::string* ca_announce::release_ca_name() {
+  clear_has_ca_name();
+  if (ca_name_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = ca_name_;
+    ca_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ca_announce::set_allocated_ca_name(::std::string* ca_name) {
+  if (ca_name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete ca_name_;
+  }
+  if (ca_name) {
+    set_has_ca_name();
+    ca_name_ = ca_name;
+  } else {
+    clear_has_ca_name();
+    ca_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto.ca.ca_announce.ca_name)
 }
 
-// repeated bytes fingerprint = 2;
-inline int csr_pendding_list::fingerprint_size() const {
-  return fingerprint_.size();
+// optional int32 ca_level = 2;
+inline bool ca_announce::has_ca_level() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void csr_pendding_list::clear_fingerprint() {
-  fingerprint_.Clear();
+inline void ca_announce::set_has_ca_level() {
+  _has_bits_[0] |= 0x00000002u;
 }
-inline const ::std::string& csr_pendding_list::fingerprint(int index) const {
-  // @@protoc_insertion_point(field_get:proto.ca.csr_pendding_list.fingerprint)
-  return fingerprint_.Get(index);
+inline void ca_announce::clear_has_ca_level() {
+  _has_bits_[0] &= ~0x00000002u;
 }
-inline ::std::string* csr_pendding_list::mutable_fingerprint(int index) {
-  // @@protoc_insertion_point(field_mutable:proto.ca.csr_pendding_list.fingerprint)
-  return fingerprint_.Mutable(index);
+inline void ca_announce::clear_ca_level() {
+  ca_level_ = 0;
+  clear_has_ca_level();
 }
-inline void csr_pendding_list::set_fingerprint(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:proto.ca.csr_pendding_list.fingerprint)
-  fingerprint_.Mutable(index)->assign(value);
+inline ::google::protobuf::int32 ca_announce::ca_level() const {
+  // @@protoc_insertion_point(field_get:proto.ca.ca_announce.ca_level)
+  return ca_level_;
 }
-inline void csr_pendding_list::set_fingerprint(int index, const char* value) {
-  fingerprint_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:proto.ca.csr_pendding_list.fingerprint)
-}
-inline void csr_pendding_list::set_fingerprint(int index, const void* value, size_t size) {
-  fingerprint_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:proto.ca.csr_pendding_list.fingerprint)
-}
-inline ::std::string* csr_pendding_list::add_fingerprint() {
-  return fingerprint_.Add();
-}
-inline void csr_pendding_list::add_fingerprint(const ::std::string& value) {
-  fingerprint_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:proto.ca.csr_pendding_list.fingerprint)
-}
-inline void csr_pendding_list::add_fingerprint(const char* value) {
-  fingerprint_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:proto.ca.csr_pendding_list.fingerprint)
-}
-inline void csr_pendding_list::add_fingerprint(const void* value, size_t size) {
-  fingerprint_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:proto.ca.csr_pendding_list.fingerprint)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
-csr_pendding_list::fingerprint() const {
-  // @@protoc_insertion_point(field_list:proto.ca.csr_pendding_list.fingerprint)
-  return fingerprint_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
-csr_pendding_list::mutable_fingerprint() {
-  // @@protoc_insertion_point(field_mutable_list:proto.ca.csr_pendding_list.fingerprint)
-  return &fingerprint_;
+inline void ca_announce::set_ca_level(::google::protobuf::int32 value) {
+  set_has_ca_level();
+  ca_level_ = value;
+  // @@protoc_insertion_point(field_set:proto.ca.ca_announce.ca_level)
 }
 
 

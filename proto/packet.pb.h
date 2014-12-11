@@ -40,6 +40,7 @@ class agmp;
 class agmp_PKREPLY;
 class agmp_NOROUTTOHOST;
 class agmp_TTLOUT;
+class bgp;
 
 // ===================================================================
 
@@ -739,6 +740,109 @@ class agmp : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static agmp* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class bgp : public ::google::protobuf::Message {
+ public:
+  bgp();
+  virtual ~bgp();
+
+  bgp(const bgp& from);
+
+  inline bgp& operator=(const bgp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  #if __cplusplus >= 201103L || _MSC_VER >= 1600
+  inline bgp& operator=(bgp&& from) {
+    if (&from != this) {
+      Clear();
+      Swap(&from);
+    }
+    return *this;
+  }
+
+  bgp(bgp&& from);
+  #endif
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const bgp& default_instance();
+
+  void Swap(bgp* other);
+
+  // implements Message ----------------------------------------------
+
+  bgp* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const bgp& from);
+  void MergeFrom(const bgp& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required uint64 time_salt = 1;
+  inline bool has_time_salt() const;
+  inline void clear_time_salt();
+  static const int kTimeSaltFieldNumber = 1;
+  inline ::google::protobuf::uint64 time_salt() const;
+  inline void set_time_salt(::google::protobuf::uint64 value);
+
+  // optional .proto.av_address announce = 2;
+  inline bool has_announce() const;
+  inline void clear_announce();
+  static const int kAnnounceFieldNumber = 2;
+  inline const ::proto::av_address& announce() const;
+  inline ::proto::av_address* mutable_announce();
+  inline ::proto::av_address* release_announce();
+  inline void set_allocated_announce(::proto::av_address* announce);
+
+  // @@protoc_insertion_point(class_scope:proto.bgp)
+ private:
+  inline void set_has_time_salt();
+  inline void clear_has_time_salt();
+  inline void set_has_announce();
+  inline void clear_has_announce();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::uint64 time_salt_;
+  ::proto::av_address* announce_;
+  friend void  protobuf_AddDesc_packet_2eproto();
+  friend void protobuf_AssignDesc_packet_2eproto();
+  friend void protobuf_ShutdownFile_packet_2eproto();
+
+  void InitAsDefaultInstance();
+  static bgp* default_instance_;
 };
 // ===================================================================
 
@@ -1517,6 +1621,75 @@ inline void agmp::set_allocated_ttlout(::proto::agmp_TTLOUT* ttlout) {
     clear_has_ttlout();
   }
   // @@protoc_insertion_point(field_set_allocated:proto.agmp.ttlout)
+}
+
+// -------------------------------------------------------------------
+
+// bgp
+
+// required uint64 time_salt = 1;
+inline bool bgp::has_time_salt() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void bgp::set_has_time_salt() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void bgp::clear_has_time_salt() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void bgp::clear_time_salt() {
+  time_salt_ = GOOGLE_ULONGLONG(0);
+  clear_has_time_salt();
+}
+inline ::google::protobuf::uint64 bgp::time_salt() const {
+  // @@protoc_insertion_point(field_get:proto.bgp.time_salt)
+  return time_salt_;
+}
+inline void bgp::set_time_salt(::google::protobuf::uint64 value) {
+  set_has_time_salt();
+  time_salt_ = value;
+  // @@protoc_insertion_point(field_set:proto.bgp.time_salt)
+}
+
+// optional .proto.av_address announce = 2;
+inline bool bgp::has_announce() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void bgp::set_has_announce() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void bgp::clear_has_announce() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void bgp::clear_announce() {
+  if (announce_ != NULL) announce_->::proto::av_address::Clear();
+  clear_has_announce();
+}
+inline const ::proto::av_address& bgp::announce() const {
+  // @@protoc_insertion_point(field_get:proto.bgp.announce)
+  return announce_ != NULL ? *announce_ : *default_instance_->announce_;
+}
+inline ::proto::av_address* bgp::mutable_announce() {
+  set_has_announce();
+  if (announce_ == NULL) announce_ = new ::proto::av_address;
+  // @@protoc_insertion_point(field_mutable:proto.bgp.announce)
+  return announce_;
+}
+inline ::proto::av_address* bgp::release_announce() {
+  clear_has_announce();
+  ::proto::av_address* temp = announce_;
+  announce_ = NULL;
+  return temp;
+}
+inline void bgp::set_allocated_announce(::proto::av_address* announce) {
+  delete announce_;
+  announce_ = announce;
+  if (announce) {
+    set_has_announce();
+  } else {
+    clear_has_announce();
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto.bgp.announce)
 }
 
 

@@ -28,21 +28,15 @@ const ::google::protobuf::Descriptor* csr_result_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   csr_result_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* csr_result_csr_code_descriptor_ = NULL;
-const ::google::protobuf::Descriptor* push_ok_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  push_ok_reflection_ = NULL;
 const ::google::protobuf::Descriptor* cert_pull_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   cert_pull_reflection_ = NULL;
-const ::google::protobuf::Descriptor* csr_pull_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* cert_pull_result_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  csr_pull_reflection_ = NULL;
-const ::google::protobuf::Descriptor* csr_pendding_descriptor_ = NULL;
+  cert_pull_result_reflection_ = NULL;
+const ::google::protobuf::Descriptor* ca_announce_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  csr_pendding_reflection_ = NULL;
-const ::google::protobuf::Descriptor* csr_pendding_list_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  csr_pendding_list_reflection_ = NULL;
+  ca_announce_reflection_ = NULL;
 
 }  // namespace
 
@@ -87,22 +81,7 @@ void protobuf_AssignDesc_ca_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(csr_result));
   csr_result_csr_code_descriptor_ = csr_result_descriptor_->enum_type(0);
-  push_ok_descriptor_ = file->message_type(2);
-  static const int push_ok_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(push_ok, fingerprints_),
-  };
-  push_ok_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      push_ok_descriptor_,
-      push_ok::default_instance_,
-      push_ok_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(push_ok, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(push_ok, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(push_ok));
-  cert_pull_descriptor_ = file->message_type(3);
+  cert_pull_descriptor_ = file->message_type(2);
   static const int cert_pull_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull, fingerprint_),
   };
@@ -117,51 +96,37 @@ void protobuf_AssignDesc_ca_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(cert_pull));
-  csr_pull_descriptor_ = file->message_type(4);
-  static const int csr_pull_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pull, fingerprint_),
+  cert_pull_result_descriptor_ = file->message_type(3);
+  static const int cert_pull_result_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull_result, cert_),
   };
-  csr_pull_reflection_ =
+  cert_pull_result_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      csr_pull_descriptor_,
-      csr_pull::default_instance_,
-      csr_pull_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pull, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pull, _unknown_fields_),
+      cert_pull_result_descriptor_,
+      cert_pull_result::default_instance_,
+      cert_pull_result_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull_result, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull_result, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(csr_pull));
-  csr_pendding_descriptor_ = file->message_type(5);
-  static const int csr_pendding_offsets_[1] = {
+      sizeof(cert_pull_result));
+  ca_announce_descriptor_ = file->message_type(4);
+  static const int ca_announce_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, ca_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, ca_level_),
   };
-  csr_pendding_reflection_ =
+  ca_announce_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      csr_pendding_descriptor_,
-      csr_pendding::default_instance_,
-      csr_pendding_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pendding, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pendding, _unknown_fields_),
+      ca_announce_descriptor_,
+      ca_announce::default_instance_,
+      ca_announce_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(csr_pendding));
-  csr_pendding_list_descriptor_ = file->message_type(6);
-  static const int csr_pendding_list_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pendding_list, num_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pendding_list, fingerprint_),
-  };
-  csr_pendding_list_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      csr_pendding_list_descriptor_,
-      csr_pendding_list::default_instance_,
-      csr_pendding_list_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pendding_list, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_pendding_list, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(csr_pendding_list));
+      sizeof(ca_announce));
 }
 
 namespace {
@@ -179,15 +144,11 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     csr_result_descriptor_, &csr_result::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    push_ok_descriptor_, &push_ok::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     cert_pull_descriptor_, &cert_pull::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    csr_pull_descriptor_, &csr_pull::default_instance());
+    cert_pull_result_descriptor_, &cert_pull_result::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    csr_pendding_descriptor_, &csr_pendding::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    csr_pendding_list_descriptor_, &csr_pendding_list::default_instance());
+    ca_announce_descriptor_, &ca_announce::default_instance());
 }
 
 }  // namespace
@@ -197,16 +158,12 @@ void protobuf_ShutdownFile_ca_2eproto() {
   delete csr_request_reflection_;
   delete csr_result::default_instance_;
   delete csr_result_reflection_;
-  delete push_ok::default_instance_;
-  delete push_ok_reflection_;
   delete cert_pull::default_instance_;
   delete cert_pull_reflection_;
-  delete csr_pull::default_instance_;
-  delete csr_pull_reflection_;
-  delete csr_pendding::default_instance_;
-  delete csr_pendding_reflection_;
-  delete csr_pendding_list::default_instance_;
-  delete csr_pendding_list_reflection_;
+  delete cert_pull_result::default_instance_;
+  delete cert_pull_result_reflection_;
+  delete ca_announce::default_instance_;
+  delete ca_announce_reflection_;
 }
 
 void protobuf_AddDesc_ca_2eproto() {
@@ -221,28 +178,23 @@ void protobuf_AddDesc_ca_2eproto() {
     "sult\022-\n\006result\030\001 \002(\0162\035.proto.ca.csr_resu"
     "lt.csr_code\022\023\n\013fingerprint\030\002 \002(\014\022\014\n\004cert"
     "\030\003 \002(\014\"_\n\010csr_code\022\006\n\002OK\020\000\022\026\n\022FAILED_INV"
-    "ALID_CSR\020\001\022\032\n\026FAILED_DUPLICATED_NAME\020\002\022\027"
-    "\n\023FAILED_NO_PRIVILEGE\020\003\"\037\n\007push_ok\022\024\n\014fi"
-    "ngerprints\030\001 \003(\014\" \n\tcert_pull\022\023\n\013fingerp"
-    "rint\030\001 \002(\014\"\037\n\010csr_pull\022\023\n\013fingerprint\030\001 "
-    "\002(\014\"\016\n\014csr_pendding\"5\n\021csr_pendding_list"
-    "\022\013\n\003num\030\001 \002(\r\022\023\n\013fingerprint\030\002 \003(\014", 434);
+    "ALID_CSR\020d\022\032\n\026FAILED_DUPLICATED_NAME\020e\022\027"
+    "\n\023FAILED_NO_PRIVILEGE\020f\" \n\tcert_pull\022\023\n\013"
+    "fingerprint\030\001 \002(\014\" \n\020cert_pull_result\022\014\n"
+    "\004cert\030\001 \001(\014\"0\n\013ca_announce\022\017\n\007ca_name\030\001 "
+    "\002(\t\022\020\n\010ca_level\030\002 \001(\005", 381);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "ca.proto", &protobuf_RegisterTypes);
   csr_request::default_instance_ = new csr_request();
   csr_result::default_instance_ = new csr_result();
-  push_ok::default_instance_ = new push_ok();
   cert_pull::default_instance_ = new cert_pull();
-  csr_pull::default_instance_ = new csr_pull();
-  csr_pendding::default_instance_ = new csr_pendding();
-  csr_pendding_list::default_instance_ = new csr_pendding_list();
+  cert_pull_result::default_instance_ = new cert_pull_result();
+  ca_announce::default_instance_ = new ca_announce();
   csr_request::default_instance_->InitAsDefaultInstance();
   csr_result::default_instance_->InitAsDefaultInstance();
-  push_ok::default_instance_->InitAsDefaultInstance();
   cert_pull::default_instance_->InitAsDefaultInstance();
-  csr_pull::default_instance_->InitAsDefaultInstance();
-  csr_pendding::default_instance_->InitAsDefaultInstance();
-  csr_pendding_list::default_instance_->InitAsDefaultInstance();
+  cert_pull_result::default_instance_->InitAsDefaultInstance();
+  ca_announce::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_ca_2eproto);
 }
 
@@ -287,7 +239,7 @@ void csr_request::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_request::csr_request(csr_request&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -550,9 +502,9 @@ const ::google::protobuf::EnumDescriptor* csr_result_csr_code_descriptor() {
 bool csr_result_csr_code_IsValid(int value) {
   switch(value) {
     case 0:
-    case 1:
-    case 2:
-    case 3:
+    case 100:
+    case 101:
+    case 102:
       return true;
     default:
       return false;
@@ -602,7 +554,7 @@ void csr_result::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_result::csr_result(csr_result&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -902,231 +854,6 @@ void csr_result::Swap(csr_result* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int push_ok::kFingerprintsFieldNumber;
-#endif  // !_MSC_VER
-
-push_ok::push_ok()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.ca.push_ok)
-}
-
-void push_ok::InitAsDefaultInstance() {
-}
-
-push_ok::push_ok(const push_ok& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.ca.push_ok)
-}
-
-void push_ok::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-#if __cplusplus >= 201103L || _MSC_VER >= 1600
-push_ok::push_ok(push_ok&& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
-}
-#endif
-
-push_ok::~push_ok() {
-  // @@protoc_insertion_point(destructor:proto.ca.push_ok)
-  SharedDtor();
-}
-
-void push_ok::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void push_ok::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* push_ok::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return push_ok_descriptor_;
-}
-
-const push_ok& push_ok::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_ca_2eproto();
-  return *default_instance_;
-}
-
-push_ok* push_ok::default_instance_ = NULL;
-
-push_ok* push_ok::New() const {
-  return new push_ok;
-}
-
-void push_ok::Clear() {
-  fingerprints_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool push_ok::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.ca.push_ok)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated bytes fingerprints = 1;
-      case 1: {
-        if (tag == 10) {
-         parse_fingerprints:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->add_fingerprints()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_fingerprints;
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:proto.ca.push_ok)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:proto.ca.push_ok)
-  return false;
-#undef DO_
-}
-
-void push_ok::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.ca.push_ok)
-  // repeated bytes fingerprints = 1;
-  for (int i = 0; i < this->fingerprints_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      1, this->fingerprints(i), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:proto.ca.push_ok)
-}
-
-::google::protobuf::uint8* push_ok::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.push_ok)
-  // repeated bytes fingerprints = 1;
-  for (int i = 0; i < this->fingerprints_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteBytesToArray(1, this->fingerprints(i), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.push_ok)
-  return target;
-}
-
-int push_ok::ByteSize() const {
-  int total_size = 0;
-
-  // repeated bytes fingerprints = 1;
-  total_size += 1 * this->fingerprints_size();
-  for (int i = 0; i < this->fingerprints_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::BytesSize(
-      this->fingerprints(i));
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void push_ok::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const push_ok* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const push_ok*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void push_ok::MergeFrom(const push_ok& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  fingerprints_.MergeFrom(from.fingerprints_);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void push_ok::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void push_ok::CopyFrom(const push_ok& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool push_ok::IsInitialized() const {
-
-  return true;
-}
-
-void push_ok::Swap(push_ok* other) {
-  if (other != this) {
-    fingerprints_.Swap(&other->fingerprints_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata push_ok::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = push_ok_descriptor_;
-  metadata.reflection = push_ok_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
 const int cert_pull::kFingerprintFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1156,7 +883,7 @@ void cert_pull::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 cert_pull::cert_pull(cert_pull&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
@@ -1366,98 +1093,98 @@ void cert_pull::Swap(cert_pull* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int csr_pull::kFingerprintFieldNumber;
+const int cert_pull_result::kCertFieldNumber;
 #endif  // !_MSC_VER
 
-csr_pull::csr_pull()
+cert_pull_result::cert_pull_result()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.ca.csr_pull)
+  // @@protoc_insertion_point(constructor:proto.ca.cert_pull_result)
 }
 
-void csr_pull::InitAsDefaultInstance() {
+void cert_pull_result::InitAsDefaultInstance() {
 }
 
-csr_pull::csr_pull(const csr_pull& from)
+cert_pull_result::cert_pull_result(const cert_pull_result& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.ca.csr_pull)
+  // @@protoc_insertion_point(copy_constructor:proto.ca.cert_pull_result)
 }
 
-void csr_pull::SharedCtor() {
+void cert_pull_result::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-csr_pull::csr_pull(csr_pull&& from)
+cert_pull_result::cert_pull_result(cert_pull_result&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
-csr_pull::~csr_pull() {
-  // @@protoc_insertion_point(destructor:proto.ca.csr_pull)
+cert_pull_result::~cert_pull_result() {
+  // @@protoc_insertion_point(destructor:proto.ca.cert_pull_result)
   SharedDtor();
 }
 
-void csr_pull::SharedDtor() {
-  if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete fingerprint_;
+void cert_pull_result::SharedDtor() {
+  if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete cert_;
   }
   if (this != default_instance_) {
   }
 }
 
-void csr_pull::SetCachedSize(int size) const {
+void cert_pull_result::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* csr_pull::descriptor() {
+const ::google::protobuf::Descriptor* cert_pull_result::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return csr_pull_descriptor_;
+  return cert_pull_result_descriptor_;
 }
 
-const csr_pull& csr_pull::default_instance() {
+const cert_pull_result& cert_pull_result::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ca_2eproto();
   return *default_instance_;
 }
 
-csr_pull* csr_pull::default_instance_ = NULL;
+cert_pull_result* cert_pull_result::default_instance_ = NULL;
 
-csr_pull* csr_pull::New() const {
-  return new csr_pull;
+cert_pull_result* cert_pull_result::New() const {
+  return new cert_pull_result;
 }
 
-void csr_pull::Clear() {
-  if (has_fingerprint()) {
-    if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-      fingerprint_->clear();
+void cert_pull_result::Clear() {
+  if (has_cert()) {
+    if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      cert_->clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool csr_pull::MergePartialFromCodedStream(
+bool cert_pull_result::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.ca.csr_pull)
+  // @@protoc_insertion_point(parse_start:proto.ca.cert_pull_result)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required bytes fingerprint = 1;
+      // optional bytes cert = 1;
       case 1: {
         if (tag == 10) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_fingerprint()));
+                input, this->mutable_cert()));
         } else {
           goto handle_unusual;
         }
@@ -1479,57 +1206,57 @@ bool csr_pull::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.ca.csr_pull)
+  // @@protoc_insertion_point(parse_success:proto.ca.cert_pull_result)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.ca.csr_pull)
+  // @@protoc_insertion_point(parse_failure:proto.ca.cert_pull_result)
   return false;
 #undef DO_
 }
 
-void csr_pull::SerializeWithCachedSizes(
+void cert_pull_result::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.ca.csr_pull)
-  // required bytes fingerprint = 1;
-  if (has_fingerprint()) {
+  // @@protoc_insertion_point(serialize_start:proto.ca.cert_pull_result)
+  // optional bytes cert = 1;
+  if (has_cert()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      1, this->fingerprint(), output);
+      1, this->cert(), output);
   }
 
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.ca.csr_pull)
+  // @@protoc_insertion_point(serialize_end:proto.ca.cert_pull_result)
 }
 
-::google::protobuf::uint8* csr_pull::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* cert_pull_result::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.csr_pull)
-  // required bytes fingerprint = 1;
-  if (has_fingerprint()) {
+  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.cert_pull_result)
+  // optional bytes cert = 1;
+  if (has_cert()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->fingerprint(), target);
+        1, this->cert(), target);
   }
 
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.csr_pull)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.cert_pull_result)
   return target;
 }
 
-int csr_pull::ByteSize() const {
+int cert_pull_result::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required bytes fingerprint = 1;
-    if (has_fingerprint()) {
+    // optional bytes cert = 1;
+    if (has_cert()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->fingerprint());
+          this->cert());
     }
 
   }
@@ -1544,10 +1271,10 @@ int csr_pull::ByteSize() const {
   return total_size;
 }
 
-void csr_pull::MergeFrom(const ::google::protobuf::Message& from) {
+void cert_pull_result::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const csr_pull* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const csr_pull*>(
+  const cert_pull_result* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const cert_pull_result*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1556,48 +1283,47 @@ void csr_pull::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void csr_pull::MergeFrom(const csr_pull& from) {
+void cert_pull_result::MergeFrom(const cert_pull_result& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_fingerprint()) {
-      set_fingerprint(from.fingerprint());
+    if (from.has_cert()) {
+      set_cert(from.cert());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void csr_pull::CopyFrom(const ::google::protobuf::Message& from) {
+void cert_pull_result::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void csr_pull::CopyFrom(const csr_pull& from) {
+void cert_pull_result::CopyFrom(const cert_pull_result& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool csr_pull::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+bool cert_pull_result::IsInitialized() const {
 
   return true;
 }
 
-void csr_pull::Swap(csr_pull* other) {
+void cert_pull_result::Swap(cert_pull_result* other) {
   if (other != this) {
-    std::swap(fingerprint_, other->fingerprint_);
+    std::swap(cert_, other->cert_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata csr_pull::GetMetadata() const {
+::google::protobuf::Metadata cert_pull_result::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = csr_pull_descriptor_;
-  metadata.reflection = csr_pull_reflection_;
+  metadata.descriptor = cert_pull_result_descriptor_;
+  metadata.reflection = cert_pull_result_reflection_;
   return metadata;
 }
 
@@ -1605,293 +1331,125 @@ void csr_pull::Swap(csr_pull* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int ca_announce::kCaNameFieldNumber;
+const int ca_announce::kCaLevelFieldNumber;
 #endif  // !_MSC_VER
 
-csr_pendding::csr_pendding()
+ca_announce::ca_announce()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.ca.csr_pendding)
+  // @@protoc_insertion_point(constructor:proto.ca.ca_announce)
 }
 
-void csr_pendding::InitAsDefaultInstance() {
+void ca_announce::InitAsDefaultInstance() {
 }
 
-csr_pendding::csr_pendding(const csr_pendding& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.ca.csr_pendding)
-}
-
-void csr_pendding::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-#if __cplusplus >= 201103L || _MSC_VER >= 1600
-csr_pendding::csr_pendding(csr_pendding&& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
-}
-#endif
-
-csr_pendding::~csr_pendding() {
-  // @@protoc_insertion_point(destructor:proto.ca.csr_pendding)
-  SharedDtor();
-}
-
-void csr_pendding::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void csr_pendding::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* csr_pendding::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return csr_pendding_descriptor_;
-}
-
-const csr_pendding& csr_pendding::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_ca_2eproto();
-  return *default_instance_;
-}
-
-csr_pendding* csr_pendding::default_instance_ = NULL;
-
-csr_pendding* csr_pendding::New() const {
-  return new csr_pendding;
-}
-
-void csr_pendding::Clear() {
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool csr_pendding::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.ca.csr_pendding)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-  handle_unusual:
-    if (tag == 0 ||
-        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-      goto success;
-    }
-    DO_(::google::protobuf::internal::WireFormat::SkipField(
-          input, tag, mutable_unknown_fields()));
-  }
-success:
-  // @@protoc_insertion_point(parse_success:proto.ca.csr_pendding)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:proto.ca.csr_pendding)
-  return false;
-#undef DO_
-}
-
-void csr_pendding::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.ca.csr_pendding)
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:proto.ca.csr_pendding)
-}
-
-::google::protobuf::uint8* csr_pendding::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.csr_pendding)
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.csr_pendding)
-  return target;
-}
-
-int csr_pendding::ByteSize() const {
-  int total_size = 0;
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void csr_pendding::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const csr_pendding* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const csr_pendding*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void csr_pendding::MergeFrom(const csr_pendding& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void csr_pendding::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void csr_pendding::CopyFrom(const csr_pendding& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool csr_pendding::IsInitialized() const {
-
-  return true;
-}
-
-void csr_pendding::Swap(csr_pendding* other) {
-  if (other != this) {
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata csr_pendding::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = csr_pendding_descriptor_;
-  metadata.reflection = csr_pendding_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int csr_pendding_list::kNumFieldNumber;
-const int csr_pendding_list::kFingerprintFieldNumber;
-#endif  // !_MSC_VER
-
-csr_pendding_list::csr_pendding_list()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:proto.ca.csr_pendding_list)
-}
-
-void csr_pendding_list::InitAsDefaultInstance() {
-}
-
-csr_pendding_list::csr_pendding_list(const csr_pendding_list& from)
+ca_announce::ca_announce(const ca_announce& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:proto.ca.csr_pendding_list)
+  // @@protoc_insertion_point(copy_constructor:proto.ca.ca_announce)
 }
 
-void csr_pendding_list::SharedCtor() {
+void ca_announce::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  num_ = 0u;
+  ca_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ca_level_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
-csr_pendding_list::csr_pendding_list(csr_pendding_list&& from)
+ca_announce::ca_announce(ca_announce&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 
-csr_pendding_list::~csr_pendding_list() {
-  // @@protoc_insertion_point(destructor:proto.ca.csr_pendding_list)
+ca_announce::~ca_announce() {
+  // @@protoc_insertion_point(destructor:proto.ca.ca_announce)
   SharedDtor();
 }
 
-void csr_pendding_list::SharedDtor() {
+void ca_announce::SharedDtor() {
+  if (ca_name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete ca_name_;
+  }
   if (this != default_instance_) {
   }
 }
 
-void csr_pendding_list::SetCachedSize(int size) const {
+void ca_announce::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* csr_pendding_list::descriptor() {
+const ::google::protobuf::Descriptor* ca_announce::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return csr_pendding_list_descriptor_;
+  return ca_announce_descriptor_;
 }
 
-const csr_pendding_list& csr_pendding_list::default_instance() {
+const ca_announce& ca_announce::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_ca_2eproto();
   return *default_instance_;
 }
 
-csr_pendding_list* csr_pendding_list::default_instance_ = NULL;
+ca_announce* ca_announce::default_instance_ = NULL;
 
-csr_pendding_list* csr_pendding_list::New() const {
-  return new csr_pendding_list;
+ca_announce* ca_announce::New() const {
+  return new ca_announce;
 }
 
-void csr_pendding_list::Clear() {
-  num_ = 0u;
-  fingerprint_.Clear();
+void ca_announce::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    if (has_ca_name()) {
+      if (ca_name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        ca_name_->clear();
+      }
+    }
+    ca_level_ = 0;
+  }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool csr_pendding_list::MergePartialFromCodedStream(
+bool ca_announce::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:proto.ca.csr_pendding_list)
+  // @@protoc_insertion_point(parse_start:proto.ca.ca_announce)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 num = 1;
+      // required string ca_name = 1;
       case 1: {
-        if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &num_)));
-          set_has_num();
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_ca_name()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->ca_name().data(), this->ca_name().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "ca_name");
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_fingerprint;
+        if (input->ExpectTag(16)) goto parse_ca_level;
         break;
       }
 
-      // repeated bytes fingerprint = 2;
+      // optional int32 ca_level = 2;
       case 2: {
-        if (tag == 18) {
-         parse_fingerprint:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->add_fingerprint()));
+        if (tag == 16) {
+         parse_ca_level:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &ca_level_)));
+          set_has_ca_level();
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_fingerprint;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1910,76 +1468,85 @@ bool csr_pendding_list::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:proto.ca.csr_pendding_list)
+  // @@protoc_insertion_point(parse_success:proto.ca.ca_announce)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:proto.ca.csr_pendding_list)
+  // @@protoc_insertion_point(parse_failure:proto.ca.ca_announce)
   return false;
 #undef DO_
 }
 
-void csr_pendding_list::SerializeWithCachedSizes(
+void ca_announce::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:proto.ca.csr_pendding_list)
-  // required uint32 num = 1;
-  if (has_num()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->num(), output);
+  // @@protoc_insertion_point(serialize_start:proto.ca.ca_announce)
+  // required string ca_name = 1;
+  if (has_ca_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->ca_name().data(), this->ca_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "ca_name");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->ca_name(), output);
   }
 
-  // repeated bytes fingerprint = 2;
-  for (int i = 0; i < this->fingerprint_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      2, this->fingerprint(i), output);
+  // optional int32 ca_level = 2;
+  if (has_ca_level()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->ca_level(), output);
   }
 
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:proto.ca.csr_pendding_list)
+  // @@protoc_insertion_point(serialize_end:proto.ca.ca_announce)
 }
 
-::google::protobuf::uint8* csr_pendding_list::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* ca_announce::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.csr_pendding_list)
-  // required uint32 num = 1;
-  if (has_num()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->num(), target);
+  // @@protoc_insertion_point(serialize_to_array_start:proto.ca.ca_announce)
+  // required string ca_name = 1;
+  if (has_ca_name()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->ca_name().data(), this->ca_name().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "ca_name");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        1, this->ca_name(), target);
   }
 
-  // repeated bytes fingerprint = 2;
-  for (int i = 0; i < this->fingerprint_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteBytesToArray(2, this->fingerprint(i), target);
+  // optional int32 ca_level = 2;
+  if (has_ca_level()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->ca_level(), target);
   }
 
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.csr_pendding_list)
+  // @@protoc_insertion_point(serialize_to_array_end:proto.ca.ca_announce)
   return target;
 }
 
-int csr_pendding_list::ByteSize() const {
+int ca_announce::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 num = 1;
-    if (has_num()) {
+    // required string ca_name = 1;
+    if (has_ca_name()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->num());
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->ca_name());
+    }
+
+    // optional int32 ca_level = 2;
+    if (has_ca_level()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->ca_level());
     }
 
   }
-  // repeated bytes fingerprint = 2;
-  total_size += 1 * this->fingerprint_size();
-  for (int i = 0; i < this->fingerprint_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::BytesSize(
-      this->fingerprint(i));
-  }
-
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1991,10 +1558,10 @@ int csr_pendding_list::ByteSize() const {
   return total_size;
 }
 
-void csr_pendding_list::MergeFrom(const ::google::protobuf::Message& from) {
+void ca_announce::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const csr_pendding_list* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const csr_pendding_list*>(
+  const ca_announce* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const ca_announce*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -2003,50 +1570,52 @@ void csr_pendding_list::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void csr_pendding_list::MergeFrom(const csr_pendding_list& from) {
+void ca_announce::MergeFrom(const ca_announce& from) {
   GOOGLE_CHECK_NE(&from, this);
-  fingerprint_.MergeFrom(from.fingerprint_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_num()) {
-      set_num(from.num());
+    if (from.has_ca_name()) {
+      set_ca_name(from.ca_name());
+    }
+    if (from.has_ca_level()) {
+      set_ca_level(from.ca_level());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void csr_pendding_list::CopyFrom(const ::google::protobuf::Message& from) {
+void ca_announce::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void csr_pendding_list::CopyFrom(const csr_pendding_list& from) {
+void ca_announce::CopyFrom(const ca_announce& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool csr_pendding_list::IsInitialized() const {
+bool ca_announce::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }
 
-void csr_pendding_list::Swap(csr_pendding_list* other) {
+void ca_announce::Swap(ca_announce* other) {
   if (other != this) {
-    std::swap(num_, other->num_);
-    fingerprint_.Swap(&other->fingerprint_);
+    std::swap(ca_name_, other->ca_name_);
+    std::swap(ca_level_, other->ca_level_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata csr_pendding_list::GetMetadata() const {
+::google::protobuf::Metadata ca_announce::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = csr_pendding_list_descriptor_;
-  metadata.reflection = csr_pendding_list_reflection_;
+  metadata.descriptor = ca_announce_descriptor_;
+  metadata.reflection = ca_announce_reflection_;
   return metadata;
 }
 

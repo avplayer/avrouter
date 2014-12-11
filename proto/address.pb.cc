@@ -133,7 +133,7 @@ void av_address::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 av_address::av_address(av_address&& from)
   : ::google::protobuf::Message() {
-  SharedCtor();  Swap(&from);
+  Swap(&from);
 }
 #endif
 

@@ -38,6 +38,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* agmp_TTLOUT_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   agmp_TTLOUT_reflection_ = NULL;
+const ::google::protobuf::Descriptor* bgp_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  bgp_reflection_ = NULL;
 
 }  // namespace
 
@@ -149,6 +152,22 @@ void protobuf_AssignDesc_packet_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(agmp_TTLOUT));
+  bgp_descriptor_ = file->message_type(2);
+  static const int bgp_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(bgp, time_salt_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(bgp, announce_),
+  };
+  bgp_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      bgp_descriptor_,
+      bgp::default_instance_,
+      bgp_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(bgp, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(bgp, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(bgp));
 }
 
 namespace {
@@ -173,6 +192,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     agmp_NOROUTTOHOST_descriptor_, &agmp_NOROUTTOHOST::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     agmp_TTLOUT_descriptor_, &agmp_TTLOUT::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    bgp_descriptor_, &bgp::default_instance());
 }
 
 }  // namespace
@@ -191,6 +212,8 @@ void protobuf_ShutdownFile_packet_2eproto() {
   delete agmp_NOROUTTOHOST_reflection_;
   delete agmp_TTLOUT::default_instance_;
   delete agmp_TTLOUT_reflection_;
+  delete bgp::default_instance_;
+  delete bgp_reflection_;
 }
 
 void protobuf_AddDesc_packet_2eproto() {
@@ -216,7 +239,8 @@ void protobuf_AddDesc_packet_2eproto() {
     "gmp.TTLOUT\032\034\n\007PKREPLY\022\021\n\tx509_cert\030\001 \002(\014"
     "\032/\n\014NOROUTTOHOST\022\037\n\004host\030\001 \002(\0132\021.proto.a"
     "v_address\032)\n\006TTLOUT\022\037\n\004host\030\001 \002(\0132\021.prot"
-    "o.av_addressP\000", 614);
+    "o.av_address\"=\n\003bgp\022\021\n\ttime_salt\030\001 \002(\004\022#"
+    "\n\010announce\030\002 \001(\0132\021.proto.av_addressP\000", 677);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "packet.proto", &protobuf_RegisterTypes);
   avpacket::_default_upperlayerpotocol_ =
@@ -227,12 +251,14 @@ void protobuf_AddDesc_packet_2eproto() {
   agmp_PKREPLY::default_instance_ = new agmp_PKREPLY();
   agmp_NOROUTTOHOST::default_instance_ = new agmp_NOROUTTOHOST();
   agmp_TTLOUT::default_instance_ = new agmp_TTLOUT();
+  bgp::default_instance_ = new bgp();
   avpacket::default_instance_->InitAsDefaultInstance();
   avpacket_ack_control::default_instance_->InitAsDefaultInstance();
   agmp::default_instance_->InitAsDefaultInstance();
   agmp_PKREPLY::default_instance_->InitAsDefaultInstance();
   agmp_NOROUTTOHOST::default_instance_->InitAsDefaultInstance();
   agmp_TTLOUT::default_instance_->InitAsDefaultInstance();
+  bgp::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_packet_2eproto);
 }
 
@@ -2179,6 +2205,285 @@ void agmp::Swap(agmp* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = agmp_descriptor_;
   metadata.reflection = agmp_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int bgp::kTimeSaltFieldNumber;
+const int bgp::kAnnounceFieldNumber;
+#endif  // !_MSC_VER
+
+bgp::bgp()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:proto.bgp)
+}
+
+void bgp::InitAsDefaultInstance() {
+  announce_ = const_cast< ::proto::av_address*>(&::proto::av_address::default_instance());
+}
+
+bgp::bgp(const bgp& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:proto.bgp)
+}
+
+void bgp::SharedCtor() {
+  _cached_size_ = 0;
+  time_salt_ = GOOGLE_ULONGLONG(0);
+  announce_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+#if __cplusplus >= 201103L || _MSC_VER >= 1600
+bgp::bgp(bgp&& from)
+  : ::google::protobuf::Message() {
+  Swap(&from);
+}
+#endif
+
+bgp::~bgp() {
+  // @@protoc_insertion_point(destructor:proto.bgp)
+  SharedDtor();
+}
+
+void bgp::SharedDtor() {
+  if (this != default_instance_) {
+    delete announce_;
+  }
+}
+
+void bgp::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* bgp::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return bgp_descriptor_;
+}
+
+const bgp& bgp::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_packet_2eproto();
+  return *default_instance_;
+}
+
+bgp* bgp::default_instance_ = NULL;
+
+bgp* bgp::New() const {
+  return new bgp;
+}
+
+void bgp::Clear() {
+  if (_has_bits_[0 / 32] & 3) {
+    time_salt_ = GOOGLE_ULONGLONG(0);
+    if (has_announce()) {
+      if (announce_ != NULL) announce_->::proto::av_address::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool bgp::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:proto.bgp)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required uint64 time_salt = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &time_salt_)));
+          set_has_time_salt();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_announce;
+        break;
+      }
+
+      // optional .proto.av_address announce = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_announce:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_announce()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:proto.bgp)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:proto.bgp)
+  return false;
+#undef DO_
+}
+
+void bgp::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:proto.bgp)
+  // required uint64 time_salt = 1;
+  if (has_time_salt()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->time_salt(), output);
+  }
+
+  // optional .proto.av_address announce = 2;
+  if (has_announce()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->announce(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:proto.bgp)
+}
+
+::google::protobuf::uint8* bgp::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:proto.bgp)
+  // required uint64 time_salt = 1;
+  if (has_time_salt()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->time_salt(), target);
+  }
+
+  // optional .proto.av_address announce = 2;
+  if (has_announce()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->announce(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:proto.bgp)
+  return target;
+}
+
+int bgp::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required uint64 time_salt = 1;
+    if (has_time_salt()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->time_salt());
+    }
+
+    // optional .proto.av_address announce = 2;
+    if (has_announce()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->announce());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void bgp::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const bgp* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const bgp*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void bgp::MergeFrom(const bgp& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_time_salt()) {
+      set_time_salt(from.time_salt());
+    }
+    if (from.has_announce()) {
+      mutable_announce()->::proto::av_address::MergeFrom(from.announce());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void bgp::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void bgp::CopyFrom(const bgp& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool bgp::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_announce()) {
+    if (!this->announce().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void bgp::Swap(bgp* other) {
+  if (other != this) {
+    std::swap(time_salt_, other->time_salt_);
+    std::swap(announce_, other->announce_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata bgp::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = bgp_descriptor_;
+  metadata.reflection = bgp_reflection_;
   return metadata;
 }
 

@@ -25,6 +25,7 @@
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "address.pb.h"  // IWYU pragma: export
 // @@protoc_insertion_point(includes)
 
 namespace proto {
@@ -44,6 +45,9 @@ class user_register;
 class user_register_result;
 class user_cert_lost_request;
 class user_cert_lost_verify;
+class buddy;
+class buddy_list;
+class request_buddy_list;
 
 enum login_result_login_result_code {
   login_result_login_result_code_LOGIN_SUCCEED = 0,
@@ -88,7 +92,7 @@ inline bool username_availability_result_username_availability_result_code_Parse
 }
 enum user_register_result_user_register_result_code {
   user_register_result_user_register_result_code_REGISTER_SUCCEED = 0,
-  user_register_result_user_register_result_code_REGISTER_SUCCEED_PENDDING_CERT = 1,
+  user_register_result_user_register_result_code_REGISTER_FAILED_CA_BUSY = 1,
   user_register_result_user_register_result_code_REGISTER_FAILED_NAME_TAKEN = 2,
   user_register_result_user_register_result_code_REGISTER_FAILED_TOO_SHORT_KEY = 3,
   user_register_result_user_register_result_code_REGISTER_FAILED_NAME_DISALLOW = 4,
@@ -1075,7 +1079,7 @@ class user_register_result : public ::google::protobuf::Message {
 
   typedef user_register_result_user_register_result_code user_register_result_code;
   static const user_register_result_code REGISTER_SUCCEED = user_register_result_user_register_result_code_REGISTER_SUCCEED;
-  static const user_register_result_code REGISTER_SUCCEED_PENDDING_CERT = user_register_result_user_register_result_code_REGISTER_SUCCEED_PENDDING_CERT;
+  static const user_register_result_code REGISTER_FAILED_CA_BUSY = user_register_result_user_register_result_code_REGISTER_FAILED_CA_BUSY;
   static const user_register_result_code REGISTER_FAILED_NAME_TAKEN = user_register_result_user_register_result_code_REGISTER_FAILED_NAME_TAKEN;
   static const user_register_result_code REGISTER_FAILED_TOO_SHORT_KEY = user_register_result_user_register_result_code_REGISTER_FAILED_TOO_SHORT_KEY;
   static const user_register_result_code REGISTER_FAILED_NAME_DISALLOW = user_register_result_user_register_result_code_REGISTER_FAILED_NAME_DISALLOW;
@@ -1364,6 +1368,306 @@ class user_cert_lost_verify : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static user_cert_lost_verify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class buddy : public ::google::protobuf::Message {
+ public:
+  buddy();
+  virtual ~buddy();
+
+  buddy(const buddy& from);
+
+  inline buddy& operator=(const buddy& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  #if __cplusplus >= 201103L || _MSC_VER >= 1600
+  inline buddy& operator=(buddy&& from) {
+    if (&from != this) {
+      Clear();
+      Swap(&from);
+    }
+    return *this;
+  }
+
+  buddy(buddy&& from);
+  #endif
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const buddy& default_instance();
+
+  void Swap(buddy* other);
+
+  // implements Message ----------------------------------------------
+
+  buddy* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const buddy& from);
+  void MergeFrom(const buddy& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .proto.av_address addr = 1;
+  inline bool has_addr() const;
+  inline void clear_addr();
+  static const int kAddrFieldNumber = 1;
+  inline const ::proto::av_address& addr() const;
+  inline ::proto::av_address* mutable_addr();
+  inline ::proto::av_address* release_addr();
+  inline void set_allocated_addr(::proto::av_address* addr);
+
+  // optional string nick = 2;
+  inline bool has_nick() const;
+  inline void clear_nick();
+  static const int kNickFieldNumber = 2;
+  inline const ::std::string& nick() const;
+  inline void set_nick(const ::std::string& value);
+  inline void set_nick(const char* value);
+  inline void set_nick(const char* value, size_t size);
+  inline ::std::string* mutable_nick();
+  inline ::std::string* release_nick();
+  inline void set_allocated_nick(::std::string* nick);
+
+  // repeated string labels = 3;
+  inline int labels_size() const;
+  inline void clear_labels();
+  static const int kLabelsFieldNumber = 3;
+  inline const ::std::string& labels(int index) const;
+  inline ::std::string* mutable_labels(int index);
+  inline void set_labels(int index, const ::std::string& value);
+  inline void set_labels(int index, const char* value);
+  inline void set_labels(int index, const char* value, size_t size);
+  inline ::std::string* add_labels();
+  inline void add_labels(const ::std::string& value);
+  inline void add_labels(const char* value);
+  inline void add_labels(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& labels() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_labels();
+
+  // @@protoc_insertion_point(class_scope:proto.buddy)
+ private:
+  inline void set_has_addr();
+  inline void clear_has_addr();
+  inline void set_has_nick();
+  inline void clear_has_nick();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::proto::av_address* addr_;
+  ::std::string* nick_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> labels_;
+  friend void  protobuf_AddDesc_user_2eproto();
+  friend void protobuf_AssignDesc_user_2eproto();
+  friend void protobuf_ShutdownFile_user_2eproto();
+
+  void InitAsDefaultInstance();
+  static buddy* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class buddy_list : public ::google::protobuf::Message {
+ public:
+  buddy_list();
+  virtual ~buddy_list();
+
+  buddy_list(const buddy_list& from);
+
+  inline buddy_list& operator=(const buddy_list& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  #if __cplusplus >= 201103L || _MSC_VER >= 1600
+  inline buddy_list& operator=(buddy_list&& from) {
+    if (&from != this) {
+      Clear();
+      Swap(&from);
+    }
+    return *this;
+  }
+
+  buddy_list(buddy_list&& from);
+  #endif
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const buddy_list& default_instance();
+
+  void Swap(buddy_list* other);
+
+  // implements Message ----------------------------------------------
+
+  buddy_list* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const buddy_list& from);
+  void MergeFrom(const buddy_list& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .proto.buddy buddies = 1;
+  inline int buddies_size() const;
+  inline void clear_buddies();
+  static const int kBuddiesFieldNumber = 1;
+  inline const ::proto::buddy& buddies(int index) const;
+  inline ::proto::buddy* mutable_buddies(int index);
+  inline ::proto::buddy* add_buddies();
+  inline const ::google::protobuf::RepeatedPtrField< ::proto::buddy >&
+      buddies() const;
+  inline ::google::protobuf::RepeatedPtrField< ::proto::buddy >*
+      mutable_buddies();
+
+  // @@protoc_insertion_point(class_scope:proto.buddy_list)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::proto::buddy > buddies_;
+  friend void  protobuf_AddDesc_user_2eproto();
+  friend void protobuf_AssignDesc_user_2eproto();
+  friend void protobuf_ShutdownFile_user_2eproto();
+
+  void InitAsDefaultInstance();
+  static buddy_list* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class request_buddy_list : public ::google::protobuf::Message {
+ public:
+  request_buddy_list();
+  virtual ~request_buddy_list();
+
+  request_buddy_list(const request_buddy_list& from);
+
+  inline request_buddy_list& operator=(const request_buddy_list& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  #if __cplusplus >= 201103L || _MSC_VER >= 1600
+  inline request_buddy_list& operator=(request_buddy_list&& from) {
+    if (&from != this) {
+      Clear();
+      Swap(&from);
+    }
+    return *this;
+  }
+
+  request_buddy_list(request_buddy_list&& from);
+  #endif
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const request_buddy_list& default_instance();
+
+  void Swap(request_buddy_list* other);
+
+  // implements Message ----------------------------------------------
+
+  request_buddy_list* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const request_buddy_list& from);
+  void MergeFrom(const request_buddy_list& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:proto.request_buddy_list)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_user_2eproto();
+  friend void protobuf_AssignDesc_user_2eproto();
+  friend void protobuf_ShutdownFile_user_2eproto();
+
+  void InitAsDefaultInstance();
+  static request_buddy_list* default_instance_;
 };
 // ===================================================================
 
@@ -3126,6 +3430,219 @@ inline void user_cert_lost_verify::set_allocated_secret_code(::std::string* secr
   }
   // @@protoc_insertion_point(field_set_allocated:proto.user_cert_lost_verify.secret_code)
 }
+
+// -------------------------------------------------------------------
+
+// buddy
+
+// required .proto.av_address addr = 1;
+inline bool buddy::has_addr() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void buddy::set_has_addr() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void buddy::clear_has_addr() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void buddy::clear_addr() {
+  if (addr_ != NULL) addr_->::proto::av_address::Clear();
+  clear_has_addr();
+}
+inline const ::proto::av_address& buddy::addr() const {
+  // @@protoc_insertion_point(field_get:proto.buddy.addr)
+  return addr_ != NULL ? *addr_ : *default_instance_->addr_;
+}
+inline ::proto::av_address* buddy::mutable_addr() {
+  set_has_addr();
+  if (addr_ == NULL) addr_ = new ::proto::av_address;
+  // @@protoc_insertion_point(field_mutable:proto.buddy.addr)
+  return addr_;
+}
+inline ::proto::av_address* buddy::release_addr() {
+  clear_has_addr();
+  ::proto::av_address* temp = addr_;
+  addr_ = NULL;
+  return temp;
+}
+inline void buddy::set_allocated_addr(::proto::av_address* addr) {
+  delete addr_;
+  addr_ = addr;
+  if (addr) {
+    set_has_addr();
+  } else {
+    clear_has_addr();
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto.buddy.addr)
+}
+
+// optional string nick = 2;
+inline bool buddy::has_nick() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void buddy::set_has_nick() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void buddy::clear_has_nick() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void buddy::clear_nick() {
+  if (nick_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nick_->clear();
+  }
+  clear_has_nick();
+}
+inline const ::std::string& buddy::nick() const {
+  // @@protoc_insertion_point(field_get:proto.buddy.nick)
+  return *nick_;
+}
+inline void buddy::set_nick(const ::std::string& value) {
+  set_has_nick();
+  if (nick_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nick_ = new ::std::string;
+  }
+  nick_->assign(value);
+  // @@protoc_insertion_point(field_set:proto.buddy.nick)
+}
+inline void buddy::set_nick(const char* value) {
+  set_has_nick();
+  if (nick_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nick_ = new ::std::string;
+  }
+  nick_->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto.buddy.nick)
+}
+inline void buddy::set_nick(const char* value, size_t size) {
+  set_has_nick();
+  if (nick_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nick_ = new ::std::string;
+  }
+  nick_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto.buddy.nick)
+}
+inline ::std::string* buddy::mutable_nick() {
+  set_has_nick();
+  if (nick_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    nick_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:proto.buddy.nick)
+  return nick_;
+}
+inline ::std::string* buddy::release_nick() {
+  clear_has_nick();
+  if (nick_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = nick_;
+    nick_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void buddy::set_allocated_nick(::std::string* nick) {
+  if (nick_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete nick_;
+  }
+  if (nick) {
+    set_has_nick();
+    nick_ = nick;
+  } else {
+    clear_has_nick();
+    nick_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:proto.buddy.nick)
+}
+
+// repeated string labels = 3;
+inline int buddy::labels_size() const {
+  return labels_.size();
+}
+inline void buddy::clear_labels() {
+  labels_.Clear();
+}
+inline const ::std::string& buddy::labels(int index) const {
+  // @@protoc_insertion_point(field_get:proto.buddy.labels)
+  return labels_.Get(index);
+}
+inline ::std::string* buddy::mutable_labels(int index) {
+  // @@protoc_insertion_point(field_mutable:proto.buddy.labels)
+  return labels_.Mutable(index);
+}
+inline void buddy::set_labels(int index, const ::std::string& value) {
+  // @@protoc_insertion_point(field_set:proto.buddy.labels)
+  labels_.Mutable(index)->assign(value);
+}
+inline void buddy::set_labels(int index, const char* value) {
+  labels_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:proto.buddy.labels)
+}
+inline void buddy::set_labels(int index, const char* value, size_t size) {
+  labels_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:proto.buddy.labels)
+}
+inline ::std::string* buddy::add_labels() {
+  return labels_.Add();
+}
+inline void buddy::add_labels(const ::std::string& value) {
+  labels_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:proto.buddy.labels)
+}
+inline void buddy::add_labels(const char* value) {
+  labels_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:proto.buddy.labels)
+}
+inline void buddy::add_labels(const char* value, size_t size) {
+  labels_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:proto.buddy.labels)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+buddy::labels() const {
+  // @@protoc_insertion_point(field_list:proto.buddy.labels)
+  return labels_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+buddy::mutable_labels() {
+  // @@protoc_insertion_point(field_mutable_list:proto.buddy.labels)
+  return &labels_;
+}
+
+// -------------------------------------------------------------------
+
+// buddy_list
+
+// repeated .proto.buddy buddies = 1;
+inline int buddy_list::buddies_size() const {
+  return buddies_.size();
+}
+inline void buddy_list::clear_buddies() {
+  buddies_.Clear();
+}
+inline const ::proto::buddy& buddy_list::buddies(int index) const {
+  // @@protoc_insertion_point(field_get:proto.buddy_list.buddies)
+  return buddies_.Get(index);
+}
+inline ::proto::buddy* buddy_list::mutable_buddies(int index) {
+  // @@protoc_insertion_point(field_mutable:proto.buddy_list.buddies)
+  return buddies_.Mutable(index);
+}
+inline ::proto::buddy* buddy_list::add_buddies() {
+  // @@protoc_insertion_point(field_add:proto.buddy_list.buddies)
+  return buddies_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::proto::buddy >&
+buddy_list::buddies() const {
+  // @@protoc_insertion_point(field_list:proto.buddy_list.buddies)
+  return buddies_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::proto::buddy >*
+buddy_list::mutable_buddies() {
+  // @@protoc_insertion_point(field_mutable_list:proto.buddy_list.buddies)
+  return &buddies_;
+}
+
+// -------------------------------------------------------------------
+
+// request_buddy_list
 
 
 // @@protoc_insertion_point(namespace_scope)
