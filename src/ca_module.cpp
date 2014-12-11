@@ -28,6 +28,7 @@ namespace av_router {
 	{
 		// TODO检查 ca.
 		m_ca_connection = con;
+		return true;
 	}
 
 	bool ca_moudle::process_csr_request(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
@@ -62,6 +63,7 @@ namespace av_router {
 			res_it->second->write_msg(encode(register_result));
 			m_user_cons.erase(res_it);
 		}
+		return true;
 	}
 
 }
