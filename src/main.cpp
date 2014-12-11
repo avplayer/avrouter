@@ -25,10 +25,11 @@ namespace po = boost::program_options;
 
 using namespace av_router;
 
-static void terminator(io_service_pool& ios, router_server& serv, login_moudle& login)
+static void terminator(io_service_pool& ios, router_server& serv, login_moudle& login, http_server& http_serv)
 {
 	login.quit();
 	serv.stop();
+	http_serv.stop();
 	ios.stop();
 }
 
@@ -158,7 +159,7 @@ int main(int argc, char** argv)
 #if defined(SIGQUIT)
 		terminator_signal.add(SIGQUIT);
 #endif // defined(SIGQUIT)
-		terminator_signal.async_wait(boost::bind(&terminator, boost::ref(io_pool), boost::ref(router_serv), boost::ref(moudle_login)));
+		terminator_signal.async_wait(boost::bind(&terminator, boost::ref(io_pool), boost::ref(router_serv), boost::ref(moudle_login), boost::ref(http_serv)));
 
 		// 开始启动整个系统事件循环.
 		io_pool.run();
