@@ -53,16 +53,16 @@ void protobuf_AssignDesc_ca_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, csr_),
   };
   csr_request_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
       csr_request_descriptor_,
       csr_request::default_instance_,
       csr_request_offsets_,
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, _unknown_fields_),
       -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(csr_request));
+      -1,
+      sizeof(csr_request),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_request, _internal_metadata_),
+      -1);
   csr_result_descriptor_ = file->message_type(1);
   static const int csr_result_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, result_),
@@ -70,63 +70,63 @@ void protobuf_AssignDesc_ca_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, cert_),
   };
   csr_result_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
       csr_result_descriptor_,
       csr_result::default_instance_,
       csr_result_offsets_,
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, _unknown_fields_),
       -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(csr_result));
+      -1,
+      sizeof(csr_result),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(csr_result, _internal_metadata_),
+      -1);
   csr_result_csr_code_descriptor_ = csr_result_descriptor_->enum_type(0);
   cert_pull_descriptor_ = file->message_type(2);
   static const int cert_pull_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull, fingerprint_),
   };
   cert_pull_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
       cert_pull_descriptor_,
       cert_pull::default_instance_,
       cert_pull_offsets_,
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull, _unknown_fields_),
       -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(cert_pull));
+      -1,
+      sizeof(cert_pull),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull, _internal_metadata_),
+      -1);
   cert_pull_result_descriptor_ = file->message_type(3);
   static const int cert_pull_result_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull_result, cert_),
   };
   cert_pull_result_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
       cert_pull_result_descriptor_,
       cert_pull_result::default_instance_,
       cert_pull_result_offsets_,
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull_result, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull_result, _unknown_fields_),
       -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(cert_pull_result));
+      -1,
+      sizeof(cert_pull_result),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(cert_pull_result, _internal_metadata_),
+      -1);
   ca_announce_descriptor_ = file->message_type(4);
   static const int ca_announce_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, ca_name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, ca_level_),
   };
   ca_announce_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
       ca_announce_descriptor_,
       ca_announce::default_instance_,
       ca_announce_offsets_,
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, _unknown_fields_),
       -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(ca_announce));
+      -1,
+      sizeof(ca_announce),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ca_announce, _internal_metadata_),
+      -1);
 }
 
 namespace {
@@ -140,15 +140,15 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    csr_request_descriptor_, &csr_request::default_instance());
+      csr_request_descriptor_, &csr_request::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    csr_result_descriptor_, &csr_result::default_instance());
+      csr_result_descriptor_, &csr_result::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    cert_pull_descriptor_, &cert_pull::default_instance());
+      cert_pull_descriptor_, &cert_pull::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    cert_pull_result_descriptor_, &cert_pull_result::default_instance());
+      cert_pull_result_descriptor_, &cert_pull_result::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    ca_announce_descriptor_, &ca_announce::default_instance());
+      ca_announce_descriptor_, &ca_announce::default_instance());
 }
 
 }  // namespace
@@ -205,6 +205,16 @@ struct StaticDescriptorInitializer_ca_2eproto {
   }
 } static_descriptor_initializer_ca_2eproto_;
 
+namespace {
+
+static void MergeFromFail(int line) GOOGLE_ATTRIBUTE_COLD;
+static void MergeFromFail(int line) {
+  GOOGLE_CHECK(false) << __FILE__ << ":" << line;
+}
+
+}  // namespace
+
+
 // ===================================================================
 
 #ifndef _MSC_VER
@@ -213,7 +223,7 @@ const int csr_request::kCsrFieldNumber;
 #endif  // !_MSC_VER
 
 csr_request::csr_request()
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
   SharedCtor();
   // @@protoc_insertion_point(constructor:proto.ca.csr_request)
 }
@@ -222,7 +232,8 @@ void csr_request::InitAsDefaultInstance() {
 }
 
 csr_request::csr_request(const csr_request& from)
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
   // @@protoc_insertion_point(copy_constructor:proto.ca.csr_request)
@@ -231,14 +242,15 @@ csr_request::csr_request(const csr_request& from)
 void csr_request::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  csr_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  fingerprint_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  csr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_request::csr_request(csr_request&& from)
   : ::google::protobuf::Message() {
+  SharedCtor();
   Swap(&from);
 }
 #endif
@@ -249,12 +261,8 @@ csr_request::~csr_request() {
 }
 
 void csr_request::SharedDtor() {
-  if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete fingerprint_;
-  }
-  if (csr_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete csr_;
-  }
+  fingerprint_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  csr_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -276,25 +284,27 @@ const csr_request& csr_request::default_instance() {
 
 csr_request* csr_request::default_instance_ = NULL;
 
-csr_request* csr_request::New() const {
-  return new csr_request;
+csr_request* csr_request::New(::google::protobuf::Arena* arena) const {
+  csr_request* n = new csr_request;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
 }
 
 void csr_request::Clear() {
   if (_has_bits_[0 / 32] & 3) {
     if (has_fingerprint()) {
-      if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        fingerprint_->clear();
-      }
+      fingerprint_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
     if (has_csr()) {
-      if (csr_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        csr_->clear();
-      }
+      csr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
 }
 
 bool csr_request::MergePartialFromCodedStream(
@@ -369,7 +379,7 @@ void csr_request::SerializeWithCachedSizes(
       2, this->csr(), output);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
@@ -393,7 +403,7 @@ void csr_request::SerializeWithCachedSizes(
         2, this->csr(), target);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
@@ -401,26 +411,43 @@ void csr_request::SerializeWithCachedSizes(
   return target;
 }
 
+int csr_request::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_fingerprint()) {
+    // required bytes fingerprint = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->fingerprint());
+  }
+
+  if (has_csr()) {
+    // required bytes csr = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->csr());
+  }
+
+  return total_size;
+}
 int csr_request::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required bytes fingerprint = 1;
-    if (has_fingerprint()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->fingerprint());
-    }
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->fingerprint());
 
     // required bytes csr = 2;
-    if (has_csr()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->csr());
-    }
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->csr());
 
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
@@ -432,7 +459,7 @@ int csr_request::ByteSize() const {
 }
 
 void csr_request::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const csr_request* source =
     ::google::protobuf::internal::dynamic_cast_if_available<const csr_request*>(
       &from);
@@ -444,16 +471,20 @@ void csr_request::MergeFrom(const ::google::protobuf::Message& from) {
 }
 
 void csr_request::MergeFrom(const csr_request& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_fingerprint()) {
-      set_fingerprint(from.fingerprint());
+      set_has_fingerprint();
+      fingerprint_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.fingerprint_);
     }
     if (from.has_csr()) {
-      set_csr(from.csr());
+      set_has_csr();
+      csr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.csr_);
     }
   }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
 }
 
 void csr_request::CopyFrom(const ::google::protobuf::Message& from) {
@@ -475,13 +506,15 @@ bool csr_request::IsInitialized() const {
 }
 
 void csr_request::Swap(csr_request* other) {
-  if (other != this) {
-    std::swap(fingerprint_, other->fingerprint_);
-    std::swap(csr_, other->csr_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
+  if (other == this) return;
+  InternalSwap(other);
+}
+void csr_request::InternalSwap(csr_request* other) {
+  fingerprint_.Swap(&other->fingerprint_);
+  csr_.Swap(&other->csr_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata csr_request::GetMetadata() const {
@@ -527,7 +560,7 @@ const int csr_result::kCertFieldNumber;
 #endif  // !_MSC_VER
 
 csr_result::csr_result()
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
   SharedCtor();
   // @@protoc_insertion_point(constructor:proto.ca.csr_result)
 }
@@ -536,7 +569,8 @@ void csr_result::InitAsDefaultInstance() {
 }
 
 csr_result::csr_result(const csr_result& from)
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
   // @@protoc_insertion_point(copy_constructor:proto.ca.csr_result)
@@ -546,14 +580,15 @@ void csr_result::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   result_ = 0;
-  fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  fingerprint_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cert_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 csr_result::csr_result(csr_result&& from)
   : ::google::protobuf::Message() {
+  SharedCtor();
   Swap(&from);
 }
 #endif
@@ -564,12 +599,8 @@ csr_result::~csr_result() {
 }
 
 void csr_result::SharedDtor() {
-  if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete fingerprint_;
-  }
-  if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete cert_;
-  }
+  fingerprint_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cert_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -591,26 +622,28 @@ const csr_result& csr_result::default_instance() {
 
 csr_result* csr_result::default_instance_ = NULL;
 
-csr_result* csr_result::New() const {
-  return new csr_result;
+csr_result* csr_result::New(::google::protobuf::Arena* arena) const {
+  csr_result* n = new csr_result;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
 }
 
 void csr_result::Clear() {
   if (_has_bits_[0 / 32] & 7) {
     result_ = 0;
     if (has_fingerprint()) {
-      if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        fingerprint_->clear();
-      }
+      fingerprint_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
     if (has_cert()) {
-      if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        cert_->clear();
-      }
+      cert_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
 }
 
 bool csr_result::MergePartialFromCodedStream(
@@ -711,7 +744,7 @@ void csr_result::SerializeWithCachedSizes(
       3, this->cert(), output);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
@@ -741,7 +774,7 @@ void csr_result::SerializeWithCachedSizes(
         3, this->cert(), target);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
@@ -749,32 +782,53 @@ void csr_result::SerializeWithCachedSizes(
   return target;
 }
 
+int csr_result::RequiredFieldsByteSizeFallback() const {
+  int total_size = 0;
+
+  if (has_result()) {
+    // required .proto.ca.csr_result.csr_code result = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
+  }
+
+  if (has_fingerprint()) {
+    // required bytes fingerprint = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->fingerprint());
+  }
+
+  if (has_cert()) {
+    // required bytes cert = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->cert());
+  }
+
+  return total_size;
+}
 int csr_result::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
     // required .proto.ca.csr_result.csr_code result = 1;
-    if (has_result()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
-    }
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
 
     // required bytes fingerprint = 2;
-    if (has_fingerprint()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->fingerprint());
-    }
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->fingerprint());
 
     // required bytes cert = 3;
-    if (has_cert()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->cert());
-    }
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->cert());
 
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
   }
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
@@ -786,7 +840,7 @@ int csr_result::ByteSize() const {
 }
 
 void csr_result::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const csr_result* source =
     ::google::protobuf::internal::dynamic_cast_if_available<const csr_result*>(
       &from);
@@ -798,19 +852,23 @@ void csr_result::MergeFrom(const ::google::protobuf::Message& from) {
 }
 
 void csr_result::MergeFrom(const csr_result& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_result()) {
       set_result(from.result());
     }
     if (from.has_fingerprint()) {
-      set_fingerprint(from.fingerprint());
+      set_has_fingerprint();
+      fingerprint_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.fingerprint_);
     }
     if (from.has_cert()) {
-      set_cert(from.cert());
+      set_has_cert();
+      cert_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cert_);
     }
   }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
 }
 
 void csr_result::CopyFrom(const ::google::protobuf::Message& from) {
@@ -832,14 +890,16 @@ bool csr_result::IsInitialized() const {
 }
 
 void csr_result::Swap(csr_result* other) {
-  if (other != this) {
-    std::swap(result_, other->result_);
-    std::swap(fingerprint_, other->fingerprint_);
-    std::swap(cert_, other->cert_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
+  if (other == this) return;
+  InternalSwap(other);
+}
+void csr_result::InternalSwap(csr_result* other) {
+  std::swap(result_, other->result_);
+  fingerprint_.Swap(&other->fingerprint_);
+  cert_.Swap(&other->cert_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata csr_result::GetMetadata() const {
@@ -858,7 +918,7 @@ const int cert_pull::kFingerprintFieldNumber;
 #endif  // !_MSC_VER
 
 cert_pull::cert_pull()
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
   SharedCtor();
   // @@protoc_insertion_point(constructor:proto.ca.cert_pull)
 }
@@ -867,7 +927,8 @@ void cert_pull::InitAsDefaultInstance() {
 }
 
 cert_pull::cert_pull(const cert_pull& from)
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
   // @@protoc_insertion_point(copy_constructor:proto.ca.cert_pull)
@@ -876,13 +937,14 @@ cert_pull::cert_pull(const cert_pull& from)
 void cert_pull::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  fingerprint_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  fingerprint_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 cert_pull::cert_pull(cert_pull&& from)
   : ::google::protobuf::Message() {
+  SharedCtor();
   Swap(&from);
 }
 #endif
@@ -893,9 +955,7 @@ cert_pull::~cert_pull() {
 }
 
 void cert_pull::SharedDtor() {
-  if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete fingerprint_;
-  }
+  fingerprint_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -917,18 +977,22 @@ const cert_pull& cert_pull::default_instance() {
 
 cert_pull* cert_pull::default_instance_ = NULL;
 
-cert_pull* cert_pull::New() const {
-  return new cert_pull;
+cert_pull* cert_pull::New(::google::protobuf::Arena* arena) const {
+  cert_pull* n = new cert_pull;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
 }
 
 void cert_pull::Clear() {
   if (has_fingerprint()) {
-    if (fingerprint_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-      fingerprint_->clear();
-    }
+    fingerprint_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
 }
 
 bool cert_pull::MergePartialFromCodedStream(
@@ -984,7 +1048,7 @@ void cert_pull::SerializeWithCachedSizes(
       1, this->fingerprint(), output);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
@@ -1001,7 +1065,7 @@ void cert_pull::SerializeWithCachedSizes(
         1, this->fingerprint(), target);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
@@ -1012,16 +1076,13 @@ void cert_pull::SerializeWithCachedSizes(
 int cert_pull::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required bytes fingerprint = 1;
-    if (has_fingerprint()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->fingerprint());
-    }
-
+  // required bytes fingerprint = 1;
+  if (has_fingerprint()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->fingerprint());
   }
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
@@ -1033,7 +1094,7 @@ int cert_pull::ByteSize() const {
 }
 
 void cert_pull::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const cert_pull* source =
     ::google::protobuf::internal::dynamic_cast_if_available<const cert_pull*>(
       &from);
@@ -1045,13 +1106,16 @@ void cert_pull::MergeFrom(const ::google::protobuf::Message& from) {
 }
 
 void cert_pull::MergeFrom(const cert_pull& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_fingerprint()) {
-      set_fingerprint(from.fingerprint());
+      set_has_fingerprint();
+      fingerprint_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.fingerprint_);
     }
   }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
 }
 
 void cert_pull::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1073,12 +1137,14 @@ bool cert_pull::IsInitialized() const {
 }
 
 void cert_pull::Swap(cert_pull* other) {
-  if (other != this) {
-    std::swap(fingerprint_, other->fingerprint_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
+  if (other == this) return;
+  InternalSwap(other);
+}
+void cert_pull::InternalSwap(cert_pull* other) {
+  fingerprint_.Swap(&other->fingerprint_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata cert_pull::GetMetadata() const {
@@ -1097,7 +1163,7 @@ const int cert_pull_result::kCertFieldNumber;
 #endif  // !_MSC_VER
 
 cert_pull_result::cert_pull_result()
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
   SharedCtor();
   // @@protoc_insertion_point(constructor:proto.ca.cert_pull_result)
 }
@@ -1106,7 +1172,8 @@ void cert_pull_result::InitAsDefaultInstance() {
 }
 
 cert_pull_result::cert_pull_result(const cert_pull_result& from)
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
   // @@protoc_insertion_point(copy_constructor:proto.ca.cert_pull_result)
@@ -1115,13 +1182,14 @@ cert_pull_result::cert_pull_result(const cert_pull_result& from)
 void cert_pull_result::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  cert_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  cert_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 cert_pull_result::cert_pull_result(cert_pull_result&& from)
   : ::google::protobuf::Message() {
+  SharedCtor();
   Swap(&from);
 }
 #endif
@@ -1132,9 +1200,7 @@ cert_pull_result::~cert_pull_result() {
 }
 
 void cert_pull_result::SharedDtor() {
-  if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete cert_;
-  }
+  cert_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -1156,18 +1222,22 @@ const cert_pull_result& cert_pull_result::default_instance() {
 
 cert_pull_result* cert_pull_result::default_instance_ = NULL;
 
-cert_pull_result* cert_pull_result::New() const {
-  return new cert_pull_result;
+cert_pull_result* cert_pull_result::New(::google::protobuf::Arena* arena) const {
+  cert_pull_result* n = new cert_pull_result;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
 }
 
 void cert_pull_result::Clear() {
   if (has_cert()) {
-    if (cert_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-      cert_->clear();
-    }
+    cert_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
 }
 
 bool cert_pull_result::MergePartialFromCodedStream(
@@ -1223,7 +1293,7 @@ void cert_pull_result::SerializeWithCachedSizes(
       1, this->cert(), output);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
@@ -1240,7 +1310,7 @@ void cert_pull_result::SerializeWithCachedSizes(
         1, this->cert(), target);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
@@ -1251,16 +1321,14 @@ void cert_pull_result::SerializeWithCachedSizes(
 int cert_pull_result::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional bytes cert = 1;
-    if (has_cert()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->cert());
-    }
-
+  // optional bytes cert = 1;
+  if (has_cert()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::BytesSize(
+        this->cert());
   }
-  if (!unknown_fields().empty()) {
+
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
@@ -1272,7 +1340,7 @@ int cert_pull_result::ByteSize() const {
 }
 
 void cert_pull_result::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const cert_pull_result* source =
     ::google::protobuf::internal::dynamic_cast_if_available<const cert_pull_result*>(
       &from);
@@ -1284,13 +1352,16 @@ void cert_pull_result::MergeFrom(const ::google::protobuf::Message& from) {
 }
 
 void cert_pull_result::MergeFrom(const cert_pull_result& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_cert()) {
-      set_cert(from.cert());
+      set_has_cert();
+      cert_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.cert_);
     }
   }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
 }
 
 void cert_pull_result::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1311,12 +1382,14 @@ bool cert_pull_result::IsInitialized() const {
 }
 
 void cert_pull_result::Swap(cert_pull_result* other) {
-  if (other != this) {
-    std::swap(cert_, other->cert_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
+  if (other == this) return;
+  InternalSwap(other);
+}
+void cert_pull_result::InternalSwap(cert_pull_result* other) {
+  cert_.Swap(&other->cert_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata cert_pull_result::GetMetadata() const {
@@ -1336,7 +1409,7 @@ const int ca_announce::kCaLevelFieldNumber;
 #endif  // !_MSC_VER
 
 ca_announce::ca_announce()
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message() , _internal_metadata_(NULL)  {
   SharedCtor();
   // @@protoc_insertion_point(constructor:proto.ca.ca_announce)
 }
@@ -1345,7 +1418,8 @@ void ca_announce::InitAsDefaultInstance() {
 }
 
 ca_announce::ca_announce(const ca_announce& from)
-  : ::google::protobuf::Message() {
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
   // @@protoc_insertion_point(copy_constructor:proto.ca.ca_announce)
@@ -1354,7 +1428,7 @@ ca_announce::ca_announce(const ca_announce& from)
 void ca_announce::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  ca_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  ca_name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ca_level_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -1362,6 +1436,7 @@ void ca_announce::SharedCtor() {
 #if __cplusplus >= 201103L || _MSC_VER >= 1600
 ca_announce::ca_announce(ca_announce&& from)
   : ::google::protobuf::Message() {
+  SharedCtor();
   Swap(&from);
 }
 #endif
@@ -1372,9 +1447,7 @@ ca_announce::~ca_announce() {
 }
 
 void ca_announce::SharedDtor() {
-  if (ca_name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete ca_name_;
-  }
+  ca_name_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
   }
 }
@@ -1396,21 +1469,25 @@ const ca_announce& ca_announce::default_instance() {
 
 ca_announce* ca_announce::default_instance_ = NULL;
 
-ca_announce* ca_announce::New() const {
-  return new ca_announce;
+ca_announce* ca_announce::New(::google::protobuf::Arena* arena) const {
+  ca_announce* n = new ca_announce;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
 }
 
 void ca_announce::Clear() {
   if (_has_bits_[0 / 32] & 3) {
     if (has_ca_name()) {
-      if (ca_name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        ca_name_->clear();
-      }
+      ca_name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
     ca_level_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
 }
 
 bool ca_announce::MergePartialFromCodedStream(
@@ -1431,7 +1508,7 @@ bool ca_announce::MergePartialFromCodedStream(
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
             this->ca_name().data(), this->ca_name().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "ca_name");
+            "proto.ca.ca_announce.ca_name");
         } else {
           goto handle_unusual;
         }
@@ -1484,7 +1561,7 @@ void ca_announce::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->ca_name().data(), this->ca_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "ca_name");
+      "proto.ca.ca_announce.ca_name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
       1, this->ca_name(), output);
   }
@@ -1494,7 +1571,7 @@ void ca_announce::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->ca_level(), output);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
@@ -1509,7 +1586,7 @@ void ca_announce::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->ca_name().data(), this->ca_name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "ca_name");
+      "proto.ca.ca_announce.ca_name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         1, this->ca_name(), target);
@@ -1520,7 +1597,7 @@ void ca_announce::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->ca_level(), target);
   }
 
-  if (!unknown_fields().empty()) {
+  if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
@@ -1531,23 +1608,20 @@ void ca_announce::SerializeWithCachedSizes(
 int ca_announce::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required string ca_name = 1;
-    if (has_ca_name()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->ca_name());
-    }
-
-    // optional int32 ca_level = 2;
-    if (has_ca_level()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->ca_level());
-    }
-
+  // required string ca_name = 1;
+  if (has_ca_name()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->ca_name());
   }
-  if (!unknown_fields().empty()) {
+  // optional int32 ca_level = 2;
+  if (has_ca_level()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->ca_level());
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         unknown_fields());
@@ -1559,7 +1633,7 @@ int ca_announce::ByteSize() const {
 }
 
 void ca_announce::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   const ca_announce* source =
     ::google::protobuf::internal::dynamic_cast_if_available<const ca_announce*>(
       &from);
@@ -1571,16 +1645,19 @@ void ca_announce::MergeFrom(const ::google::protobuf::Message& from) {
 }
 
 void ca_announce::MergeFrom(const ca_announce& from) {
-  GOOGLE_CHECK_NE(&from, this);
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_ca_name()) {
-      set_ca_name(from.ca_name());
+      set_has_ca_name();
+      ca_name_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.ca_name_);
     }
     if (from.has_ca_level()) {
       set_ca_level(from.ca_level());
     }
   }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
 }
 
 void ca_announce::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1602,13 +1679,15 @@ bool ca_announce::IsInitialized() const {
 }
 
 void ca_announce::Swap(ca_announce* other) {
-  if (other != this) {
-    std::swap(ca_name_, other->ca_name_);
-    std::swap(ca_level_, other->ca_level_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
+  if (other == this) return;
+  InternalSwap(other);
+}
+void ca_announce::InternalSwap(ca_announce* other) {
+  ca_name_.Swap(&other->ca_name_);
+  std::swap(ca_level_, other->ca_level_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata ca_announce::GetMetadata() const {
