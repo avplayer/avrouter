@@ -8,8 +8,6 @@
 #include <openssl/dh.h>
 #include <openssl/aes.h>
 
-#include "avpacket.hpp"
-
 namespace av_router {
 
 	ca_moudle::ca_moudle(io_service_pool& io_poll)

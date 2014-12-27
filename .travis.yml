@@ -13,7 +13,7 @@ before_install:
   - sudo apt-get -y purge cmake
   - sudo apt-get -y install -qq cmake
   - sudo apt-get install -y -qq wget
-  - sudo apt-get install -y libsoci-sqlite3.2  libsoci3.2-dev
+  - sudo apt-get install -y libsoci-sqlite3.2  libsoci3.2-dev libsoci-postgresql3.2
   - sudo apt-get install -y -qq boost1.55 libprotobuf-dev protobuf-compiler postgresql-client libpq-dev postgresql-server-dev-all
   - git submodule update --init
   - mkdir -pv build
