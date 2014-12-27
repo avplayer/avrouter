@@ -21,7 +21,7 @@ before_install:
   - sudo cp third_party/soci/src/cmake/modules/FindPostgreSQL.cmake /usr/share/cmake-3.0/Modules/FindPostgreSQL.cmake
 
 before_script:
-  cd build && CMAKE_PREFIX_PATH=`pwd`/../third_party/soci/src/cmake/modules LDFLAGS="-ltasn1" cmake -DDEBUG=1 ..
+  cd build && CXXFLAGS="-I/usr/include/postgresql" LDFLAGS="-ltasn1" cmake -DDEBUG=1 ..
 
 script:
     - make -j2
