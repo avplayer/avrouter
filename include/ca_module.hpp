@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include <thread>
+#include <boost/thread.hpp>
 #include <mutex>
 
 #include "router_server.hpp"
@@ -42,6 +42,6 @@ namespace av_router {
 
 		std::map<std::string, connection_ptr> m_user_cons;
 
-		std::mutex	m_mutex;
+		boost::mutex	m_mutex;
 	};
 }

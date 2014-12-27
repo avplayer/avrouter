@@ -31,7 +31,7 @@ namespace av_router {
 
 	bool ca_moudle::process_csr_request(google::protobuf::Message* msg, connection_ptr connection, connection_manager&)
 	{
-		std::lock_guard<std::mutex> l(m_mutex);
+		boost::lock_guard<boost::mutex> l(m_mutex);
 		auto ca_con = m_ca_connection.lock();
 		if (ca_con)
 		{
@@ -51,7 +51,7 @@ namespace av_router {
 
 		auto fingerprint = csr_reslt->fingerprint();
 
-		std::lock_guard<std::mutex> l(m_mutex);
+		boost::lock_guard<boost::mutex> l(m_mutex);
 		auto res_it = m_user_cons.find(fingerprint);
 		if (res_it != m_user_cons.end())
 		{
