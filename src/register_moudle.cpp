@@ -150,7 +150,7 @@ namespace av_router {
 		register_result.set_result(static_cast<proto::user_register_result::user_register_result_code>(result_code));
 		if (cert.is_initialized())
 		{
-			register_result.set_cert(cert.value());
+			register_result.set_cert(boost::get<std::string>(cert));
 		}
 		connection->write_msg(encode(register_result));
 	}
