@@ -4,7 +4,6 @@
 #include "ca.pb.h"
 #include "packet.pb.h"
 
-#include <future>
 #include <boost/regex.hpp>
 #include <boost/asio/spawn.hpp>
 #include <boost/format.hpp>
