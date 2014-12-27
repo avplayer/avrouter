@@ -1,5 +1,5 @@
 ﻿#include "database.hpp"
-#include <future>
+#include <boost/thread/future.hpp>
 #include <boost/thread.hpp>
 #include "logging.hpp"
 
@@ -26,7 +26,7 @@ namespace av_router {
 		: m_io_service(io)
 		, m_db_pool(db_pool)
 	{
-		std::async(std::launch::async,
+		boost::async(boost::launch::async,
 			[this]()
 			{
 				soci::session ses(m_db_pool);
@@ -72,7 +72,7 @@ namespace av_router {
 
 	void database::availability_check(const std::string& user_id, result_handler handler)
 	{
-		std::async(std::launch::async,
+		boost::async(boost::launch::async,
 			[this, user_id, handler]()
 			{
 				// 在这里检查数据库中是否存在这个用户名, 检查到的话, 调用对应的handler.
@@ -102,7 +102,7 @@ namespace av_router {
 
 	void database::register_user(std::string user_id, std::string pubkey, std::string email, std::string telephone, result_handler handler)
 	{
-		std::async(std::launch::async,
+		boost::async(boost::launch::async,
 			[user_id, pubkey, email, telephone, handler, this]()
 			{
 				// 在这里检查数据库中是否存在这个用户名, 检查到的话, 调用对应的handler.
@@ -140,7 +140,7 @@ namespace av_router {
 
 	void database::delete_user(const std::string& user_id, database::result_handler handler)
 	{
-		std::async(std::launch::async,
+		boost::async(boost::launch::async,
 			[=]()
 			{
 				// 在这里检查数据库中是否存在这个用户名, 检查到的话, 调用对应的handler.
@@ -164,7 +164,7 @@ namespace av_router {
 
 	void database::update_user_cert(const std::string& user_id, const std::string& cert, database::result_handler handler)
 	{
-		std::async(std::launch::async,
+		boost::async(boost::launch::async,
 			[=]()
 			{
 				// 在这里检查数据库中是否存在这个用户名, 检查到的话, 调用对应的handler.
