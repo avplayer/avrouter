@@ -15,12 +15,13 @@ before_install:
   - sudo apt-get install -y -qq wget
   - sudo apt-get install -y libsoci-sqlite3.2  libsoci3.2-dev libsoci-postgresql3.2
   - sudo apt-get install -y -qq boost1.55 libprotobuf-dev protobuf-compiler postgresql-client libpq-dev postgresql-server-dev-all
+  - sudo apt-get install -y libtasn1-dev
   - git submodule update --init
   - mkdir -pv build
   - sudo cp third_party/soci/src/cmake/modules/FindPostgreSQL.cmake /usr/share/cmake-3.0/Modules/FindPostgreSQL.cmake
 
 before_script:
-  cd build && CMAKE_PREFIX_PATH=`pwd`/../third_party/soci/src/cmake/modules cmake -DDEBUG=1 ..
+  cd build && CMAKE_PREFIX_PATH=`pwd`/../third_party/soci/src/cmake/modules LDFLAGS="-ltasn1" cmake -DDEBUG=1 ..
 
 script:
     - make -j2
